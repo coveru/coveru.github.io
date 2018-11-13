@@ -259,140 +259,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/js普通类型和对象的区别/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coveru">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="coveru's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/js普通类型和对象的区别/" itemprop="url">js普通类型和对象的区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前一篇我们分别介绍了js里每一种数据类型，但是数据类型也有划分不同的大类型，比如基本类型和复杂类型，原始类型和引用类型等等，总的来说就是普通类型和对象的区别。</p>
-<h2 id="1、基本数据类型和引用数据类型"><a href="#1、基本数据类型和引用数据类型" class="headerlink" title="1、基本数据类型和引用数据类型"></a>1、基本数据类型和引用数据类型</h2><p>ECMAScript包括两个不同类型的值：基本数据类型和引用数据类型。<br>基本数据类型指的是简单的数据段，引用数据类型指的是有多个值构成的对象。<br>当我们把变量赋值给一个变量时，解析器首先要确认的就是这个值是基本类型值还是引用类型值。</p>
-<h2 id="2、常见的基本数据类型："><a href="#2、常见的基本数据类型：" class="headerlink" title="2、常见的基本数据类型："></a>2、常见的基本数据类型：</h2><p>Number、String 、Boolean、Null和Undefined。基本数据类型是按值访问的，因为可以直接操作保存在变量中的实际值。示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line"></span><br><span class="line">b = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 10值</span></span><br></pre></td></tr></table></figure></p>
-<p>上面，b获取的是a值得一份拷贝，虽然，两个变量的值相等，但是两个变量保存了两个不同的基本数据类型值。<br>b只是保存了a复制的一个副本。所以，b的改变，对a没有影响。这种拷贝也就是深拷贝。<br>下图演示了这种基本数据类型赋值的过程：<br><img src="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fw8ofoyto7j30f6065mx8.jpg" alt=""></p>
-<h2 id="3、引用类型数据："><a href="#3、引用类型数据：" class="headerlink" title="3、引用类型数据："></a>3、引用类型数据：</h2><p>引用类型数据也就是对象类型Object type，比如：Object 、Array 、Function 、Data等。<br>javascript的引用数据类型是保存在堆内存(heap)中的对象。与其他语言的不同是，你不可以直接访问堆内存空间中的位置和操作堆内存空间。只能操作对象在栈内(stack)存中的引用地址。<br>所以，引用类型数据在栈内存中保存的实际上是对象在堆内存中的<strong>引用地址</strong>。通过这个引用地址可以快速查找到保存中堆内存中的对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj2 = obj1;</span><br><span class="line"></span><br><span class="line">obj2.name = <span class="string">"我有名字了"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj1.name); <span class="comment">// 我有名字了</span></span><br></pre></td></tr></table></figure></p>
-<p>说明这两个引用数据类型指向了同一个堆内存对象。obj1赋值给onj2，实际上这个堆内存对象在栈内存的引用地址复制了一份给了obj2，但是实际上他们共同指向了同一个堆内存对象。<strong>实际上改变的是堆内存对象。</strong><br>下面我们来演示这个引用数据类型赋值过程：<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fw8ofoz82uj30g20e8q3m.jpg" alt=""><br>顺便贴上一张面试题内存图解析<br><img src="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fw8ofpm1tpj31hd1hcwv9.jpg" alt=""><br>红色部分表示变量b发生的变动</p>
-<h2 id="4、总结区别"><a href="#4、总结区别" class="headerlink" title="4、总结区别"></a>4、总结区别</h2><h3 id="a-声明变量时不同的内存分配："><a href="#a-声明变量时不同的内存分配：" class="headerlink" title="a.声明变量时不同的内存分配：　"></a>a.声明变量时不同的内存分配：　</h3><p>1）原始值：存储在栈（stack）中的简单数据段，也就是说，它们的值直接存储在变量访问的位置。<br>这是因为这些原始类型占据的空间是固定的，所以可将他们存储在较小的内存区域–栈中。这样存储便于迅速查寻变量的值。<br>2）引用值：存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存地址。<br>这是因为：引用值的大小会改变，所以不能把它放在栈中，否则会降低变量查寻的速度。相反，放在变量的栈空间中的值是该对象存储在堆中的地址。<br>地址的大小是固定的，所以把它存储在栈中对变量性能无任何负面影响。</p>
-<h3 id="b-不同的内存分配机制也带来了不同的访问机制"><a href="#b-不同的内存分配机制也带来了不同的访问机制" class="headerlink" title="b.不同的内存分配机制也带来了不同的访问机制"></a>b.不同的内存分配机制也带来了不同的访问机制</h3><p>1）在javascript中是不允许直接访问保存在堆内存中的对象的，所以在访问一个对象时，首先得到的是这个对象在堆内存中的地址，然后再按照这个地址去获得这个对象中的值，这就是传说中的按引用访问。<br>2）而原始类型的值则是可以直接访问到的。
-　　</p>
-<h3 id="c-复制变量时的不同"><a href="#c-复制变量时的不同" class="headerlink" title="c 复制变量时的不同"></a>c 复制变量时的不同</h3><p>1）原始值：在将一个保存着原始值的变量复制给另一个变量时，会将原始值的副本赋值给新变量，此后这两个变量是完全独立的，他们只是拥有相同的value而已。<br>2）引用值：在将一个保存着对象内存地址的变量复制给另一个变量时，会把这个内存地址赋值给新变量，也就是说这两个变量都指向了堆内存中的同一个对象，他们中任何一个作出的改变都会反映在另一个身上。（这里要理解的一点就是，复制对象时并不会在堆内存中新生成一个一模一样的对象，只是多了一个保存指向这个对象指针的变量罢了）。多了一个指针</p>
-<h3 id="d-参数传递的不同（把实参复制给形参的过程）"><a href="#d-参数传递的不同（把实参复制给形参的过程）" class="headerlink" title="d 参数传递的不同（把实参复制给形参的过程）"></a>d 参数传递的不同（把实参复制给形参的过程）</h3><p>首先我们应该明确一点：ECMAScript中所有函数的参数都是按值来传递的。<br>但是为什么涉及到原始类型与引用类型的值时仍然有区别呢？还不就是因为内存分配时的差别。 　<br>1）原始值：只是把变量里的值传递给参数，之后参数和这个变量互不影响。<br>2）引用值：对象变量它里面的值是这个对象在堆内存中的内存地址，这一点要时刻铭记在心！<br>因此它传递的值也就是这个内存地址，这也就是为什么函数内部对这个参数的修改会体现在外部的原因了，因为它们都指向同一个对象。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JS初体验/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -540,7 +406,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JS中的dom操作/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/js普通类型和对象的区别/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coveru">
@@ -559,7 +425,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/13/JS中的dom操作/" itemprop="url">JS中的dom操作</a></h1>
+                <a class="post-title-link" href="/2018/11/13/js普通类型和对象的区别/" itemprop="url">js普通类型和对象的区别</a></h1>
         
 
         <div class="post-meta">
@@ -611,25 +477,18 @@
       
         
           
-            <h1 id="DOM概述"><a href="#DOM概述" class="headerlink" title="DOM概述"></a>DOM概述</h1><p>DOM 是 JavaScript 操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个 JavaScript 对象，从而可以用脚本进行各种操作（比如增删内容）。浏览器会根据 DOM 模型，将结构化文档（比如 HTML 和 XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOMTree）。所有的节点和最终的树状结构，都有规范的对外接口。<br>DOM 只是一个接口规范，可以用各种语言实现。所以严格地说，DOM 不是 JavaScript 语法的一部分，但是 DOM 操作是 JavaScript 最常见的任务，离开了 DOM，JavaScript 就无法控制网页。另一方面，JavaScript 也是最常用于 DOM 操作的语言。后面介绍的就是 JavaScript 对 DOM 标准的实现和用法。</p>
-<h2 id="DOM树"><a href="#DOM树" class="headerlink" title="DOM树"></a>DOM树</h2><p>html标签通过浏览器的解析后才会形成dom树，此后HTML中的每个标签元素，属性，文本都能看做是一个DOM的节点，JavaScript都能通过dom的提供的编程接口操作到每个节点，去了解浏览器的渲染机制能够帮助我们了解dom。<br><img src="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fwg3asw3onj30oj0ebjt5.jpg" alt=""><br>DOM模型将整个文档（XML文档和HTML文档）看成一个树形结构，<br>在DOM中，HTML文档的层次结构被表示为一个树形结构。并用document对象表示该文档，树的每个子节点表示HTML文档中的不同内容。<br>每个载入浏览器的 HTML 文档都会成为Document对象,Document是探索DOM的入口,利用全局变量document可以访问Document对象。</p>
-<h2 id="DOM中的节点"><a href="#DOM中的节点" class="headerlink" title="DOM中的节点"></a>DOM中的节点</h2><p>DOM规定文档中的每个成分都是一个节点（Node）,HTML文档可以说由节点构成的集合，DOM节点有:<br>1）元素节点（Element）：上图中<html>、<body>、<p>等都是元素节点，即标签。<br>2）文本节点（Text）:向用户展示的内容，如<li>…</li>中的JavaScript、DOM、CSS等文本。<br>3）属性节点（Attr）:元素属性，元素才有属性,如<a>标签的链接属性href=”<a href="http://www.baidu.com&quot;。" target="_blank" rel="noopener">http://www.baidu.com&quot;。</a></a></p>
-<h2 id="DOM节点三大属性（XML-DOM）"><a href="#DOM节点三大属性（XML-DOM）" class="headerlink" title="DOM节点三大属性（XML DOM）"></a>DOM节点三大属性（XML DOM）</h2><p>1）nodeName：元素节点、属性节点、文本节点分别返回元素的名称、属性的名称和#text的字符串。<br>2）nodeType：元素节点、属性节点、文本节点的nodeType值分别为1、2、3.、<br>3）nodeValue：元素节点、属性节点、文本节点的返回值分别为null、属性值和文本节点内容。</p>
-<h2 id="DOM常见操作"><a href="#DOM常见操作" class="headerlink" title="DOM常见操作"></a>DOM常见操作</h2><p>Node为所有节点的父接口，其定义了一组公共的属性和方法，如下：<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwg3i923l0j30ol0j7wti.jpg" alt=""></p>
-<h3 id="1-获取节点"><a href="#1-获取节点" class="headerlink" title="1.获取节点"></a>1.获取节点</h3><p>① 获取元素节点：<br>通过document对象的三个方法获取<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"ID"</span>)</span><br><span class="line"><span class="built_in">document</span>.getElementByName(<span class="string">"name"</span>)</span><br><span class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">"p"</span>);</span><br></pre></td></tr></table></figure></p>
-<p>② 获取属性节点：<br>属性节点附属于元素节点，可通过元素节点的getAttributeNode(attrName)方法获取属性节点，也可通过getAttribute(attrName)直接获取属性值。（与之相对的是Element接口的setAttribute(attrName , attrValue)方法，如果属性不存在，则直接添加到元素节点上）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(item.getAttribute(&quot;title&quot;));//a gentle reminder</span><br></pre></td></tr></table></figure></p>
-<p><strong>注：getAttribute()不能通过document对象调用，只能通过元素对象去调用它。</strong></p>
-<p>③ 获取文本节点：<br>文本节点为元素节点的子节点，可通过元素节点（Element接口）提供的childnodes()[index] 方法获得。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">childNodes <span class="comment">//NodeList，所有子节点的列表</span></span><br><span class="line">firstChild <span class="comment">//Node，指向在childNodes列表中的第一个节点  </span></span><br><span class="line">lastChild <span class="comment">//Node，指向在childNodes列表中的最后一个节点  </span></span><br><span class="line">parentNode <span class="comment">//Node，指向父节点  </span></span><br><span class="line">previousSibling /Node，/指向前一个兄弟节点：如果这个节点就是第一个节点，那么该值为 <span class="literal">null</span></span><br><span class="line">nextSibling <span class="comment">//Node，指向后一个兄弟节点：如果这个节点就是最后一个节点，那么该值为null</span></span><br><span class="line">hasChildNodes()<span class="string">` //Boolean，当childNodes包含一个或多个节点时，返回真值</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="2-改变节点"><a href="#2-改变节点" class="headerlink" title="2.改变节点"></a>2.改变节点</h3><p>1）改变属性节点的值：可以通过属性节点的nodeValue直接修改属性值，也可通过元素节点的setAttribute()方法改变。<br>（2）改变文本节点的值：通过文本节点的nodeValue直接修改。<br>在HTML DOM中，获取和改变元素内容最简单方法是使用元素的innerHTML属性（innerText属性返回去掉标签的innerHTML）</p>
-<p>拓展:<br>innerText、innerHTML、outerHTML、outerText 。<br>innerText: 表示起始标签和结束标签之间的文本 。<br>innerHTML: 表示元素的所有元素和文本的HTML代码 。<br>如：<div><b>Hello</b> world</div>的innerText为Hello world，innerHTML为Hello world 。<br>outerText: 与前者的区别是替换的是整个目标节点，问题返回和innerText一样的内容 。<br>outerHTML: 与前者的区别是替换的是整个目标节点，返回元素完整的HTML代码，包括元素本身。</p>
-<p>一张图了解outerHTML和innerText、innerHTML：<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwg3ic9vu0j30bt03xgli.jpg" alt=""><br>改变HTML样式（style属性）：element.style.color =“red”;</p>
-<h3 id="3-删除节点"><a href="#3-删除节点" class="headerlink" title="3.删除节点"></a>3.删除节点</h3><p>① 删除元素节点：要想删除元素节点A，需获得A的父节点B，父节点可通过17.1.1中的方法获得，也可以直接通过A的parentNode属性获得（推荐）。调用B的removeChild(A)即可删除A节点。</p>
-<p>② 删除属性节点：可通过属性节点所属的元素节点的removeAttribute(attrName)或removeAttributeNode(node)删除。</p>
-<p>③ 清空文本节点：最简单也是最常用的方法就是直接设置文本节点的nameNode属性为空串：textNode.nodeValue =” “。<br>混淆点:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;p id=<span class="string">"example"</span> title=<span class="string">"texts"</span>&gt;</span><br><span class="line">  这是一段文本</span><br><span class="line">  &lt;span&gt;&lt;/span&gt;</span><br><span class="line">&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">var p = document.getElementById('example'); </span></span><br><span class="line"><span class="regexp">p.nodeValue /</span><span class="regexp">/null,p是元素节点，所以nodeValue为null</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">p.getAttributeNode('id').nodeValue /</span><span class="regexp">/example，这里获取到p的id属性的属性节点，nodeValue就是它的属性值</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">p.childNodes[0].nodeValue /</span><span class="regexp">/这是一段文本</span></span><br><span class="line"><span class="regexp">p是含有两个子节点的，插入的文本虽然没有标签，但它依然是一个节点。 </span></span><br><span class="line"><span class="regexp">其类型是是文本节点，其nodeValue是就是写入在其中的字符串，包含换行和缩进</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">p.innerHTML/</span><span class="regexp">/这是一段文本 &lt;span&gt;&lt;/</span>span&gt;” </span><br><span class="line">这里innerHTML返回了p所包含的全部的节点的所包含的各种值了，以字符串的形式。</span><br></pre></td></tr></table></figure></p>
-<h3 id="4-创建和添加节点"><a href="#4-创建和添加节点" class="headerlink" title="4.创建和添加节点"></a>4.创建和添加节点</h3><p>① 创建节点：通过document对象的createElement(eleName)、createTextNode(nodeValue)方法可分别创建元素节点和文本节点。属性节点也有自己的create方法，但是用的少，直接用元素节点的setAttribute()方法即可添加属性。</p>
-<p>② 添加节点：两个重要的方法：appendChild()和insertBefore()，具体见Node接口中的方法。<br>扩展：上面的两个方法都是在已知父节点时用到的，也可以直接在兄弟节点后添加新节点：x.insertBefore(newNode)和x.appendChild(newNode)都可以向x后追加一个新的子节点。</p>
-<h3 id="5-替换节点"><a href="#5-替换节点" class="headerlink" title="5.替换节点"></a>5.替换节点</h3><p>主要掌握replaceChild(newNode , oldNode) 替换元素节点。（属性节点和文本节点有更简单的方法）</p>
-</body></html></p>
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前一篇我们分别介绍了js里每一种数据类型，但是数据类型也有划分不同的大类型，比如基本类型和复杂类型，原始类型和引用类型等等，总的来说就是普通类型和对象的区别。</p>
+<h2 id="1、基本数据类型和引用数据类型"><a href="#1、基本数据类型和引用数据类型" class="headerlink" title="1、基本数据类型和引用数据类型"></a>1、基本数据类型和引用数据类型</h2><p>ECMAScript包括两个不同类型的值：基本数据类型和引用数据类型。<br>基本数据类型指的是简单的数据段，引用数据类型指的是有多个值构成的对象。<br>当我们把变量赋值给一个变量时，解析器首先要确认的就是这个值是基本类型值还是引用类型值。</p>
+<h2 id="2、常见的基本数据类型："><a href="#2、常见的基本数据类型：" class="headerlink" title="2、常见的基本数据类型："></a>2、常见的基本数据类型：</h2><p>Number、String 、Boolean、Null和Undefined。基本数据类型是按值访问的，因为可以直接操作保存在变量中的实际值。示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line"></span><br><span class="line">b = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 10值</span></span><br></pre></td></tr></table></figure></p>
+<p>上面，b获取的是a值得一份拷贝，虽然，两个变量的值相等，但是两个变量保存了两个不同的基本数据类型值。<br>b只是保存了a复制的一个副本。所以，b的改变，对a没有影响。这种拷贝也就是深拷贝。<br>下图演示了这种基本数据类型赋值的过程：<br><img src="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fw8ofoyto7j30f6065mx8.jpg" alt=""></p>
+<h2 id="3、引用类型数据："><a href="#3、引用类型数据：" class="headerlink" title="3、引用类型数据："></a>3、引用类型数据：</h2><p>引用类型数据也就是对象类型Object type，比如：Object 、Array 、Function 、Data等。<br>javascript的引用数据类型是保存在堆内存(heap)中的对象。与其他语言的不同是，你不可以直接访问堆内存空间中的位置和操作堆内存空间。只能操作对象在栈内(stack)存中的引用地址。<br>所以，引用类型数据在栈内存中保存的实际上是对象在堆内存中的<strong>引用地址</strong>。通过这个引用地址可以快速查找到保存中堆内存中的对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj2 = obj1;</span><br><span class="line"></span><br><span class="line">obj2.name = <span class="string">"我有名字了"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj1.name); <span class="comment">// 我有名字了</span></span><br></pre></td></tr></table></figure></p>
+<p>说明这两个引用数据类型指向了同一个堆内存对象。obj1赋值给onj2，实际上这个堆内存对象在栈内存的引用地址复制了一份给了obj2，但是实际上他们共同指向了同一个堆内存对象。<strong>实际上改变的是堆内存对象。</strong><br>下面我们来演示这个引用数据类型赋值过程：<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fw8ofoz82uj30g20e8q3m.jpg" alt=""><br>顺便贴上一张面试题内存图解析<br><img src="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fw8ofpm1tpj31hd1hcwv9.jpg" alt=""><br>红色部分表示变量b发生的变动</p>
+<h2 id="4、总结区别"><a href="#4、总结区别" class="headerlink" title="4、总结区别"></a>4、总结区别</h2><h3 id="a-声明变量时不同的内存分配："><a href="#a-声明变量时不同的内存分配：" class="headerlink" title="a.声明变量时不同的内存分配：　"></a>a.声明变量时不同的内存分配：　</h3><p>1）原始值：存储在栈（stack）中的简单数据段，也就是说，它们的值直接存储在变量访问的位置。<br>这是因为这些原始类型占据的空间是固定的，所以可将他们存储在较小的内存区域–栈中。这样存储便于迅速查寻变量的值。<br>2）引用值：存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存地址。<br>这是因为：引用值的大小会改变，所以不能把它放在栈中，否则会降低变量查寻的速度。相反，放在变量的栈空间中的值是该对象存储在堆中的地址。<br>地址的大小是固定的，所以把它存储在栈中对变量性能无任何负面影响。</p>
+<h3 id="b-不同的内存分配机制也带来了不同的访问机制"><a href="#b-不同的内存分配机制也带来了不同的访问机制" class="headerlink" title="b.不同的内存分配机制也带来了不同的访问机制"></a>b.不同的内存分配机制也带来了不同的访问机制</h3><p>1）在javascript中是不允许直接访问保存在堆内存中的对象的，所以在访问一个对象时，首先得到的是这个对象在堆内存中的地址，然后再按照这个地址去获得这个对象中的值，这就是传说中的按引用访问。<br>2）而原始类型的值则是可以直接访问到的。
+　　</p>
+<h3 id="c-复制变量时的不同"><a href="#c-复制变量时的不同" class="headerlink" title="c 复制变量时的不同"></a>c 复制变量时的不同</h3><p>1）原始值：在将一个保存着原始值的变量复制给另一个变量时，会将原始值的副本赋值给新变量，此后这两个变量是完全独立的，他们只是拥有相同的value而已。<br>2）引用值：在将一个保存着对象内存地址的变量复制给另一个变量时，会把这个内存地址赋值给新变量，也就是说这两个变量都指向了堆内存中的同一个对象，他们中任何一个作出的改变都会反映在另一个身上。（这里要理解的一点就是，复制对象时并不会在堆内存中新生成一个一模一样的对象，只是多了一个保存指向这个对象指针的变量罢了）。多了一个指针</p>
+<h3 id="d-参数传递的不同（把实参复制给形参的过程）"><a href="#d-参数传递的不同（把实参复制给形参的过程）" class="headerlink" title="d 参数传递的不同（把实参复制给形参的过程）"></a>d 参数传递的不同（把实参复制给形参的过程）</h3><p>首先我们应该明确一点：ECMAScript中所有函数的参数都是按值来传递的。<br>但是为什么涉及到原始类型与引用类型的值时仍然有区别呢？还不就是因为内存分配时的差别。 　<br>1）原始值：只是把变量里的值传递给参数，之后参数和这个变量互不影响。<br>2）引用值：对象变量它里面的值是这个对象在堆内存中的内存地址，这一点要时刻铭记在心！<br>因此它传递的值也就是这个内存地址，这也就是为什么函数内部对这个参数的修改会体现在外部的原因了，因为它们都指向同一个对象。</p>
+
           
         
       
@@ -757,6 +616,147 @@
 <h2 id="用代码实现-frank-com-8001-和-jack-com-8002-之间的-JSONP-请求"><a href="#用代码实现-frank-com-8001-和-jack-com-8002-之间的-JSONP-请求" class="headerlink" title="用代码实现 frank.com:8001 和 jack.com:8002 之间的 JSONP 请求"></a>用代码实现 frank.com:8001 和 jack.com:8002 之间的 JSONP 请求</h2><p>前端页面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">  &lt;title&gt;frank.com:8001&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;button id=&quot;button&quot;&gt;点我获取信息&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    button.addEventListener(&apos;click&apos;, function(e)&#123;</span><br><span class="line">      //原生JS</span><br><span class="line">      // let script = document.createElement(&apos;script&apos;)</span><br><span class="line">      // script.src = &apos;http://jack.com:8002?callback=&apos; + functionName</span><br><span class="line">      // document.body.appendChild(script)</span><br><span class="line">      // let functionName = &apos;wky&apos; + parseInt(Math.random()*1000000, 10)</span><br><span class="line">      // window[functionName] = function(result)&#123;</span><br><span class="line">      //   alert(result)</span><br><span class="line">      // &#125;</span><br><span class="line">      // script.onload = function(e)&#123;</span><br><span class="line">      //   e.currentTarget.remove()</span><br><span class="line">      // &#125;</span><br><span class="line">      // script.onerror = function(e)&#123;</span><br><span class="line">      //   e.currentTarget.remove()</span><br><span class="line">      // &#125;</span><br><span class="line">      //jQuery方法</span><br><span class="line">      $.ajax(&#123;</span><br><span class="line">        url: &quot;http://jack.com:8002&quot;,</span><br><span class="line">        jsonp: &quot;callback&quot;,</span><br><span class="line">        dataType: &quot;jsonp&quot;,</span><br><span class="line">        success: function( response ) &#123;</span><br><span class="line">            alert( response )</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
 <p>后端代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>)</span><br><span class="line"><span class="keyword">var</span> port = process.argv[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!port)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'请指定端口号好不啦？\nnode server.js 8888 这样不会吗？'</span>)</span><br><span class="line">  process.exit(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> parsedUrl = url.parse(request.url, <span class="literal">true</span>)</span><br><span class="line">  <span class="keyword">var</span> pathWithQuery = request.url </span><br><span class="line">  <span class="keyword">var</span> queryString = <span class="string">''</span></span><br><span class="line">  <span class="keyword">if</span>(pathWithQuery.indexOf(<span class="string">'?'</span>) &gt;= <span class="number">0</span>)&#123; queryString = pathWithQuery.substring(pathWithQuery.indexOf(<span class="string">'?'</span>)) &#125;</span><br><span class="line">  <span class="keyword">var</span> path = parsedUrl.pathname</span><br><span class="line">  <span class="keyword">var</span> query = parsedUrl.query</span><br><span class="line">  <span class="keyword">var</span> method = request.method</span><br><span class="line"></span><br><span class="line">  <span class="comment">/******** 从这里开始看，上面不要看 ************/</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'方方说：含查询字符串的路径\n'</span> + pathWithQuery)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(path === <span class="string">'/'</span>)&#123;</span><br><span class="line">    response.statusCode = <span class="number">200</span></span><br><span class="line">    response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/html;charset=utf-8'</span>)</span><br><span class="line">    response.write(<span class="string">'哈哈哈'</span>)</span><br><span class="line">    response.end()</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(path === <span class="string">'/getmsg'</span>)&#123;</span><br><span class="line">    response.statusCode = <span class="number">200</span></span><br><span class="line">    response.setHeader(<span class="string">'Content-type'</span>, <span class="string">'application/javascript'</span>)</span><br><span class="line">    response.write(<span class="string">`<span class="subst">$&#123;query.callback&#125;</span>.call(undefined, '得到jack.com:8002的信息')`</span>)</span><br><span class="line">    response.end()</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    response.statusCode = <span class="number">404</span></span><br><span class="line">    response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/html;charset=utf-8'</span>)</span><br><span class="line">    response.write(<span class="string">'呜呜呜'</span>)</span><br><span class="line">    response.end()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/******** 代码结束，下面不要看 ************/</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(port)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'监听 '</span> + port + <span class="string">' 成功\n请用在空中转体720度然后用电饭煲打开 http://localhost:'</span> + port)</span><br></pre></td></tr></table></figure></p>
 
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JS中的dom操作/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/13/JS中的dom操作/" itemprop="url">JS中的dom操作</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="DOM概述"><a href="#DOM概述" class="headerlink" title="DOM概述"></a>DOM概述</h1><p>DOM 是 JavaScript 操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个 JavaScript 对象，从而可以用脚本进行各种操作（比如增删内容）。浏览器会根据 DOM 模型，将结构化文档（比如 HTML 和 XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOMTree）。所有的节点和最终的树状结构，都有规范的对外接口。<br>DOM 只是一个接口规范，可以用各种语言实现。所以严格地说，DOM 不是 JavaScript 语法的一部分，但是 DOM 操作是 JavaScript 最常见的任务，离开了 DOM，JavaScript 就无法控制网页。另一方面，JavaScript 也是最常用于 DOM 操作的语言。后面介绍的就是 JavaScript 对 DOM 标准的实现和用法。</p>
+<h2 id="DOM树"><a href="#DOM树" class="headerlink" title="DOM树"></a>DOM树</h2><p>html标签通过浏览器的解析后才会形成dom树，此后HTML中的每个标签元素，属性，文本都能看做是一个DOM的节点，JavaScript都能通过dom的提供的编程接口操作到每个节点，去了解浏览器的渲染机制能够帮助我们了解dom。<br><img src="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fwg3asw3onj30oj0ebjt5.jpg" alt=""><br>DOM模型将整个文档（XML文档和HTML文档）看成一个树形结构，<br>在DOM中，HTML文档的层次结构被表示为一个树形结构。并用document对象表示该文档，树的每个子节点表示HTML文档中的不同内容。<br>每个载入浏览器的 HTML 文档都会成为Document对象,Document是探索DOM的入口,利用全局变量document可以访问Document对象。</p>
+<h2 id="DOM中的节点"><a href="#DOM中的节点" class="headerlink" title="DOM中的节点"></a>DOM中的节点</h2><p>DOM规定文档中的每个成分都是一个节点（Node）,HTML文档可以说由节点构成的集合，DOM节点有:<br>1）元素节点（Element）：上图中<html>、<body>、<p>等都是元素节点，即标签。<br>2）文本节点（Text）:向用户展示的内容，如<li>…</li>中的JavaScript、DOM、CSS等文本。<br>3）属性节点（Attr）:元素属性，元素才有属性,如<a>标签的链接属性href=”<a href="http://www.baidu.com&quot;。" target="_blank" rel="noopener">http://www.baidu.com&quot;。</a></a></p>
+<h2 id="DOM节点三大属性（XML-DOM）"><a href="#DOM节点三大属性（XML-DOM）" class="headerlink" title="DOM节点三大属性（XML DOM）"></a>DOM节点三大属性（XML DOM）</h2><p>1）nodeName：元素节点、属性节点、文本节点分别返回元素的名称、属性的名称和#text的字符串。<br>2）nodeType：元素节点、属性节点、文本节点的nodeType值分别为1、2、3.、<br>3）nodeValue：元素节点、属性节点、文本节点的返回值分别为null、属性值和文本节点内容。</p>
+<h2 id="DOM常见操作"><a href="#DOM常见操作" class="headerlink" title="DOM常见操作"></a>DOM常见操作</h2><p>Node为所有节点的父接口，其定义了一组公共的属性和方法，如下：<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwg3i923l0j30ol0j7wti.jpg" alt=""></p>
+<h3 id="1-获取节点"><a href="#1-获取节点" class="headerlink" title="1.获取节点"></a>1.获取节点</h3><p>① 获取元素节点：<br>通过document对象的三个方法获取<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"ID"</span>)</span><br><span class="line"><span class="built_in">document</span>.getElementByName(<span class="string">"name"</span>)</span><br><span class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">"p"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>② 获取属性节点：<br>属性节点附属于元素节点，可通过元素节点的getAttributeNode(attrName)方法获取属性节点，也可通过getAttribute(attrName)直接获取属性值。（与之相对的是Element接口的setAttribute(attrName , attrValue)方法，如果属性不存在，则直接添加到元素节点上）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(item.getAttribute(&quot;title&quot;));//a gentle reminder</span><br></pre></td></tr></table></figure></p>
+<p><strong>注：getAttribute()不能通过document对象调用，只能通过元素对象去调用它。</strong></p>
+<p>③ 获取文本节点：<br>文本节点为元素节点的子节点，可通过元素节点（Element接口）提供的childnodes()[index] 方法获得。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">childNodes <span class="comment">//NodeList，所有子节点的列表</span></span><br><span class="line">firstChild <span class="comment">//Node，指向在childNodes列表中的第一个节点  </span></span><br><span class="line">lastChild <span class="comment">//Node，指向在childNodes列表中的最后一个节点  </span></span><br><span class="line">parentNode <span class="comment">//Node，指向父节点  </span></span><br><span class="line">previousSibling /Node，/指向前一个兄弟节点：如果这个节点就是第一个节点，那么该值为 <span class="literal">null</span></span><br><span class="line">nextSibling <span class="comment">//Node，指向后一个兄弟节点：如果这个节点就是最后一个节点，那么该值为null</span></span><br><span class="line">hasChildNodes()<span class="string">` //Boolean，当childNodes包含一个或多个节点时，返回真值</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2-改变节点"><a href="#2-改变节点" class="headerlink" title="2.改变节点"></a>2.改变节点</h3><p>1）改变属性节点的值：可以通过属性节点的nodeValue直接修改属性值，也可通过元素节点的setAttribute()方法改变。<br>（2）改变文本节点的值：通过文本节点的nodeValue直接修改。<br>在HTML DOM中，获取和改变元素内容最简单方法是使用元素的innerHTML属性（innerText属性返回去掉标签的innerHTML）</p>
+<p>拓展:<br>innerText、innerHTML、outerHTML、outerText 。<br>innerText: 表示起始标签和结束标签之间的文本 。<br>innerHTML: 表示元素的所有元素和文本的HTML代码 。<br>如：<div><b>Hello</b> world</div>的innerText为Hello world，innerHTML为Hello world 。<br>outerText: 与前者的区别是替换的是整个目标节点，问题返回和innerText一样的内容 。<br>outerHTML: 与前者的区别是替换的是整个目标节点，返回元素完整的HTML代码，包括元素本身。</p>
+<p>一张图了解outerHTML和innerText、innerHTML：<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwg3ic9vu0j30bt03xgli.jpg" alt=""><br>改变HTML样式（style属性）：element.style.color =“red”;</p>
+<h3 id="3-删除节点"><a href="#3-删除节点" class="headerlink" title="3.删除节点"></a>3.删除节点</h3><p>① 删除元素节点：要想删除元素节点A，需获得A的父节点B，父节点可通过17.1.1中的方法获得，也可以直接通过A的parentNode属性获得（推荐）。调用B的removeChild(A)即可删除A节点。</p>
+<p>② 删除属性节点：可通过属性节点所属的元素节点的removeAttribute(attrName)或removeAttributeNode(node)删除。</p>
+<p>③ 清空文本节点：最简单也是最常用的方法就是直接设置文本节点的nameNode属性为空串：textNode.nodeValue =” “。<br>混淆点:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;p id=<span class="string">"example"</span> title=<span class="string">"texts"</span>&gt;</span><br><span class="line">  这是一段文本</span><br><span class="line">  &lt;span&gt;&lt;/span&gt;</span><br><span class="line">&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">var p = document.getElementById('example'); </span></span><br><span class="line"><span class="regexp">p.nodeValue /</span><span class="regexp">/null,p是元素节点，所以nodeValue为null</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">p.getAttributeNode('id').nodeValue /</span><span class="regexp">/example，这里获取到p的id属性的属性节点，nodeValue就是它的属性值</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">p.childNodes[0].nodeValue /</span><span class="regexp">/这是一段文本</span></span><br><span class="line"><span class="regexp">p是含有两个子节点的，插入的文本虽然没有标签，但它依然是一个节点。 </span></span><br><span class="line"><span class="regexp">其类型是是文本节点，其nodeValue是就是写入在其中的字符串，包含换行和缩进</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">p.innerHTML/</span><span class="regexp">/这是一段文本 &lt;span&gt;&lt;/</span>span&gt;” </span><br><span class="line">这里innerHTML返回了p所包含的全部的节点的所包含的各种值了，以字符串的形式。</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-创建和添加节点"><a href="#4-创建和添加节点" class="headerlink" title="4.创建和添加节点"></a>4.创建和添加节点</h3><p>① 创建节点：通过document对象的createElement(eleName)、createTextNode(nodeValue)方法可分别创建元素节点和文本节点。属性节点也有自己的create方法，但是用的少，直接用元素节点的setAttribute()方法即可添加属性。</p>
+<p>② 添加节点：两个重要的方法：appendChild()和insertBefore()，具体见Node接口中的方法。<br>扩展：上面的两个方法都是在已知父节点时用到的，也可以直接在兄弟节点后添加新节点：x.insertBefore(newNode)和x.appendChild(newNode)都可以向x后追加一个新的子节点。</p>
+<h3 id="5-替换节点"><a href="#5-替换节点" class="headerlink" title="5.替换节点"></a>5.替换节点</h3><p>主要掌握replaceChild(newNode , oldNode) 替换元素节点。（属性节点和文本节点有更简单的方法）</p>
+</body></html></p>
           
         
       

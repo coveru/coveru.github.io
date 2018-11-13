@@ -540,133 +540,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JSONP知识小结/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coveru">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="coveru's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/JSONP知识小结/" itemprop="url">JSONP知识小结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="什么是JSONP"><a href="#什么是JSONP" class="headerlink" title="什么是JSONP"></a>什么是JSONP</h2><p>请求方：一个域名的前端程序员（浏览器）<br>响应方：另一个域名的后端程序员（服务器）<br>1.请求方创建一个script，其src指向响应方，同时传一个查询参数？callbackName=xzx<br>2.响应方根据查询参数callbackName构造形如xzx.call(undefined,’你要的数据‘)/xzx(‘你要的数据’）这样的响应<br>3.浏览器接收到响应就会执行xzx.call(undefined,’你要的数据’)<br>4.至此请求方就知道了他要的数据<br>这就是JSONP<br>约定：<br>1.callbackName—&gt; callback<br>2.xzx—&gt; 随机数</p>
-<h2 id="为什么JSONP不支持POST请求"><a href="#为什么JSONP不支持POST请求" class="headerlink" title="为什么JSONP不支持POST请求"></a>为什么JSONP不支持POST请求</h2><p>1.JSONP是通过动态创建script标签来实现的。<br>2，动态创建script时只能用GET请求不能用POST请求<br>所以JSONP不支持POST</p>
-<h2 id="用代码实现-frank-com-8001-和-jack-com-8002-之间的-JSONP-请求"><a href="#用代码实现-frank-com-8001-和-jack-com-8002-之间的-JSONP-请求" class="headerlink" title="用代码实现 frank.com:8001 和 jack.com:8002 之间的 JSONP 请求"></a>用代码实现 frank.com:8001 和 jack.com:8002 之间的 JSONP 请求</h2><p>前端页面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">  &lt;title&gt;frank.com:8001&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;button id=&quot;button&quot;&gt;点我获取信息&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    button.addEventListener(&apos;click&apos;, function(e)&#123;</span><br><span class="line">      //原生JS</span><br><span class="line">      // let script = document.createElement(&apos;script&apos;)</span><br><span class="line">      // script.src = &apos;http://jack.com:8002?callback=&apos; + functionName</span><br><span class="line">      // document.body.appendChild(script)</span><br><span class="line">      // let functionName = &apos;wky&apos; + parseInt(Math.random()*1000000, 10)</span><br><span class="line">      // window[functionName] = function(result)&#123;</span><br><span class="line">      //   alert(result)</span><br><span class="line">      // &#125;</span><br><span class="line">      // script.onload = function(e)&#123;</span><br><span class="line">      //   e.currentTarget.remove()</span><br><span class="line">      // &#125;</span><br><span class="line">      // script.onerror = function(e)&#123;</span><br><span class="line">      //   e.currentTarget.remove()</span><br><span class="line">      // &#125;</span><br><span class="line">      //jQuery方法</span><br><span class="line">      $.ajax(&#123;</span><br><span class="line">        url: &quot;http://jack.com:8002&quot;,</span><br><span class="line">        jsonp: &quot;callback&quot;,</span><br><span class="line">        dataType: &quot;jsonp&quot;,</span><br><span class="line">        success: function( response ) &#123;</span><br><span class="line">            alert( response )</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-<p>后端代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>)</span><br><span class="line"><span class="keyword">var</span> port = process.argv[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!port)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'请指定端口号好不啦？\nnode server.js 8888 这样不会吗？'</span>)</span><br><span class="line">  process.exit(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> parsedUrl = url.parse(request.url, <span class="literal">true</span>)</span><br><span class="line">  <span class="keyword">var</span> pathWithQuery = request.url </span><br><span class="line">  <span class="keyword">var</span> queryString = <span class="string">''</span></span><br><span class="line">  <span class="keyword">if</span>(pathWithQuery.indexOf(<span class="string">'?'</span>) &gt;= <span class="number">0</span>)&#123; queryString = pathWithQuery.substring(pathWithQuery.indexOf(<span class="string">'?'</span>)) &#125;</span><br><span class="line">  <span class="keyword">var</span> path = parsedUrl.pathname</span><br><span class="line">  <span class="keyword">var</span> query = parsedUrl.query</span><br><span class="line">  <span class="keyword">var</span> method = request.method</span><br><span class="line"></span><br><span class="line">  <span class="comment">/******** 从这里开始看，上面不要看 ************/</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'方方说：含查询字符串的路径\n'</span> + pathWithQuery)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(path === <span class="string">'/'</span>)&#123;</span><br><span class="line">    response.statusCode = <span class="number">200</span></span><br><span class="line">    response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/html;charset=utf-8'</span>)</span><br><span class="line">    response.write(<span class="string">'哈哈哈'</span>)</span><br><span class="line">    response.end()</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(path === <span class="string">'/getmsg'</span>)&#123;</span><br><span class="line">    response.statusCode = <span class="number">200</span></span><br><span class="line">    response.setHeader(<span class="string">'Content-type'</span>, <span class="string">'application/javascript'</span>)</span><br><span class="line">    response.write(<span class="string">`<span class="subst">$&#123;query.callback&#125;</span>.call(undefined, '得到jack.com:8002的信息')`</span>)</span><br><span class="line">    response.end()</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    response.statusCode = <span class="number">404</span></span><br><span class="line">    response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/html;charset=utf-8'</span>)</span><br><span class="line">    response.write(<span class="string">'呜呜呜'</span>)</span><br><span class="line">    response.end()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/******** 代码结束，下面不要看 ************/</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(port)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'监听 '</span> + port + <span class="string">' 成功\n请用在空中转体720度然后用电饭煲打开 http://localhost:'</span> + port)</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JS中的dom操作/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -757,6 +630,133 @@
 <p>② 添加节点：两个重要的方法：appendChild()和insertBefore()，具体见Node接口中的方法。<br>扩展：上面的两个方法都是在已知父节点时用到的，也可以直接在兄弟节点后添加新节点：x.insertBefore(newNode)和x.appendChild(newNode)都可以向x后追加一个新的子节点。</p>
 <h3 id="5-替换节点"><a href="#5-替换节点" class="headerlink" title="5.替换节点"></a>5.替换节点</h3><p>主要掌握replaceChild(newNode , oldNode) 替换元素节点。（属性节点和文本节点有更简单的方法）</p>
 </body></html></p>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JSONP知识小结/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/13/JSONP知识小结/" itemprop="url">JSONP知识小结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="什么是JSONP"><a href="#什么是JSONP" class="headerlink" title="什么是JSONP"></a>什么是JSONP</h2><p>请求方：一个域名的前端程序员（浏览器）<br>响应方：另一个域名的后端程序员（服务器）<br>1.请求方创建一个script，其src指向响应方，同时传一个查询参数？callbackName=xzx<br>2.响应方根据查询参数callbackName构造形如xzx.call(undefined,’你要的数据‘)/xzx(‘你要的数据’）这样的响应<br>3.浏览器接收到响应就会执行xzx.call(undefined,’你要的数据’)<br>4.至此请求方就知道了他要的数据<br>这就是JSONP<br>约定：<br>1.callbackName—&gt; callback<br>2.xzx—&gt; 随机数</p>
+<h2 id="为什么JSONP不支持POST请求"><a href="#为什么JSONP不支持POST请求" class="headerlink" title="为什么JSONP不支持POST请求"></a>为什么JSONP不支持POST请求</h2><p>1.JSONP是通过动态创建script标签来实现的。<br>2，动态创建script时只能用GET请求不能用POST请求<br>所以JSONP不支持POST</p>
+<h2 id="用代码实现-frank-com-8001-和-jack-com-8002-之间的-JSONP-请求"><a href="#用代码实现-frank-com-8001-和-jack-com-8002-之间的-JSONP-请求" class="headerlink" title="用代码实现 frank.com:8001 和 jack.com:8002 之间的 JSONP 请求"></a>用代码实现 frank.com:8001 和 jack.com:8002 之间的 JSONP 请求</h2><p>前端页面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">  &lt;title&gt;frank.com:8001&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;button id=&quot;button&quot;&gt;点我获取信息&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    button.addEventListener(&apos;click&apos;, function(e)&#123;</span><br><span class="line">      //原生JS</span><br><span class="line">      // let script = document.createElement(&apos;script&apos;)</span><br><span class="line">      // script.src = &apos;http://jack.com:8002?callback=&apos; + functionName</span><br><span class="line">      // document.body.appendChild(script)</span><br><span class="line">      // let functionName = &apos;wky&apos; + parseInt(Math.random()*1000000, 10)</span><br><span class="line">      // window[functionName] = function(result)&#123;</span><br><span class="line">      //   alert(result)</span><br><span class="line">      // &#125;</span><br><span class="line">      // script.onload = function(e)&#123;</span><br><span class="line">      //   e.currentTarget.remove()</span><br><span class="line">      // &#125;</span><br><span class="line">      // script.onerror = function(e)&#123;</span><br><span class="line">      //   e.currentTarget.remove()</span><br><span class="line">      // &#125;</span><br><span class="line">      //jQuery方法</span><br><span class="line">      $.ajax(&#123;</span><br><span class="line">        url: &quot;http://jack.com:8002&quot;,</span><br><span class="line">        jsonp: &quot;callback&quot;,</span><br><span class="line">        dataType: &quot;jsonp&quot;,</span><br><span class="line">        success: function( response ) &#123;</span><br><span class="line">            alert( response )</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>后端代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>)</span><br><span class="line"><span class="keyword">var</span> port = process.argv[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!port)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'请指定端口号好不啦？\nnode server.js 8888 这样不会吗？'</span>)</span><br><span class="line">  process.exit(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> parsedUrl = url.parse(request.url, <span class="literal">true</span>)</span><br><span class="line">  <span class="keyword">var</span> pathWithQuery = request.url </span><br><span class="line">  <span class="keyword">var</span> queryString = <span class="string">''</span></span><br><span class="line">  <span class="keyword">if</span>(pathWithQuery.indexOf(<span class="string">'?'</span>) &gt;= <span class="number">0</span>)&#123; queryString = pathWithQuery.substring(pathWithQuery.indexOf(<span class="string">'?'</span>)) &#125;</span><br><span class="line">  <span class="keyword">var</span> path = parsedUrl.pathname</span><br><span class="line">  <span class="keyword">var</span> query = parsedUrl.query</span><br><span class="line">  <span class="keyword">var</span> method = request.method</span><br><span class="line"></span><br><span class="line">  <span class="comment">/******** 从这里开始看，上面不要看 ************/</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'方方说：含查询字符串的路径\n'</span> + pathWithQuery)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(path === <span class="string">'/'</span>)&#123;</span><br><span class="line">    response.statusCode = <span class="number">200</span></span><br><span class="line">    response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/html;charset=utf-8'</span>)</span><br><span class="line">    response.write(<span class="string">'哈哈哈'</span>)</span><br><span class="line">    response.end()</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(path === <span class="string">'/getmsg'</span>)&#123;</span><br><span class="line">    response.statusCode = <span class="number">200</span></span><br><span class="line">    response.setHeader(<span class="string">'Content-type'</span>, <span class="string">'application/javascript'</span>)</span><br><span class="line">    response.write(<span class="string">`<span class="subst">$&#123;query.callback&#125;</span>.call(undefined, '得到jack.com:8002的信息')`</span>)</span><br><span class="line">    response.end()</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    response.statusCode = <span class="number">404</span></span><br><span class="line">    response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/html;charset=utf-8'</span>)</span><br><span class="line">    response.write(<span class="string">'呜呜呜'</span>)</span><br><span class="line">    response.end()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/******** 代码结束，下面不要看 ************/</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(port)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'监听 '</span> + port + <span class="string">' 成功\n请用在空中转体720度然后用电饭煲打开 http://localhost:'</span> + port)</span><br></pre></td></tr></table></figure></p>
+
           
         
       
@@ -1397,6 +1397,136 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/DOM-API/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/13/DOM-API/" itemprop="url">DOM API</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#前言<br>前面有对dom的定义和概述以及dom操作进行了描述，本篇说下dom-api的几个重要知识。</p>
+<h2 id="1-nextSIbling和previousSibling"><a href="#1-nextSIbling和previousSibling" class="headerlink" title="1. nextSIbling和previousSibling"></a>1. nextSIbling和previousSibling</h2><p>nextSIbling和previousSibling可能获取到的是文本节点，因为有时候标签之前还有空格，这也属于文本节点</p>
+<h2 id="2-innerText-和-textContent的区别"><a href="#2-innerText-和-textContent的区别" class="headerlink" title="2. innerText 和 textContent的区别"></a>2. innerText 和 textContent的区别</h2><p>innerText 和 textContent是稍微有点区别的，前者是微软发布的，后者是火狐发布，innerText更加智能一点，会选择根据text内容选择获取，但是这样也导致它更费时间。而textContent则不会，只要是文本内容都会获取，包括script/style这种标签里的代码文本内容。</p>
+<h2 id="3-nodeType-主要记两个值"><a href="#3-nodeType-主要记两个值" class="headerlink" title="3. nodeType 主要记两个值"></a>3. nodeType 主要记两个值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1     Node.ELEMENT_NODE              | 一个 元素 节点，例如 &lt;p&gt;和&lt;div&gt;。</span><br><span class="line">3     Node.TEXT_NODE   	             |  Element 或者 Attr 中实际的 文字</span><br></pre></td></tr></table></figure>
+<h2 id="4-cloneNode"><a href="#4-cloneNode" class="headerlink" title="4. cloneNode()"></a>4. cloneNode()</h2><p>参数（true）就是深拷贝，（false）/()就是浅拷贝。<br>浅拷贝只复制一层对象的属性，而深拷贝则递归复制了所有层级.</p>
+<h2 id="5-isSameNode与isEquaNode的区别"><a href="#5-isSameNode与isEquaNode的区别" class="headerlink" title="5. isSameNode与isEquaNode的区别"></a>5. isSameNode与isEquaNode的区别</h2><p>isSameNode是两个真的是一模一样（完全相同，内存地址也一样）<br>isEquaNode是两个看起来一模一样（内存地址不一样）</p>
+<h2 id="6-normalize-的作用"><a href="#6-normalize-的作用" class="headerlink" title="6.normalize()的作用"></a>6.normalize()的作用</h2><p>当前节点和它的后代节点”规范化“（normalized）。在一个”规范化”后的DOM树中，不存在一个空的文本节点，或者两个相邻的文本节点。<br>注1：“空的文本节点”并不包括空白字符(空格，换行等)构成的文本节点。<br>注2：两个以上相邻文本节点的产生原因包括：<br>通过脚本调用有关的DOM接口进行了文本节点的插入和分割等。<br>HTML中超长的文本节点会被浏览器自动分割为多个相邻文本节点。<br>字面翻译就是使动词|使···正常<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var wrapper = document.createElement(&quot;div&quot;);</span><br><span class="line"></span><br><span class="line">wrapper.appendChild(document.createTextNode(&quot;Part 1 &quot;));</span><br><span class="line">wrapper.appendChild(document.createTextNode(&quot;Part 2 &quot;));</span><br><span class="line"></span><br><span class="line">// 这时(规范化之前),wrapper.childNodes.length === 2</span><br><span class="line">// wrapper.childNodes[0].textContent === &quot;Part 1 &quot;</span><br><span class="line">// wrapper.childNodes[1].textContent === &quot;Part 2 &quot;</span><br><span class="line"></span><br><span class="line">wrapper.normalize();</span><br><span class="line">// 现在(规范化之后), wrapper.childNodes.length === 1</span><br><span class="line">// wrapper.childNodes[0].textContent === &quot;Part 1 Part 2&quot;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/git入门/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1478,136 +1608,6 @@ b. git add css/style.css
 </code></pre><img src="http://wx3.sinaimg.cn/mw690/006sJW3Ggy1fvhd2gxs1wj30bl07o0tw.jpg" alt="示例">        </li>
 <li>git commit -v<br>找到当前目录有文件改动但是没被追踪的文件<br>改动文件已经追踪但是想要更详细的对修改了哪些内容的提示，可以用 git commit -v 选项，这会将你所做的改变的 diff 输出放到编辑器中从而使你知道本次提交具体做了哪些修改<br><img src="http://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvhcxl235bj30al06u3yq.jpg" alt="示例1"><br><img src="http://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvhcxl2bkcj30fv08nmxs.jpg" alt="示例2">      </li>
 </ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/DOM-API/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coveru">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="coveru's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/DOM-API/" itemprop="url">DOM API</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#前言<br>前面有对dom的定义和概述以及dom操作进行了描述，本篇说下dom-api的几个重要知识。</p>
-<h2 id="1-nextSIbling和previousSibling"><a href="#1-nextSIbling和previousSibling" class="headerlink" title="1. nextSIbling和previousSibling"></a>1. nextSIbling和previousSibling</h2><p>nextSIbling和previousSibling可能获取到的是文本节点，因为有时候标签之前还有空格，这也属于文本节点</p>
-<h2 id="2-innerText-和-textContent的区别"><a href="#2-innerText-和-textContent的区别" class="headerlink" title="2. innerText 和 textContent的区别"></a>2. innerText 和 textContent的区别</h2><p>innerText 和 textContent是稍微有点区别的，前者是微软发布的，后者是火狐发布，innerText更加智能一点，会选择根据text内容选择获取，但是这样也导致它更费时间。而textContent则不会，只要是文本内容都会获取，包括script/style这种标签里的代码文本内容。</p>
-<h2 id="3-nodeType-主要记两个值"><a href="#3-nodeType-主要记两个值" class="headerlink" title="3. nodeType 主要记两个值"></a>3. nodeType 主要记两个值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1     Node.ELEMENT_NODE              | 一个 元素 节点，例如 &lt;p&gt;和&lt;div&gt;。</span><br><span class="line">3     Node.TEXT_NODE   	             |  Element 或者 Attr 中实际的 文字</span><br></pre></td></tr></table></figure>
-<h2 id="4-cloneNode"><a href="#4-cloneNode" class="headerlink" title="4. cloneNode()"></a>4. cloneNode()</h2><p>参数（true）就是深拷贝，（false）/()就是浅拷贝。<br>浅拷贝只复制一层对象的属性，而深拷贝则递归复制了所有层级.</p>
-<h2 id="5-isSameNode与isEquaNode的区别"><a href="#5-isSameNode与isEquaNode的区别" class="headerlink" title="5. isSameNode与isEquaNode的区别"></a>5. isSameNode与isEquaNode的区别</h2><p>isSameNode是两个真的是一模一样（完全相同，内存地址也一样）<br>isEquaNode是两个看起来一模一样（内存地址不一样）</p>
-<h2 id="6-normalize-的作用"><a href="#6-normalize-的作用" class="headerlink" title="6.normalize()的作用"></a>6.normalize()的作用</h2><p>当前节点和它的后代节点”规范化“（normalized）。在一个”规范化”后的DOM树中，不存在一个空的文本节点，或者两个相邻的文本节点。<br>注1：“空的文本节点”并不包括空白字符(空格，换行等)构成的文本节点。<br>注2：两个以上相邻文本节点的产生原因包括：<br>通过脚本调用有关的DOM接口进行了文本节点的插入和分割等。<br>HTML中超长的文本节点会被浏览器自动分割为多个相邻文本节点。<br>字面翻译就是使动词|使···正常<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var wrapper = document.createElement(&quot;div&quot;);</span><br><span class="line"></span><br><span class="line">wrapper.appendChild(document.createTextNode(&quot;Part 1 &quot;));</span><br><span class="line">wrapper.appendChild(document.createTextNode(&quot;Part 2 &quot;));</span><br><span class="line"></span><br><span class="line">// 这时(规范化之前),wrapper.childNodes.length === 2</span><br><span class="line">// wrapper.childNodes[0].textContent === &quot;Part 1 &quot;</span><br><span class="line">// wrapper.childNodes[1].textContent === &quot;Part 2 &quot;</span><br><span class="line"></span><br><span class="line">wrapper.normalize();</span><br><span class="line">// 现在(规范化之后), wrapper.childNodes.length === 1</span><br><span class="line">// wrapper.childNodes[0].textContent === &quot;Part 1 Part 2&quot;</span><br></pre></td></tr></table></figure></p>
 
           
         

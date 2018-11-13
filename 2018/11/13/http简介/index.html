@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="#http简介date: 2018-09-24 10:36:21tags:httpHTTP:超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础HTTP 的作用就是指导浏览器和服务器如何进行沟通HTTP请求的格式：  1 动词 路径 协议/版本  2 Key1: valu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="http简介">
+<meta property="og:url" content="http://yoursite.com/2018/11/13/http简介/index.html">
+<meta property="og:site_name" content="coveru&#39;s blog">
+<meta property="og:description" content="#http简介date: 2018-09-24 10:36:21tags:httpHTTP:超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础HTTP 的作用就是指导浏览器和服务器如何进行沟通HTTP请求的格式：  1 动词 路径 协议/版本  2 Key1: valu">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-13T13:18:26.424Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="http简介">
+<meta name="twitter:description" content="#http简介date: 2018-09-24 10:36:21tags:httpHTTP:超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础HTTP 的作用就是指导浏览器和服务器如何进行沟通HTTP请求的格式：  1 动词 路径 协议/版本  2 Key1: valu">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/13/http简介/">
+
+
+
+
+
+  <title>http简介 | coveru's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">coveru's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/http简介/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">http简介</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#http简介<br>date: 2018-09-24 10:36:21<br>tags:http<br>HTTP:超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础<br>HTTP 的作用就是指导浏览器和服务器如何进行沟通<br>HTTP请求的格式：<br>  1 动词 路径 协议/版本<br>  2 Key1: value1<br>  2 Key2: value2<br>  2 Key3: value3<br>  2 Content-Type:<br>  3<br>  4 要上传的数据</p>
+<p>注意：<br>a.请求最多包含四部分，最少包含三部分。（也就是说第四部分可以为空）<br>b.其中第三部分永远都是一个回车(\n)。<br>c.动词有 GET POST PUT PATCH DELETE HEAD OPTIONS 等…<br>d.这里的路径包括「查询参数」，但不包括「锚点」<br>e.如果你没有写路径，那么路径默认为 /<br>f.第 2 部分中的 Content-Type 标注了第 4 部分的格式</p>
+<p>接下来说下怎么用Chrome开发者工具查看HTTP请求内容：首先，打开Chrome里的Network(右键-检查-Network)，输入网址，然后在 Network 点击查看 request，点击「view source」这样就可以看到请求的前三部分了，如果有请求的第四部分，那么在 FormData 或 Payload 里面可以看到。</p>
+<p>HTTP 响应的格式：<br>1 协议/版本号 状态码 状态解释<br>2 Key1: value1<br>2 Key2: value2<br>2 Content-Length: 。。。<br>2 Content-Type: 。。。<br>3<br>4 要下载的内容</p>
+<p>注意：响应的格式也是最多四部分最少三部分，第三部分同样是固定不变的回车(\n)；第二部分中的 Content-Type 标注了第四部分的格式（ Content-Type 遵循 MIME 规范）；状态码是服务器对浏览器说的话，不同的状态码表示的含义不同。</p>
+<p>用Chrome 查看响应：首先，打开Chrome里的Network(右键-检查-Network)，输入网址，选中第一个响应，然后在 Network 点击查看Response Headers，点击「view source」，你会看到响应的前两部分。查看 Response 或者 Preview，你会看到响应的第 4 部分。</p>
+<p>关于如何使用curl命令<br>cURL是一个利用URL语法在命令行下工作的文件传输工具，1997年首次发行。它支持文件上传和下载，所以是综合传输工具，但按传统，习惯称cURL为下载工具</p>
+<p>1.1 URL访问<br>访问一个网页时，可以使用curl命令后加上要访问的网址：</p>
+<pre><code>$ curl itbilu.com 
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.6.2&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>如上所示，我们就看到所访问网址的页面源码。<br>重定向跟踪</p>
+<p>在上面示例中，页面使用了301重定向，这时我们可以添加-L参数来跟踪URL重定向：</p>
+<p>$ curl -L itbilu.com<br>页面保存</p>
+<p>如果需要将页面源码保存到本地，可以使用-o参数：</p>
+<p>$ curl -o [文件名] itbilu.com<br>查看头信息</p>
+<p>如果需要查看访问页面的可以添加-i或–include参数：</p>
+<p>$ curl -i itbilu.com<br>添加-i参数后，页面响应头会和页面源码（响应体）一块返回。如果只想查看响应头，可以使用-I或–head参数：</p>
+<p>$ curl -I itbilu.com<br>HTTP/1.1 301 Moved Permanently<br>Server: nginx/1.6.2<br>Date: Sun, 25 Jun 2017 02:03:45 GMT<br>Content-Type: text/html<br>Content-Length: 184<br>Connection: keep-alive<br>Location: <a href="https://itbilu.com/" target="_blank" rel="noopener">https://itbilu.com/</a></p>
+<p>1.2 表单提交<br>通过Form表单，可以将Web页面的表单数据提交到服务端。提交表单时，可以使用GET或POST提交方法。</p>
+<p>curl同样支持表单数据提交，也可以使用GET或POST提交方法。</p>
+<p>GET数据提交</p>
+<p>当全用GET表单数据提交时，提交数据会被附加到请求URL的后面。类型如下：</p>
+<p>$ curl ‘//itbilu.com/?keyword=linux&amp;page=3’<br>使用curl进行GET数据提交时，也可以直接把提交数据添加到URL后面：</p>
+<p>curl <a href="https://itbilu.com/?keyword=linux&amp;page=3" target="_blank" rel="noopener">https://itbilu.com/?keyword=linux&amp;page=3</a><br>POST数据提交</p>
+<p>curl使用POST提交表单数据时，除了-X参数指定请求方法外，还要使用–data参数添加提交数据：</p>
+<p>$ curl -X POST –data ‘keyword=linux’ itbilu.com</p>
+<p>1.3 其它HTTP请求方法<br>目前为止，我们使用GET和POST两种HTTP请求。curl支持所有HTTP请求方法，只要通过-X参数指定即可。</p>
+<p>如，使用DELETE请求：</p>
+<p>$ curl -X DELETE itbilu.com/examlple.html<br>使用PUT请求，并指定请求数据：</p>
+<p>$ curl -X PUT –data ‘keyword=linux’ itbilu.com</p>
+<p>1.4 文件上传<br>curl支持文件上传，上传文件时使用-T或–upload-file参数：</p>
+<p>$ curl -T ./index.html <a href="http://www.uploadhttp.com/receive.cgi" target="_blank" rel="noopener">www.uploadhttp.com/receive.cgi</a></p>
+<p>1.5 HTTPS支持<br>对于使用了SSL/TLS加密的HTTPS协议，可以使用curl直接访问：</p>
+<p>$ curl <a href="https://itbilu.com" target="_blank" rel="noopener">https://itbilu.com</a><br>如果使用的本地ssl证书认证的HTTPS，可以通过-E或–cert参数指定本地证书：</p>
+<p>$ curl -E mycert.pem https:/itbilu.com</p>
+<p>1.6 添加请求头<br>有时在进行HTTP请求时，需要自定义请求头。在curl中，可以通过-H或–header参数来指定请求头。多次使用-H或–header参数可指定多个请求头。</p>
+<p>如，指定Content-Type及Authorization请求头：</p>
+<p>$ curl -H ‘Content-Type:application/json’ -H ‘Authorization: bearer eyJhbGciOiJIUzI1NiJ9’ itbilu.com</p>
+<p>1.7 Cookie支持<br>Cookie是一种常用的保持服务端会话信息的方法，crul也支持使用Cookie。</p>
+<p>可以通过–cookie参数指定发送请求时的Cookie值，也可以通过-b [文件名]来指定一个存储了Cookie值的本地文件：</p>
+<p>$ curl -b stored_cookies_in_file itbilu.com<br>Cookie值可能会被服务器所返回的值所修改，并应用于下次HTTP请求。这时，可以能过-c参数指定存储服务器返回Cookie值的存储文件：</p>
+<p>$ curl -b cookies.txt -c newcookies.txt itbilu.com</p>
+<p>除以上用法外，curl还可以设置用户代理（客户端）信息、使用代理服务器、指定认证用户名／密码等。详见：curl语法及选项</p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #555;font-size:14px;">-------------The End-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/13/jQuery初体验/" rel="next" title="jQuery初体验">
+                <i class="fa fa-chevron-left"></i> jQuery初体验
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/13/JSONP知识小结/" rel="prev" title="JSONP知识小结">
+                JSONP知识小结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coveru</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coveru</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

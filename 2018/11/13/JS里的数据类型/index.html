@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言JavaScript 语言的每一个值，都属于某一种数据类型。JavaScript 的数据类型，共有七种。number、string、boolean、symbol、undefined、null、object。其中symbol是es6新引入的，这里不做介绍，其他六种类型里五种基本数据类型是：Number,String,Boolean,Undefined,Null；object则是复杂类型。 Typ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS里的数据类型">
+<meta property="og:url" content="http://yoursite.com/2018/11/13/JS里的数据类型/index.html">
+<meta property="og:site_name" content="coveru&#39;s blog">
+<meta property="og:description" content="前言JavaScript 语言的每一个值，都属于某一种数据类型。JavaScript 的数据类型，共有七种。number、string、boolean、symbol、undefined、null、object。其中symbol是es6新引入的，这里不做介绍，其他六种类型里五种基本数据类型是：Number,String,Boolean,Undefined,Null；object则是复杂类型。 Typ">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://wx3.sinaimg.cn/mw690/006sJW3Ggy1fw7ruc5ww0j312h0l50u2.jpg">
+<meta property="og:image" content="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fw7u2mbvtvj31hc1400zp.jpg">
+<meta property="og:updated_time" content="2018-11-13T13:18:26.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS里的数据类型">
+<meta name="twitter:description" content="前言JavaScript 语言的每一个值，都属于某一种数据类型。JavaScript 的数据类型，共有七种。number、string、boolean、symbol、undefined、null、object。其中symbol是es6新引入的，这里不做介绍，其他六种类型里五种基本数据类型是：Number,String,Boolean,Undefined,Null；object则是复杂类型。 Typ">
+<meta name="twitter:image" content="https://wx3.sinaimg.cn/mw690/006sJW3Ggy1fw7ruc5ww0j312h0l50u2.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/13/JS里的数据类型/">
+
+
+
+
+
+  <title>JS里的数据类型 | coveru's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">coveru's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JS里的数据类型/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JS里的数据类型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>JavaScript 语言的每一个值，都属于某一种数据类型。JavaScript 的数据类型，共有七种。number、string、boolean、symbol、undefined、null、object。其中symbol是es6新引入的，这里不做介绍，其他六种类型里五种基本数据类型是：Number,String,Boolean,Undefined,Null；object则是复杂类型。</p>
+<h2 id="Typeof操作符"><a href="#Typeof操作符" class="headerlink" title="Typeof操作符"></a>Typeof操作符</h2><p>由于js中的变量是松散类型的，所以它提供了一种检测当前变量的数据类型的方法，也就是typeof关键字.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">typeof 123　　 //Number</span><br><span class="line">typeof &apos;abc&apos;　　//String</span><br><span class="line">typeof true       //Boolean</span><br><span class="line">typeof undefined   //Undefined</span><br><span class="line">typeof null        //Object</span><br><span class="line">typeof &#123; &#125;           //Object</span><br><span class="line">typeof [ ]           //Object</span><br><span class="line">typeof console.log()       //Function</span><br></pre></td></tr></table></figure></p>
+<p>null类型进行typeof操作符后，结果是object，原因在于，null类型被当做一个空对象引用。</p>
+<h2 id="数值（number）"><a href="#数值（number）" class="headerlink" title="数值（number）"></a>数值（number）</h2><p>JavaScript 内部，所有数字都是以64位浮点数形式储存，即使整数也是如此。所以，1与1.0是相同的，是同一个数。Number类型包含整数和浮点数（浮点数数值必须包含一个小数点，且小数点后面至少有一位数字）两种值。</p>
+<pre><code>var a = 1 ，b = .1   //  b=0.1
+</code></pre><h2 id="字符串（string）"><a href="#字符串（string）" class="headerlink" title="字符串（string）"></a>字符串（string）</h2><p>字符串就是零个或多个排在一起的字符，放在单引号或双引号之中。</p>
+<h3 id="字符串知识点："><a href="#字符串知识点：" class="headerlink" title="字符串知识点："></a>字符串知识点：</h3><p>1.反斜杠（\）在字符串内有特殊含义，用来表示一些特殊字符，所以又称为转义符。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">\0 ：null（\u0000）</span><br><span class="line">\b ：后退键（\u0008）</span><br><span class="line">\f ：换页符（\u000C）</span><br><span class="line">\n ：换行符（\u000A）</span><br><span class="line">\r ：回车键（\u000D）</span><br><span class="line">\t ：制表符（\u0009）</span><br><span class="line">\v ：垂直制表符（\u000B）</span><br><span class="line">\&apos; ：单引号（\u0027）</span><br><span class="line">\&quot; ：双引号（\u0022）</span><br><span class="line">\\ ：反斜杠（\u005C）</span><br></pre></td></tr></table></figure></p>
+<p>2.分行作用，如果长字符串必须分成多行，可以在每一行的尾部使用反斜杠。但是同样的效果用链接运算符’+’也可以达到并且不容易出bug，示例：<br><img src="https://wx3.sinaimg.cn/mw690/006sJW3Ggy1fw7ruc5ww0j312h0l50u2.jpg" alt=""><br>所以说反斜杠的后面必须是换行符，而不能有其他字符（比如空格），否则会报错。<br>3.字符串可以被视为字符数组，因此可以使用数组的方括号运算符，用来返回某个位置的字符（位置编号从0开始）。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'hello'</span>;</span><br><span class="line">s[<span class="number">0</span>] <span class="comment">// "h"</span></span><br><span class="line">s[<span class="number">1</span>] <span class="comment">// "e"</span></span><br><span class="line">s[<span class="number">4</span>] <span class="comment">// "o"</span></span><br><span class="line">s[<span class="number">5</span>]<span class="comment">// undefined</span></span><br><span class="line"><span class="comment">// 直接对字符串使用方括号运算符</span></span><br><span class="line"><span class="string">'hello'</span>[<span class="number">1</span>] <span class="comment">// "e"</span></span><br></pre></td></tr></table></figure></p>
+<p>如果方括号中的数字超过字符串的长度，或者方括号中根本不是数字，则返回undefined。但是字符串内部的单个字符无法改变和增删，所以和数组也有区别。<br>4.length 属性<br>length属性返回字符串的长度，该属性也是无法改变的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'hello'</span>;</span><br><span class="line">s.length <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line">s.length = <span class="number">3</span>;</span><br><span class="line">s.length <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line">s.length = <span class="number">7</span>;</span><br><span class="line">s.length <span class="comment">// 5</span></span><br></pre></td></tr></table></figure></p>
+<p>上面代码表示字符串的length属性无法改变，但是不会报错。<br>5.Base64 转码<br>所谓 Base64 就是一种编码方法，可以将任意值转成 0～9、A～Z、a-z、+和/这64个字符组成的可打印字符。使用它的主要目的，不是为了加密，而是为了不出现特殊字符，简化程序的处理。JavaScript 原生提供两个 Base64 相关的方法。</p>
+<blockquote>
+<ul>
+<li>btoa()：任意值转为 Base64 编码</li>
+<li>atob()：Base64 编码转为原来的值</li>
+</ul>
+</blockquote>
+<p>要将非 ASCII 码字符转为 Base64 编码，必须中间插入一个转码环节，再使用这两个方法。    </p>
+<h2 id="布尔值（boolean）"><a href="#布尔值（boolean）" class="headerlink" title="布尔值（boolean）"></a>布尔值（boolean）</h2><p>布尔值代表“真”和“假”两个状态。“真”用关键字true表示，“假”用关键字false表示，只有两个值</p>
+<h2 id="null和undefined"><a href="#null和undefined" class="headerlink" title="null和undefined"></a>null和undefined</h2><p>null与undefined都可以表示“没有”，含义非常相似。将一个变量赋值为undefined或null，老实说，语法效果几乎没区别。<br>var a = undefined;var a = null;量a分别被赋值为undefined和null，这两种写法的效果几乎等价。</p>
+<p>在if语句中，它们都会被自动转为false，相等运算符（==）甚至直接报告两者相等。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="literal">undefined</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'undefined is false'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// undefined is false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!<span class="literal">null</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'null is false'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// null is false</span></span><br><span class="line"></span><br><span class="line"><span class="literal">undefined</span> == <span class="literal">null</span></span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<p>从上面代码可见，两者的行为是何等相似！<br>按惯例（并非明文规定），如果有一个变量是对象object我现在不想赋值，它的值就是null；有一个变量是非对象，我现在不想赋值的话它的值就是undefined。</p>
+<h2 id="对象object"><a href="#对象object" class="headerlink" title="对象object"></a>对象object</h2><p>对象就是由一些彼此相关的属性和方法集合在一起而构成的一个数据实体，简单说，对象就是一组“键值对”（key-value）的集合，是一种无序的复合数据集合。一般一个对象往往是一个或多个原始类型的值的合成。所以说对象是最复杂的数据类型。</p>
+<h3 id="1，键名key"><a href="#1，键名key" class="headerlink" title="1，键名key"></a>1，键名key</h3><p>对象的所有键名都是字符串（ES6 又引入了 Symbol 值也可以作为键名），所以加不加引号都可以。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="string">'foo'</span>: <span class="string">'Hello'</span>,</span><br><span class="line">  <span class="string">'bar'</span>: <span class="string">'World'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//也可以以下面的方法写</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  foo: <span class="string">'Hello'</span>,</span><br><span class="line">  bar: <span class="string">'World'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>如果键名是数值，会被自动转为字符串。<br>注意：如果键名不符合标识名的条件（比如第一个字符为数字，或者含有空格或运算符），且也不是数字，则必须加上引号，否则会报错。</p>
+<pre><code>var obj = {
+  1p: &apos;Hello World&apos;
+};
+// 报错
+
+var obj = {
+  &apos;1p&apos;: &apos;Hello World&apos;,
+  &apos;h w&apos;: &apos;Hello World&apos;,
+  &apos;p+q&apos;: &apos;Hello World&apos;
+};// 不报错
+</code></pre><h3 id="2-对象的引用"><a href="#2-对象的引用" class="headerlink" title="2.对象的引用"></a>2.对象的引用</h3><p>如果不同的变量名指向同一个对象，那么它们都是这个对象的引用，也就是说指向同一个内存地址。<br>修改其中一个变量，会影响到其他所有变量。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o1 = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> o2 = o1;</span><br><span class="line">o1.a = <span class="number">1</span>;</span><br><span class="line">o2.a <span class="comment">// 1</span></span><br><span class="line">o2.b = <span class="number">2</span>;</span><br><span class="line">o1.b <span class="comment">// 2</span></span><br></pre></td></tr></table></figure></p>
+<p>上面代码中，o1和o2指向同一个对象，因此为其中任何一个变量添加属性，另一个变量都可以读写该属性。<br>此时，如果取消某一个变量对于原对象的引用，不会影响到另一个变量。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o1 = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> o2 = o1;</span><br><span class="line">o1 = <span class="number">1</span>;</span><br><span class="line">o2 <span class="comment">// &#123;&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>上面代码中，o1和o2指向同一个对象，然后o1的值变为1，这时不会对o2产生影响，o2还是指向原来的那个对象。<br>但是，这种引用只局限于对象，如果两个变量指向同一个原始类型的值。那么，变量这时都是值的拷贝。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> y = x;</span><br><span class="line">x = <span class="number">2</span>;</span><br><span class="line">y <span class="comment">// 1</span></span><br></pre></td></tr></table></figure></p>
+<p>面的代码中，当x的值发生变化后，y的值并不变，这就表示y和x并不是指向同一个内存地址。</p>
+<h3 id="3-读取对象的属性"><a href="#3-读取对象的属性" class="headerlink" title="3.读取对象的属性"></a>3.读取对象的属性</h3><p>读取对象的属性，有两种方法，一种是使用点运算符，还有一种是使用方括号运算符。<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fw7u2mbvtvj31hc1400zp.jpg" alt=""><br>图示分别用了点运算和方括号运算读取属性name，如果使用方括号运算符，键名必须放在引号里面，否则会被当作变量处理。<br>方括号运算符内部还可以使用表达式。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj[<span class="string">'hello'</span> + <span class="string">' world'</span>]</span><br><span class="line">obj[<span class="number">3</span> + <span class="number">3</span>]</span><br></pre></td></tr></table></figure></p>
+<p>数字键可以不加引号，因为会自动转成字符串。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ar obj = &#123;</span><br><span class="line">  <span class="number">0.7</span>: <span class="string">'Hello World'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj[<span class="string">'0.7'</span>] <span class="comment">// "Hello World"</span></span><br><span class="line">obj[<span class="number">0.7</span>] <span class="comment">// "Hello World"</span></span><br></pre></td></tr></table></figure></p>
+<p>上面代码中，对象obj的数字键0.7，加不加引号都可以，因为会被自动转为字符串。<br><strong>注意，数值键名不能使用点运算符（因为会被当成小数点），只能使用方括号运算符。</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="number">123</span>: <span class="string">'hello world'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj<span class="number">.123</span> <span class="comment">// 报错</span></span><br><span class="line">obj[<span class="number">123</span>] <span class="comment">// "hello world"</span></span><br></pre></td></tr></table></figure></p>
+<p>上面代码的第一个表达式，对数值键名123使用点运算符，结果报错。第二个表达式使用方括号运算符，结果就是正确的。</p>
+<h3 id="4-属性的赋值"><a href="#4-属性的赋值" class="headerlink" title="4.属性的赋值"></a>4.属性的赋值</h3><p>点运算符和方括号运算符，不仅可以用来读取值，还可以用来赋值。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">obj.foo = <span class="string">'Hello'</span>;</span><br><span class="line">obj[<span class="string">'bar'</span>] = <span class="string">'World'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>上面代码中，分别使用点运算符和方括号运算符，对属性赋值。</p>
+<p>JavaScript 允许属性的“后绑定”，也就是说，你可以在任意时刻新增属性，没必要在定义对象的时候，就定义好属性。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">p</span>: <span class="number">1</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等价于</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">obj.p = <span class="number">1</span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="5-查看所有属性"><a href="#5-查看所有属性" class="headerlink" title="5.查看所有属性"></a>5.查看所有属性</h3><p>查看一个对象本身的所有属性，可以使用Object.keys方法。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  key1: <span class="number">1</span>,</span><br><span class="line">  key2: <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.keys(obj);</span><br><span class="line"><span class="comment">// ['key1', 'key2']</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="6-循环for…-in-循环"><a href="#6-循环for…-in-循环" class="headerlink" title="6. 循环for… in 循环"></a>6. 循环for… in 循环</h3><p>for…in循环用来遍历一个对象的全部属性。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> obj) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(obj[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 3</span></span><br></pre></td></tr></table></figure></p>
+<p>下面是一个使用for…in循环，提取对象属性名的例子。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  x: <span class="number">1</span>,</span><br><span class="line">  y: <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> props = [];</span><br><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> p <span class="keyword">in</span> obj) &#123;</span><br><span class="line">  props[i++] = p</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">props <span class="comment">// ['x', 'y']</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>注意：for…in循环遍历的是对象所有可遍历（enumerable）的属性，会跳过不可遍历的属性；它不仅遍历对象自身的属性，还遍历继承的属性。</strong><br>示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"><span class="comment">// toString 属性是存在的</span></span><br><span class="line">obj.toString <span class="comment">// toString() &#123; [native code] &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> p <span class="keyword">in</span> obj) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(p);</span><br><span class="line">&#125; <span class="comment">// 没有任何输出</span></span><br></pre></td></tr></table></figure></p>
+<p>上面代码中，对象obj继承了toString属性，该属性不会被for…in循环遍历到，因为它默认是“不可遍历”的.<br>如果继承的属性是可遍历的，那么就会被for…in循环遍历到。但是，一般情况下，都是只想遍历对象自身的属性，所以使用for…in的时候，应该结合使用hasOwnProperty方法，在循环内部判断一下，某个属性是否为对象自身的属性。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123; <span class="attr">name</span>: <span class="string">'老张'</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> person) &#123;</span><br><span class="line">  <span class="keyword">if</span> (person.hasOwnProperty(key)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// name</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #555;font-size:14px;">-------------The End-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/13/JS里的函数/" rel="next" title="JS里的函数">
+                <i class="fa fa-chevron-left"></i> JS里的函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/13/关于HTML/" rel="prev" title="关于HTML">
+                关于HTML <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coveru</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Typeof操作符"><span class="nav-number">1.1.</span> <span class="nav-text">Typeof操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值（number）"><span class="nav-number">1.2.</span> <span class="nav-text">数值（number）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串（string）"><span class="nav-number">1.3.</span> <span class="nav-text">字符串（string）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串知识点："><span class="nav-number">1.3.1.</span> <span class="nav-text">字符串知识点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#布尔值（boolean）"><span class="nav-number">1.4.</span> <span class="nav-text">布尔值（boolean）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null和undefined"><span class="nav-number">1.5.</span> <span class="nav-text">null和undefined</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象object"><span class="nav-number">1.6.</span> <span class="nav-text">对象object</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1，键名key"><span class="nav-number">1.6.1.</span> <span class="nav-text">1，键名key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-对象的引用"><span class="nav-number">1.6.2.</span> <span class="nav-text">2.对象的引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-读取对象的属性"><span class="nav-number">1.6.3.</span> <span class="nav-text">3.读取对象的属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-属性的赋值"><span class="nav-number">1.6.4.</span> <span class="nav-text">4.属性的赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-查看所有属性"><span class="nav-number">1.6.5.</span> <span class="nav-text">5.查看所有属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-循环for…-in-循环"><span class="nav-number">1.6.6.</span> <span class="nav-text">6. 循环for… in 循环</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coveru</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

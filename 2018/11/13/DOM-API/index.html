@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="#前言前面有对dom的定义和概述以及dom操作进行了描述，本篇说下dom-api的几个重要知识。 1. nextSIbling和previousSiblingnextSIbling和previousSibling可能获取到的是文本节点，因为有时候标签之前还有空格，这也属于文本节点 2. innerText 和 textContent的区别innerText 和 textContent是稍微有点区别">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM API">
+<meta property="og:url" content="http://yoursite.com/2018/11/13/DOM-API/index.html">
+<meta property="og:site_name" content="coveru&#39;s blog">
+<meta property="og:description" content="#前言前面有对dom的定义和概述以及dom操作进行了描述，本篇说下dom-api的几个重要知识。 1. nextSIbling和previousSiblingnextSIbling和previousSibling可能获取到的是文本节点，因为有时候标签之前还有空格，这也属于文本节点 2. innerText 和 textContent的区别innerText 和 textContent是稍微有点区别">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-13T13:18:26.422Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DOM API">
+<meta name="twitter:description" content="#前言前面有对dom的定义和概述以及dom操作进行了描述，本篇说下dom-api的几个重要知识。 1. nextSIbling和previousSiblingnextSIbling和previousSibling可能获取到的是文本节点，因为有时候标签之前还有空格，这也属于文本节点 2. innerText 和 textContent的区别innerText 和 textContent是稍微有点区别">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/13/DOM-API/">
+
+
+
+
+
+  <title>DOM API | coveru's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">coveru's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/DOM-API/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">DOM API</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#前言<br>前面有对dom的定义和概述以及dom操作进行了描述，本篇说下dom-api的几个重要知识。</p>
+<h2 id="1-nextSIbling和previousSibling"><a href="#1-nextSIbling和previousSibling" class="headerlink" title="1. nextSIbling和previousSibling"></a>1. nextSIbling和previousSibling</h2><p>nextSIbling和previousSibling可能获取到的是文本节点，因为有时候标签之前还有空格，这也属于文本节点</p>
+<h2 id="2-innerText-和-textContent的区别"><a href="#2-innerText-和-textContent的区别" class="headerlink" title="2. innerText 和 textContent的区别"></a>2. innerText 和 textContent的区别</h2><p>innerText 和 textContent是稍微有点区别的，前者是微软发布的，后者是火狐发布，innerText更加智能一点，会选择根据text内容选择获取，但是这样也导致它更费时间。而textContent则不会，只要是文本内容都会获取，包括script/style这种标签里的代码文本内容。</p>
+<h2 id="3-nodeType-主要记两个值"><a href="#3-nodeType-主要记两个值" class="headerlink" title="3. nodeType 主要记两个值"></a>3. nodeType 主要记两个值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1     Node.ELEMENT_NODE              | 一个 元素 节点，例如 &lt;p&gt;和&lt;div&gt;。</span><br><span class="line">3     Node.TEXT_NODE   	             |  Element 或者 Attr 中实际的 文字</span><br></pre></td></tr></table></figure>
+<h2 id="4-cloneNode"><a href="#4-cloneNode" class="headerlink" title="4. cloneNode()"></a>4. cloneNode()</h2><p>参数（true）就是深拷贝，（false）/()就是浅拷贝。<br>浅拷贝只复制一层对象的属性，而深拷贝则递归复制了所有层级.</p>
+<h2 id="5-isSameNode与isEquaNode的区别"><a href="#5-isSameNode与isEquaNode的区别" class="headerlink" title="5. isSameNode与isEquaNode的区别"></a>5. isSameNode与isEquaNode的区别</h2><p>isSameNode是两个真的是一模一样（完全相同，内存地址也一样）<br>isEquaNode是两个看起来一模一样（内存地址不一样）</p>
+<h2 id="6-normalize-的作用"><a href="#6-normalize-的作用" class="headerlink" title="6.normalize()的作用"></a>6.normalize()的作用</h2><p>当前节点和它的后代节点”规范化“（normalized）。在一个”规范化”后的DOM树中，不存在一个空的文本节点，或者两个相邻的文本节点。<br>注1：“空的文本节点”并不包括空白字符(空格，换行等)构成的文本节点。<br>注2：两个以上相邻文本节点的产生原因包括：<br>通过脚本调用有关的DOM接口进行了文本节点的插入和分割等。<br>HTML中超长的文本节点会被浏览器自动分割为多个相邻文本节点。<br>字面翻译就是使动词|使···正常<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var wrapper = document.createElement(&quot;div&quot;);</span><br><span class="line"></span><br><span class="line">wrapper.appendChild(document.createTextNode(&quot;Part 1 &quot;));</span><br><span class="line">wrapper.appendChild(document.createTextNode(&quot;Part 2 &quot;));</span><br><span class="line"></span><br><span class="line">// 这时(规范化之前),wrapper.childNodes.length === 2</span><br><span class="line">// wrapper.childNodes[0].textContent === &quot;Part 1 &quot;</span><br><span class="line">// wrapper.childNodes[1].textContent === &quot;Part 2 &quot;</span><br><span class="line"></span><br><span class="line">wrapper.normalize();</span><br><span class="line">// 现在(规范化之后), wrapper.childNodes.length === 1</span><br><span class="line">// wrapper.childNodes[0].textContent === &quot;Part 1 Part 2&quot;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #555;font-size:14px;">-------------The End-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/13/git入门/" rel="next" title="git入门">
+                <i class="fa fa-chevron-left"></i> git入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/13/HTML常用标签/" rel="prev" title="HTML常用标签">
+                HTML常用标签 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coveru</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-nextSIbling和previousSibling"><span class="nav-number">1.</span> <span class="nav-text">1. nextSIbling和previousSibling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-innerText-和-textContent的区别"><span class="nav-number">2.</span> <span class="nav-text">2. innerText 和 textContent的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-nodeType-主要记两个值"><span class="nav-number">3.</span> <span class="nav-text">3. nodeType 主要记两个值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-cloneNode"><span class="nav-number">4.</span> <span class="nav-text">4. cloneNode()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-isSameNode与isEquaNode的区别"><span class="nav-number">5.</span> <span class="nav-text">5. isSameNode与isEquaNode的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-normalize-的作用"><span class="nav-number">6.</span> <span class="nav-text">6.normalize()的作用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coveru</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

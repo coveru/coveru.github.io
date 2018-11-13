@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="DOM概述DOM 是 JavaScript 操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个 JavaScript 对象，从而可以用脚本进行各种操作（比如增删内容）。浏览器会根据 DOM 模型，将结构化文档（比如 HTML 和 XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOMTree）。所有的节点和最终的树状结构，都有规">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS中的dom操作">
+<meta property="og:url" content="http://yoursite.com/2018/11/13/JS中的dom操作/index.html">
+<meta property="og:site_name" content="coveru&#39;s blog">
+<meta property="og:description" content="DOM概述DOM 是 JavaScript 操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个 JavaScript 对象，从而可以用脚本进行各种操作（比如增删内容）。浏览器会根据 DOM 模型，将结构化文档（比如 HTML 和 XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOMTree）。所有的节点和最终的树状结构，都有规">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fwg3asw3onj30oj0ebjt5.jpg">
+<meta property="og:image" content="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwg3i923l0j30ol0j7wti.jpg">
+<meta property="og:image" content="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwg3ic9vu0j30bt03xgli.jpg">
+<meta property="og:updated_time" content="2018-11-13T13:18:26.425Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS中的dom操作">
+<meta name="twitter:description" content="DOM概述DOM 是 JavaScript 操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个 JavaScript 对象，从而可以用脚本进行各种操作（比如增删内容）。浏览器会根据 DOM 模型，将结构化文档（比如 HTML 和 XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOMTree）。所有的节点和最终的树状结构，都有规">
+<meta name="twitter:image" content="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fwg3asw3onj30oj0ebjt5.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/13/JS中的dom操作/">
+
+
+
+
+
+  <title>JS中的dom操作 | coveru's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">coveru's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JS中的dom操作/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JS中的dom操作</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="DOM概述"><a href="#DOM概述" class="headerlink" title="DOM概述"></a>DOM概述</h1><p>DOM 是 JavaScript 操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个 JavaScript 对象，从而可以用脚本进行各种操作（比如增删内容）。浏览器会根据 DOM 模型，将结构化文档（比如 HTML 和 XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOMTree）。所有的节点和最终的树状结构，都有规范的对外接口。<br>DOM 只是一个接口规范，可以用各种语言实现。所以严格地说，DOM 不是 JavaScript 语法的一部分，但是 DOM 操作是 JavaScript 最常见的任务，离开了 DOM，JavaScript 就无法控制网页。另一方面，JavaScript 也是最常用于 DOM 操作的语言。后面介绍的就是 JavaScript 对 DOM 标准的实现和用法。</p>
+<h2 id="DOM树"><a href="#DOM树" class="headerlink" title="DOM树"></a>DOM树</h2><p>html标签通过浏览器的解析后才会形成dom树，此后HTML中的每个标签元素，属性，文本都能看做是一个DOM的节点，JavaScript都能通过dom的提供的编程接口操作到每个节点，去了解浏览器的渲染机制能够帮助我们了解dom。<br><img src="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fwg3asw3onj30oj0ebjt5.jpg" alt=""><br>DOM模型将整个文档（XML文档和HTML文档）看成一个树形结构，<br>在DOM中，HTML文档的层次结构被表示为一个树形结构。并用document对象表示该文档，树的每个子节点表示HTML文档中的不同内容。<br>每个载入浏览器的 HTML 文档都会成为Document对象,Document是探索DOM的入口,利用全局变量document可以访问Document对象。</p>
+<h2 id="DOM中的节点"><a href="#DOM中的节点" class="headerlink" title="DOM中的节点"></a>DOM中的节点</h2><p>DOM规定文档中的每个成分都是一个节点（Node）,HTML文档可以说由节点构成的集合，DOM节点有:<br>1）元素节点（Element）：上图中<html>、<body>、<p>等都是元素节点，即标签。<br>2）文本节点（Text）:向用户展示的内容，如<li>…</li>中的JavaScript、DOM、CSS等文本。<br>3）属性节点（Attr）:元素属性，元素才有属性,如<a>标签的链接属性href=”<a href="http://www.baidu.com&quot;。" target="_blank" rel="noopener">http://www.baidu.com&quot;。</a></a></p>
+<h2 id="DOM节点三大属性（XML-DOM）"><a href="#DOM节点三大属性（XML-DOM）" class="headerlink" title="DOM节点三大属性（XML DOM）"></a>DOM节点三大属性（XML DOM）</h2><p>1）nodeName：元素节点、属性节点、文本节点分别返回元素的名称、属性的名称和#text的字符串。<br>2）nodeType：元素节点、属性节点、文本节点的nodeType值分别为1、2、3.、<br>3）nodeValue：元素节点、属性节点、文本节点的返回值分别为null、属性值和文本节点内容。</p>
+<h2 id="DOM常见操作"><a href="#DOM常见操作" class="headerlink" title="DOM常见操作"></a>DOM常见操作</h2><p>Node为所有节点的父接口，其定义了一组公共的属性和方法，如下：<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwg3i923l0j30ol0j7wti.jpg" alt=""></p>
+<h3 id="1-获取节点"><a href="#1-获取节点" class="headerlink" title="1.获取节点"></a>1.获取节点</h3><p>① 获取元素节点：<br>通过document对象的三个方法获取<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"ID"</span>)</span><br><span class="line"><span class="built_in">document</span>.getElementByName(<span class="string">"name"</span>)</span><br><span class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">"p"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>② 获取属性节点：<br>属性节点附属于元素节点，可通过元素节点的getAttributeNode(attrName)方法获取属性节点，也可通过getAttribute(attrName)直接获取属性值。（与之相对的是Element接口的setAttribute(attrName , attrValue)方法，如果属性不存在，则直接添加到元素节点上）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(item.getAttribute(&quot;title&quot;));//a gentle reminder</span><br></pre></td></tr></table></figure></p>
+<p><strong>注：getAttribute()不能通过document对象调用，只能通过元素对象去调用它。</strong></p>
+<p>③ 获取文本节点：<br>文本节点为元素节点的子节点，可通过元素节点（Element接口）提供的childnodes()[index] 方法获得。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">childNodes <span class="comment">//NodeList，所有子节点的列表</span></span><br><span class="line">firstChild <span class="comment">//Node，指向在childNodes列表中的第一个节点  </span></span><br><span class="line">lastChild <span class="comment">//Node，指向在childNodes列表中的最后一个节点  </span></span><br><span class="line">parentNode <span class="comment">//Node，指向父节点  </span></span><br><span class="line">previousSibling /Node，/指向前一个兄弟节点：如果这个节点就是第一个节点，那么该值为 <span class="literal">null</span></span><br><span class="line">nextSibling <span class="comment">//Node，指向后一个兄弟节点：如果这个节点就是最后一个节点，那么该值为null</span></span><br><span class="line">hasChildNodes()<span class="string">` //Boolean，当childNodes包含一个或多个节点时，返回真值</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2-改变节点"><a href="#2-改变节点" class="headerlink" title="2.改变节点"></a>2.改变节点</h3><p>1）改变属性节点的值：可以通过属性节点的nodeValue直接修改属性值，也可通过元素节点的setAttribute()方法改变。<br>（2）改变文本节点的值：通过文本节点的nodeValue直接修改。<br>在HTML DOM中，获取和改变元素内容最简单方法是使用元素的innerHTML属性（innerText属性返回去掉标签的innerHTML）</p>
+<p>拓展:<br>innerText、innerHTML、outerHTML、outerText 。<br>innerText: 表示起始标签和结束标签之间的文本 。<br>innerHTML: 表示元素的所有元素和文本的HTML代码 。<br>如：<div><b>Hello</b> world</div>的innerText为Hello world，innerHTML为Hello world 。<br>outerText: 与前者的区别是替换的是整个目标节点，问题返回和innerText一样的内容 。<br>outerHTML: 与前者的区别是替换的是整个目标节点，返回元素完整的HTML代码，包括元素本身。</p>
+<p>一张图了解outerHTML和innerText、innerHTML：<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwg3ic9vu0j30bt03xgli.jpg" alt=""><br>改变HTML样式（style属性）：element.style.color =“red”;</p>
+<h3 id="3-删除节点"><a href="#3-删除节点" class="headerlink" title="3.删除节点"></a>3.删除节点</h3><p>① 删除元素节点：要想删除元素节点A，需获得A的父节点B，父节点可通过17.1.1中的方法获得，也可以直接通过A的parentNode属性获得（推荐）。调用B的removeChild(A)即可删除A节点。</p>
+<p>② 删除属性节点：可通过属性节点所属的元素节点的removeAttribute(attrName)或removeAttributeNode(node)删除。</p>
+<p>③ 清空文本节点：最简单也是最常用的方法就是直接设置文本节点的nameNode属性为空串：textNode.nodeValue =” “。<br>混淆点:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;p id=<span class="string">"example"</span> title=<span class="string">"texts"</span>&gt;</span><br><span class="line">  这是一段文本</span><br><span class="line">  &lt;span&gt;&lt;/span&gt;</span><br><span class="line">&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">var p = document.getElementById('example'); </span></span><br><span class="line"><span class="regexp">p.nodeValue /</span><span class="regexp">/null,p是元素节点，所以nodeValue为null</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">p.getAttributeNode('id').nodeValue /</span><span class="regexp">/example，这里获取到p的id属性的属性节点，nodeValue就是它的属性值</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">p.childNodes[0].nodeValue /</span><span class="regexp">/这是一段文本</span></span><br><span class="line"><span class="regexp">p是含有两个子节点的，插入的文本虽然没有标签，但它依然是一个节点。 </span></span><br><span class="line"><span class="regexp">其类型是是文本节点，其nodeValue是就是写入在其中的字符串，包含换行和缩进</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">p.innerHTML/</span><span class="regexp">/这是一段文本 &lt;span&gt;&lt;/</span>span&gt;” </span><br><span class="line">这里innerHTML返回了p所包含的全部的节点的所包含的各种值了，以字符串的形式。</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-创建和添加节点"><a href="#4-创建和添加节点" class="headerlink" title="4.创建和添加节点"></a>4.创建和添加节点</h3><p>① 创建节点：通过document对象的createElement(eleName)、createTextNode(nodeValue)方法可分别创建元素节点和文本节点。属性节点也有自己的create方法，但是用的少，直接用元素节点的setAttribute()方法即可添加属性。</p>
+<p>② 添加节点：两个重要的方法：appendChild()和insertBefore()，具体见Node接口中的方法。<br>扩展：上面的两个方法都是在已知父节点时用到的，也可以直接在兄弟节点后添加新节点：x.insertBefore(newNode)和x.appendChild(newNode)都可以向x后追加一个新的子节点。</p>
+<h3 id="5-替换节点"><a href="#5-替换节点" class="headerlink" title="5.替换节点"></a>5.替换节点</h3><p>主要掌握replaceChild(newNode , oldNode) 替换元素节点。（属性节点和文本节点有更简单的方法）</p>
+</body></html></p>
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #555;font-size:14px;">-------------The End-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/13/JSONP知识小结/" rel="next" title="JSONP知识小结">
+                <i class="fa fa-chevron-left"></i> JSONP知识小结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/13/js普通类型和对象的区别/" rel="prev" title="js普通类型和对象的区别">
+                js普通类型和对象的区别 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coveru</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DOM概述"><span class="nav-number">1.</span> <span class="nav-text">DOM概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM树"><span class="nav-number">1.1.</span> <span class="nav-text">DOM树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM中的节点"><span class="nav-number">1.2.</span> <span class="nav-text">DOM中的节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM节点三大属性（XML-DOM）"><span class="nav-number">1.3.</span> <span class="nav-text">DOM节点三大属性（XML DOM）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM常见操作"><span class="nav-number">1.4.</span> <span class="nav-text">DOM常见操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-获取节点"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.获取节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-改变节点"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.改变节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-删除节点"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.删除节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-创建和添加节点"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.创建和添加节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-替换节点"><span class="nav-number">1.4.5.</span> <span class="nav-text">5.替换节点</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coveru</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

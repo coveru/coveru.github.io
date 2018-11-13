@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="css布局 ##1.水平居中行内元素：对父元素设置text-align:center;定宽块状元素: 设置左右margin值为auto;不定宽块状元素: 设置子元素为display:inline,然后在父元素上设置text-align:center;通用方案: flex布局，对父元素设置display:flex;justify-content:center; ##2.垂直居中父元素一定，子元素为单">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css布局">
+<meta property="og:url" content="http://yoursite.com/2018/11/13/css布局/index.html">
+<meta property="og:site_name" content="coveru&#39;s blog">
+<meta property="og:description" content="css布局 ##1.水平居中行内元素：对父元素设置text-align:center;定宽块状元素: 设置左右margin值为auto;不定宽块状元素: 设置子元素为display:inline,然后在父元素上设置text-align:center;通用方案: flex布局，对父元素设置display:flex;justify-content:center; ##2.垂直居中父元素一定，子元素为单">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvvzpyboc3j30er08qdg4.jpg">
+<meta property="og:image" content="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fvvzpycsg9j30fq08pa9z.jpg">
+<meta property="og:image" content="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvvzpya6cbj30uk0cqdg1.jpg">
+<meta property="og:image" content="https://wx3.sinaimg.cn/mw690/006sJW3Ggy1fvvzpycfv3j30sh0c9t8x.jpg">
+<meta property="og:image" content="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fvw0j26mx0j30qs0ldmxm.jpg">
+<meta property="og:updated_time" content="2018-11-13T13:18:26.421Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css布局">
+<meta name="twitter:description" content="css布局 ##1.水平居中行内元素：对父元素设置text-align:center;定宽块状元素: 设置左右margin值为auto;不定宽块状元素: 设置子元素为display:inline,然后在父元素上设置text-align:center;通用方案: flex布局，对父元素设置display:flex;justify-content:center; ##2.垂直居中父元素一定，子元素为单">
+<meta name="twitter:image" content="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvvzpyboc3j30er08qdg4.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/13/css布局/">
+
+
+
+
+
+  <title>css布局 | coveru's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">coveru's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/css布局/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">css布局</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="css布局"><a href="#css布局" class="headerlink" title="css布局"></a>css布局</h1><hr>
+<p>##1.水平居中<br>行内元素：对父元素设置text-align:center;<br>定宽块状元素: 设置左右margin值为auto;<br>不定宽块状元素: 设置子元素为display:inline,然后在父元素上设置text-align:center;<br>通用方案: flex布局，对父元素设置display:flex;justify-content:center;</p>
+<p>##2.垂直居中<br>父元素一定，子元素为单行内联文本：设置父元素的height等于行高line-height<br>父元素一定，子元素为多行内联文本：设置父元素的display:table-cell或inline-block，再设置vertical-align:middle;<br>块状元素:设置子元素position:absolute 并设置top、bottom为0，父元素要设置定位为static以外的值，margin:auto;</p>
+<p>通用方案: flex布局，给父元素设置{display:flex; align-items:center;}</p>
+<p>##3.左右布局<br>使盒子浮动，或者使用绝对定位等方法</p>
+<p>###浮动布局<br>这种方法是左边浮动，右边加上一个margin-left值，让他实现左边固定，右边自适应的布局效果<br><img src="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvvzpyboc3j30er08qdg4.jpg" alt="代码"><br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fvvzpycsg9j30fq08pa9z.jpg" alt="效果"></p>
+<p>##4.左中右布局<br>对xzx里面的left right middle 三块进行左中右布局</p>
+<p>###1.float+margin<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">    &lt;style type=<span class="string">"text/css"</span>&gt;</span><br><span class="line">        .xzx&#123;</span><br><span class="line">            height:<span class="number">300</span>px;</span><br><span class="line">        &#125;</span><br><span class="line">        .left&#123;</span><br><span class="line">            width: <span class="number">200</span>px;</span><br><span class="line">            height:<span class="number">100</span>%;</span><br><span class="line">            float: left;</span><br><span class="line">            background-color: blue;</span><br><span class="line">        &#125;</span><br><span class="line">        .middle&#123;</span><br><span class="line">            height:<span class="number">100</span>%;</span><br><span class="line">            margin-left:<span class="number">210</span>px;</span><br><span class="line">            margin-right: <span class="number">310</span>px;</span><br><span class="line">            background-color: red;</span><br><span class="line">        &#125;</span><br><span class="line">        .right&#123;</span><br><span class="line">            height:<span class="number">100</span>%;</span><br><span class="line">            width: <span class="number">300</span>px;</span><br><span class="line">            float: right;</span><br><span class="line">            background-color: green;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class="xzx clearfix"&gt;</span><br><span class="line">    &lt;div class="left"&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class="right"&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class="middle"&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>效果图：<br><img src="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvvzpya6cbj30uk0cqdg1.jpg" alt="float+margin"></p>
+<p>###注意：middle是xzx的最后一个原素 特意在middle两边留了缝隙以区分其他方法的效果图</p>
+<p>###缺点：1. 当宽度小于左右两边宽度之和时，右侧栏会被挤下去；2. html的结构不正确</p>
+<p>###2. float+position-absolute定位<br>xzx里面的left和right分别left浮动和right浮动 middle对于xzx绝对定位<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">    &lt;style type=<span class="string">"text/css"</span>&gt;</span><br><span class="line">        .xzx&#123;</span><br><span class="line">            position: relative;</span><br><span class="line">            width:<span class="number">100</span>%;</span><br><span class="line">            height:<span class="number">300</span>px;</span><br><span class="line">        &#125;</span><br><span class="line">        .left&#123;</span><br><span class="line">            float: left;</span><br><span class="line">            width: <span class="number">200</span>px;</span><br><span class="line">            height:<span class="number">100</span>%;</span><br><span class="line">            background-color: blue;</span><br><span class="line">        &#125;</span><br><span class="line">        .middle&#123;</span><br><span class="line">            position: absolute;</span><br><span class="line">            top:<span class="number">0</span>;</span><br><span class="line">            bottom:<span class="number">0</span>;</span><br><span class="line">            left:<span class="number">200</span>px;</span><br><span class="line">            right: <span class="number">300</span>px;</span><br><span class="line">            background-color: red;</span><br><span class="line">        &#125;</span><br><span class="line">        .right&#123;</span><br><span class="line">            float: right;</span><br><span class="line">            height:<span class="number">100</span>%;</span><br><span class="line">            width: <span class="number">300</span>px;</span><br><span class="line">            background-color: yellow;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class="xzx clearfix"&gt;</span><br><span class="line">    &lt;div class="left"&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class="middle"&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class="right"&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>效果图<br><img src="https://wx3.sinaimg.cn/mw690/006sJW3Ggy1fvvzpycfv3j30sh0c9t8x.jpg" alt="float+absolute"></p>
+<p>###缺点：和上面的方法一样当宽度小于左右两边宽度之和时，右侧栏会被挤下去</p>
+<p>###其他方法简述<br>找了一些其他方法，比如position定位+margin（两边position-absolute，中间margin），还有flex，这里只说下flex，因为flex一般除了兼容性其他缺陷基本没有<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">    </span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;&lt;div class="xzx"&gt;</span><br><span class="line">    &lt;div class="left"&gt;左栏&lt;/div&gt;</span><br><span class="line">    &lt;div class="middle"&gt;中间&lt;/div&gt;</span><br><span class="line">    &lt;div class="right"&gt;右栏&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">.xzx&#123;</span><br><span class="line">    display: flex;</span><br><span class="line">&#125;</span><br><span class="line">.left&#123;</span><br><span class="line">    width: <span class="number">200</span>px;</span><br><span class="line">    height: <span class="number">300</span>px;</span><br><span class="line">    background: green;</span><br><span class="line">&#125;</span><br><span class="line">.middle&#123;</span><br><span class="line">    width: <span class="number">100</span>%;</span><br><span class="line">    background: red;</span><br><span class="line">    margin: <span class="number">0</span> <span class="number">20</span>px;</span><br><span class="line">&#125;</span><br><span class="line">.right&#123;</span><br><span class="line">    width: <span class="number">200</span>px;</span><br><span class="line">    height: <span class="number">3000</span>px;</span><br><span class="line">    background: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果图：<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fvw0j26mx0j30qs0ldmxm.jpg" alt=""></p>
+<p>###移动端会经常使用到flex布局，因为在简单的页面适配方面，flex可以起到很好的拉伸的效果</p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #555;font-size:14px;">-------------The End-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/13/AJAX初探/" rel="next" title="AJAX初探">
+                <i class="fa fa-chevron-left"></i> AJAX初探
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/13/git入门/" rel="prev" title="git入门">
+                git入门 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coveru</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#css布局"><span class="nav-number">1.</span> <span class="nav-text">css布局</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coveru</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

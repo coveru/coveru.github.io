@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言前一篇我们分别介绍了js里每一种数据类型，但是数据类型也有划分不同的大类型，比如基本类型和复杂类型，原始类型和引用类型等等，总的来说就是普通类型和对象的区别。 1、基本数据类型和引用数据类型ECMAScript包括两个不同类型的值：基本数据类型和引用数据类型。基本数据类型指的是简单的数据段，引用数据类型指的是有多个值构成的对象。当我们把变量赋值给一个变量时，解析器首先要确认的就是这个值是基本类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js普通类型和对象的区别">
+<meta property="og:url" content="http://yoursite.com/2018/11/13/js普通类型和对象的区别/index.html">
+<meta property="og:site_name" content="coveru&#39;s blog">
+<meta property="og:description" content="前言前一篇我们分别介绍了js里每一种数据类型，但是数据类型也有划分不同的大类型，比如基本类型和复杂类型，原始类型和引用类型等等，总的来说就是普通类型和对象的区别。 1、基本数据类型和引用数据类型ECMAScript包括两个不同类型的值：基本数据类型和引用数据类型。基本数据类型指的是简单的数据段，引用数据类型指的是有多个值构成的对象。当我们把变量赋值给一个变量时，解析器首先要确认的就是这个值是基本类">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fw8ofoyto7j30f6065mx8.jpg">
+<meta property="og:image" content="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fw8ofoz82uj30g20e8q3m.jpg">
+<meta property="og:image" content="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fw8ofpm1tpj31hd1hcwv9.jpg">
+<meta property="og:updated_time" content="2018-11-13T13:18:26.427Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js普通类型和对象的区别">
+<meta name="twitter:description" content="前言前一篇我们分别介绍了js里每一种数据类型，但是数据类型也有划分不同的大类型，比如基本类型和复杂类型，原始类型和引用类型等等，总的来说就是普通类型和对象的区别。 1、基本数据类型和引用数据类型ECMAScript包括两个不同类型的值：基本数据类型和引用数据类型。基本数据类型指的是简单的数据段，引用数据类型指的是有多个值构成的对象。当我们把变量赋值给一个变量时，解析器首先要确认的就是这个值是基本类">
+<meta name="twitter:image" content="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fw8ofoyto7j30f6065mx8.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/13/js普通类型和对象的区别/">
+
+
+
+
+
+  <title>js普通类型和对象的区别 | coveru's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">coveru's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/js普通类型和对象的区别/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js普通类型和对象的区别</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前一篇我们分别介绍了js里每一种数据类型，但是数据类型也有划分不同的大类型，比如基本类型和复杂类型，原始类型和引用类型等等，总的来说就是普通类型和对象的区别。</p>
+<h2 id="1、基本数据类型和引用数据类型"><a href="#1、基本数据类型和引用数据类型" class="headerlink" title="1、基本数据类型和引用数据类型"></a>1、基本数据类型和引用数据类型</h2><p>ECMAScript包括两个不同类型的值：基本数据类型和引用数据类型。<br>基本数据类型指的是简单的数据段，引用数据类型指的是有多个值构成的对象。<br>当我们把变量赋值给一个变量时，解析器首先要确认的就是这个值是基本类型值还是引用类型值。</p>
+<h2 id="2、常见的基本数据类型："><a href="#2、常见的基本数据类型：" class="headerlink" title="2、常见的基本数据类型："></a>2、常见的基本数据类型：</h2><p>Number、String 、Boolean、Null和Undefined。基本数据类型是按值访问的，因为可以直接操作保存在变量中的实际值。示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line"></span><br><span class="line">b = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 10值</span></span><br></pre></td></tr></table></figure></p>
+<p>上面，b获取的是a值得一份拷贝，虽然，两个变量的值相等，但是两个变量保存了两个不同的基本数据类型值。<br>b只是保存了a复制的一个副本。所以，b的改变，对a没有影响。这种拷贝也就是深拷贝。<br>下图演示了这种基本数据类型赋值的过程：<br><img src="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fw8ofoyto7j30f6065mx8.jpg" alt=""></p>
+<h2 id="3、引用类型数据："><a href="#3、引用类型数据：" class="headerlink" title="3、引用类型数据："></a>3、引用类型数据：</h2><p>引用类型数据也就是对象类型Object type，比如：Object 、Array 、Function 、Data等。<br>javascript的引用数据类型是保存在堆内存(heap)中的对象。与其他语言的不同是，你不可以直接访问堆内存空间中的位置和操作堆内存空间。只能操作对象在栈内(stack)存中的引用地址。<br>所以，引用类型数据在栈内存中保存的实际上是对象在堆内存中的<strong>引用地址</strong>。通过这个引用地址可以快速查找到保存中堆内存中的对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj2 = obj1;</span><br><span class="line"></span><br><span class="line">obj2.name = <span class="string">"我有名字了"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj1.name); <span class="comment">// 我有名字了</span></span><br></pre></td></tr></table></figure></p>
+<p>说明这两个引用数据类型指向了同一个堆内存对象。obj1赋值给onj2，实际上这个堆内存对象在栈内存的引用地址复制了一份给了obj2，但是实际上他们共同指向了同一个堆内存对象。<strong>实际上改变的是堆内存对象。</strong><br>下面我们来演示这个引用数据类型赋值过程：<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fw8ofoz82uj30g20e8q3m.jpg" alt=""><br>顺便贴上一张面试题内存图解析<br><img src="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fw8ofpm1tpj31hd1hcwv9.jpg" alt=""><br>红色部分表示变量b发生的变动</p>
+<h2 id="4、总结区别"><a href="#4、总结区别" class="headerlink" title="4、总结区别"></a>4、总结区别</h2><h3 id="a-声明变量时不同的内存分配："><a href="#a-声明变量时不同的内存分配：" class="headerlink" title="a.声明变量时不同的内存分配：　"></a>a.声明变量时不同的内存分配：　</h3><p>1）原始值：存储在栈（stack）中的简单数据段，也就是说，它们的值直接存储在变量访问的位置。<br>这是因为这些原始类型占据的空间是固定的，所以可将他们存储在较小的内存区域–栈中。这样存储便于迅速查寻变量的值。<br>2）引用值：存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存地址。<br>这是因为：引用值的大小会改变，所以不能把它放在栈中，否则会降低变量查寻的速度。相反，放在变量的栈空间中的值是该对象存储在堆中的地址。<br>地址的大小是固定的，所以把它存储在栈中对变量性能无任何负面影响。</p>
+<h3 id="b-不同的内存分配机制也带来了不同的访问机制"><a href="#b-不同的内存分配机制也带来了不同的访问机制" class="headerlink" title="b.不同的内存分配机制也带来了不同的访问机制"></a>b.不同的内存分配机制也带来了不同的访问机制</h3><p>1）在javascript中是不允许直接访问保存在堆内存中的对象的，所以在访问一个对象时，首先得到的是这个对象在堆内存中的地址，然后再按照这个地址去获得这个对象中的值，这就是传说中的按引用访问。<br>2）而原始类型的值则是可以直接访问到的。
+　　</p>
+<h3 id="c-复制变量时的不同"><a href="#c-复制变量时的不同" class="headerlink" title="c 复制变量时的不同"></a>c 复制变量时的不同</h3><p>1）原始值：在将一个保存着原始值的变量复制给另一个变量时，会将原始值的副本赋值给新变量，此后这两个变量是完全独立的，他们只是拥有相同的value而已。<br>2）引用值：在将一个保存着对象内存地址的变量复制给另一个变量时，会把这个内存地址赋值给新变量，也就是说这两个变量都指向了堆内存中的同一个对象，他们中任何一个作出的改变都会反映在另一个身上。（这里要理解的一点就是，复制对象时并不会在堆内存中新生成一个一模一样的对象，只是多了一个保存指向这个对象指针的变量罢了）。多了一个指针</p>
+<h3 id="d-参数传递的不同（把实参复制给形参的过程）"><a href="#d-参数传递的不同（把实参复制给形参的过程）" class="headerlink" title="d 参数传递的不同（把实参复制给形参的过程）"></a>d 参数传递的不同（把实参复制给形参的过程）</h3><p>首先我们应该明确一点：ECMAScript中所有函数的参数都是按值来传递的。<br>但是为什么涉及到原始类型与引用类型的值时仍然有区别呢？还不就是因为内存分配时的差别。 　<br>1）原始值：只是把变量里的值传递给参数，之后参数和这个变量互不影响。<br>2）引用值：对象变量它里面的值是这个对象在堆内存中的内存地址，这一点要时刻铭记在心！<br>因此它传递的值也就是这个内存地址，这也就是为什么函数内部对这个参数的修改会体现在外部的原因了，因为它们都指向同一个对象。</p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #555;font-size:14px;">-------------The End-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/13/JS中的dom操作/" rel="next" title="JS中的dom操作">
+                <i class="fa fa-chevron-left"></i> JS中的dom操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/13/JS初体验/" rel="prev" title="JS初体验">
+                JS初体验 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coveru</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、基本数据类型和引用数据类型"><span class="nav-number">1.1.</span> <span class="nav-text">1、基本数据类型和引用数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、常见的基本数据类型："><span class="nav-number">1.2.</span> <span class="nav-text">2、常见的基本数据类型：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、引用类型数据："><span class="nav-number">1.3.</span> <span class="nav-text">3、引用类型数据：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、总结区别"><span class="nav-number">1.4.</span> <span class="nav-text">4、总结区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-声明变量时不同的内存分配："><span class="nav-number">1.4.1.</span> <span class="nav-text">a.声明变量时不同的内存分配：　</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-不同的内存分配机制也带来了不同的访问机制"><span class="nav-number">1.4.2.</span> <span class="nav-text">b.不同的内存分配机制也带来了不同的访问机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-复制变量时的不同"><span class="nav-number">1.4.3.</span> <span class="nav-text">c 复制变量时的不同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-参数传递的不同（把实参复制给形参的过程）"><span class="nav-number">1.4.4.</span> <span class="nav-text">d 参数传递的不同（把实参复制给形参的过程）</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coveru</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

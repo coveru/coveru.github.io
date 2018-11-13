@@ -259,6 +259,140 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/js普通类型和对象的区别/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/13/js普通类型和对象的区别/" itemprop="url">js普通类型和对象的区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前一篇我们分别介绍了js里每一种数据类型，但是数据类型也有划分不同的大类型，比如基本类型和复杂类型，原始类型和引用类型等等，总的来说就是普通类型和对象的区别。</p>
+<h2 id="1、基本数据类型和引用数据类型"><a href="#1、基本数据类型和引用数据类型" class="headerlink" title="1、基本数据类型和引用数据类型"></a>1、基本数据类型和引用数据类型</h2><p>ECMAScript包括两个不同类型的值：基本数据类型和引用数据类型。<br>基本数据类型指的是简单的数据段，引用数据类型指的是有多个值构成的对象。<br>当我们把变量赋值给一个变量时，解析器首先要确认的就是这个值是基本类型值还是引用类型值。</p>
+<h2 id="2、常见的基本数据类型："><a href="#2、常见的基本数据类型：" class="headerlink" title="2、常见的基本数据类型："></a>2、常见的基本数据类型：</h2><p>Number、String 、Boolean、Null和Undefined。基本数据类型是按值访问的，因为可以直接操作保存在变量中的实际值。示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line"></span><br><span class="line">b = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 10值</span></span><br></pre></td></tr></table></figure></p>
+<p>上面，b获取的是a值得一份拷贝，虽然，两个变量的值相等，但是两个变量保存了两个不同的基本数据类型值。<br>b只是保存了a复制的一个副本。所以，b的改变，对a没有影响。这种拷贝也就是深拷贝。<br>下图演示了这种基本数据类型赋值的过程：<br><img src="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fw8ofoyto7j30f6065mx8.jpg" alt=""></p>
+<h2 id="3、引用类型数据："><a href="#3、引用类型数据：" class="headerlink" title="3、引用类型数据："></a>3、引用类型数据：</h2><p>引用类型数据也就是对象类型Object type，比如：Object 、Array 、Function 、Data等。<br>javascript的引用数据类型是保存在堆内存(heap)中的对象。与其他语言的不同是，你不可以直接访问堆内存空间中的位置和操作堆内存空间。只能操作对象在栈内(stack)存中的引用地址。<br>所以，引用类型数据在栈内存中保存的实际上是对象在堆内存中的<strong>引用地址</strong>。通过这个引用地址可以快速查找到保存中堆内存中的对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj2 = obj1;</span><br><span class="line"></span><br><span class="line">obj2.name = <span class="string">"我有名字了"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj1.name); <span class="comment">// 我有名字了</span></span><br></pre></td></tr></table></figure></p>
+<p>说明这两个引用数据类型指向了同一个堆内存对象。obj1赋值给onj2，实际上这个堆内存对象在栈内存的引用地址复制了一份给了obj2，但是实际上他们共同指向了同一个堆内存对象。<strong>实际上改变的是堆内存对象。</strong><br>下面我们来演示这个引用数据类型赋值过程：<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fw8ofoz82uj30g20e8q3m.jpg" alt=""><br>顺便贴上一张面试题内存图解析<br><img src="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fw8ofpm1tpj31hd1hcwv9.jpg" alt=""><br>红色部分表示变量b发生的变动</p>
+<h2 id="4、总结区别"><a href="#4、总结区别" class="headerlink" title="4、总结区别"></a>4、总结区别</h2><h3 id="a-声明变量时不同的内存分配："><a href="#a-声明变量时不同的内存分配：" class="headerlink" title="a.声明变量时不同的内存分配：　"></a>a.声明变量时不同的内存分配：　</h3><p>1）原始值：存储在栈（stack）中的简单数据段，也就是说，它们的值直接存储在变量访问的位置。<br>这是因为这些原始类型占据的空间是固定的，所以可将他们存储在较小的内存区域–栈中。这样存储便于迅速查寻变量的值。<br>2）引用值：存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存地址。<br>这是因为：引用值的大小会改变，所以不能把它放在栈中，否则会降低变量查寻的速度。相反，放在变量的栈空间中的值是该对象存储在堆中的地址。<br>地址的大小是固定的，所以把它存储在栈中对变量性能无任何负面影响。</p>
+<h3 id="b-不同的内存分配机制也带来了不同的访问机制"><a href="#b-不同的内存分配机制也带来了不同的访问机制" class="headerlink" title="b.不同的内存分配机制也带来了不同的访问机制"></a>b.不同的内存分配机制也带来了不同的访问机制</h3><p>1）在javascript中是不允许直接访问保存在堆内存中的对象的，所以在访问一个对象时，首先得到的是这个对象在堆内存中的地址，然后再按照这个地址去获得这个对象中的值，这就是传说中的按引用访问。<br>2）而原始类型的值则是可以直接访问到的。
+　　</p>
+<h3 id="c-复制变量时的不同"><a href="#c-复制变量时的不同" class="headerlink" title="c 复制变量时的不同"></a>c 复制变量时的不同</h3><p>1）原始值：在将一个保存着原始值的变量复制给另一个变量时，会将原始值的副本赋值给新变量，此后这两个变量是完全独立的，他们只是拥有相同的value而已。<br>2）引用值：在将一个保存着对象内存地址的变量复制给另一个变量时，会把这个内存地址赋值给新变量，也就是说这两个变量都指向了堆内存中的同一个对象，他们中任何一个作出的改变都会反映在另一个身上。（这里要理解的一点就是，复制对象时并不会在堆内存中新生成一个一模一样的对象，只是多了一个保存指向这个对象指针的变量罢了）。多了一个指针</p>
+<h3 id="d-参数传递的不同（把实参复制给形参的过程）"><a href="#d-参数传递的不同（把实参复制给形参的过程）" class="headerlink" title="d 参数传递的不同（把实参复制给形参的过程）"></a>d 参数传递的不同（把实参复制给形参的过程）</h3><p>首先我们应该明确一点：ECMAScript中所有函数的参数都是按值来传递的。<br>但是为什么涉及到原始类型与引用类型的值时仍然有区别呢？还不就是因为内存分配时的差别。 　<br>1）原始值：只是把变量里的值传递给参数，之后参数和这个变量互不影响。<br>2）引用值：对象变量它里面的值是这个对象在堆内存中的内存地址，这一点要时刻铭记在心！<br>因此它传递的值也就是这个内存地址，这也就是为什么函数内部对这个参数的修改会体现在外部的原因了，因为它们都指向同一个对象。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JS初体验/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -355,140 +489,6 @@
 <p>5.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">website=hash[k]   //网址</span><br><span class="line">location.href = &apos;http://&apos; + website   //在地址栏打开网址website</span><br><span class="line">window.open(&apos;http://&apos;+website,&quot;_blank&quot;)    //在新窗口中打开网址website</span><br></pre></td></tr></table></figure></p>
 <p>##处理bug##<br><strong>Uncaught SyntanError：Unexpected token           ——-index 50</strong><br>没有被处理的语法错误，实际操作出现这个情况是因为第50行代码中有一个’}’错打成了’]’</p>
 <p>##总结##<br>JS难不难？难，但是多看几遍也多敲几遍也就那样，但是做出来的效果对新手来说还是成就感十足的，告诉自己继续保持~</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/js普通类型和对象的区别/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coveru">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="coveru's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/js普通类型和对象的区别/" itemprop="url">js普通类型和对象的区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前一篇我们分别介绍了js里每一种数据类型，但是数据类型也有划分不同的大类型，比如基本类型和复杂类型，原始类型和引用类型等等，总的来说就是普通类型和对象的区别。</p>
-<h2 id="1、基本数据类型和引用数据类型"><a href="#1、基本数据类型和引用数据类型" class="headerlink" title="1、基本数据类型和引用数据类型"></a>1、基本数据类型和引用数据类型</h2><p>ECMAScript包括两个不同类型的值：基本数据类型和引用数据类型。<br>基本数据类型指的是简单的数据段，引用数据类型指的是有多个值构成的对象。<br>当我们把变量赋值给一个变量时，解析器首先要确认的就是这个值是基本类型值还是引用类型值。</p>
-<h2 id="2、常见的基本数据类型："><a href="#2、常见的基本数据类型：" class="headerlink" title="2、常见的基本数据类型："></a>2、常见的基本数据类型：</h2><p>Number、String 、Boolean、Null和Undefined。基本数据类型是按值访问的，因为可以直接操作保存在变量中的实际值。示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line"></span><br><span class="line">b = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 10值</span></span><br></pre></td></tr></table></figure></p>
-<p>上面，b获取的是a值得一份拷贝，虽然，两个变量的值相等，但是两个变量保存了两个不同的基本数据类型值。<br>b只是保存了a复制的一个副本。所以，b的改变，对a没有影响。这种拷贝也就是深拷贝。<br>下图演示了这种基本数据类型赋值的过程：<br><img src="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fw8ofoyto7j30f6065mx8.jpg" alt=""></p>
-<h2 id="3、引用类型数据："><a href="#3、引用类型数据：" class="headerlink" title="3、引用类型数据："></a>3、引用类型数据：</h2><p>引用类型数据也就是对象类型Object type，比如：Object 、Array 、Function 、Data等。<br>javascript的引用数据类型是保存在堆内存(heap)中的对象。与其他语言的不同是，你不可以直接访问堆内存空间中的位置和操作堆内存空间。只能操作对象在栈内(stack)存中的引用地址。<br>所以，引用类型数据在栈内存中保存的实际上是对象在堆内存中的<strong>引用地址</strong>。通过这个引用地址可以快速查找到保存中堆内存中的对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj2 = obj1;</span><br><span class="line"></span><br><span class="line">obj2.name = <span class="string">"我有名字了"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj1.name); <span class="comment">// 我有名字了</span></span><br></pre></td></tr></table></figure></p>
-<p>说明这两个引用数据类型指向了同一个堆内存对象。obj1赋值给onj2，实际上这个堆内存对象在栈内存的引用地址复制了一份给了obj2，但是实际上他们共同指向了同一个堆内存对象。<strong>实际上改变的是堆内存对象。</strong><br>下面我们来演示这个引用数据类型赋值过程：<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fw8ofoz82uj30g20e8q3m.jpg" alt=""><br>顺便贴上一张面试题内存图解析<br><img src="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fw8ofpm1tpj31hd1hcwv9.jpg" alt=""><br>红色部分表示变量b发生的变动</p>
-<h2 id="4、总结区别"><a href="#4、总结区别" class="headerlink" title="4、总结区别"></a>4、总结区别</h2><h3 id="a-声明变量时不同的内存分配："><a href="#a-声明变量时不同的内存分配：" class="headerlink" title="a.声明变量时不同的内存分配：　"></a>a.声明变量时不同的内存分配：　</h3><p>1）原始值：存储在栈（stack）中的简单数据段，也就是说，它们的值直接存储在变量访问的位置。<br>这是因为这些原始类型占据的空间是固定的，所以可将他们存储在较小的内存区域–栈中。这样存储便于迅速查寻变量的值。<br>2）引用值：存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存地址。<br>这是因为：引用值的大小会改变，所以不能把它放在栈中，否则会降低变量查寻的速度。相反，放在变量的栈空间中的值是该对象存储在堆中的地址。<br>地址的大小是固定的，所以把它存储在栈中对变量性能无任何负面影响。</p>
-<h3 id="b-不同的内存分配机制也带来了不同的访问机制"><a href="#b-不同的内存分配机制也带来了不同的访问机制" class="headerlink" title="b.不同的内存分配机制也带来了不同的访问机制"></a>b.不同的内存分配机制也带来了不同的访问机制</h3><p>1）在javascript中是不允许直接访问保存在堆内存中的对象的，所以在访问一个对象时，首先得到的是这个对象在堆内存中的地址，然后再按照这个地址去获得这个对象中的值，这就是传说中的按引用访问。<br>2）而原始类型的值则是可以直接访问到的。
-　　</p>
-<h3 id="c-复制变量时的不同"><a href="#c-复制变量时的不同" class="headerlink" title="c 复制变量时的不同"></a>c 复制变量时的不同</h3><p>1）原始值：在将一个保存着原始值的变量复制给另一个变量时，会将原始值的副本赋值给新变量，此后这两个变量是完全独立的，他们只是拥有相同的value而已。<br>2）引用值：在将一个保存着对象内存地址的变量复制给另一个变量时，会把这个内存地址赋值给新变量，也就是说这两个变量都指向了堆内存中的同一个对象，他们中任何一个作出的改变都会反映在另一个身上。（这里要理解的一点就是，复制对象时并不会在堆内存中新生成一个一模一样的对象，只是多了一个保存指向这个对象指针的变量罢了）。多了一个指针</p>
-<h3 id="d-参数传递的不同（把实参复制给形参的过程）"><a href="#d-参数传递的不同（把实参复制给形参的过程）" class="headerlink" title="d 参数传递的不同（把实参复制给形参的过程）"></a>d 参数传递的不同（把实参复制给形参的过程）</h3><p>首先我们应该明确一点：ECMAScript中所有函数的参数都是按值来传递的。<br>但是为什么涉及到原始类型与引用类型的值时仍然有区别呢？还不就是因为内存分配时的差别。 　<br>1）原始值：只是把变量里的值传递给参数，之后参数和这个变量互不影响。<br>2）引用值：对象变量它里面的值是这个对象在堆内存中的内存地址，这一点要时刻铭记在心！<br>因此它传递的值也就是这个内存地址，这也就是为什么函数内部对这个参数的修改会体现在外部的原因了，因为它们都指向同一个对象。</p>
 
           
         
@@ -809,6 +809,138 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/jQuery初体验/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/13/jQuery初体验/" itemprop="url">jQuery初体验</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="为什么要学习jQuery"><a href="#为什么要学习jQuery" class="headerlink" title="为什么要学习jQuery"></a>为什么要学习jQuery</h1><p>jQuery 都过时了，那我还学它干嘛？<br><a href="https://juejin.im/post/5bc3f53b6fb9a05cdd2d309f" target="_blank" rel="noopener">来自方方老师的高赞回答（&lt;—点击）</a></p>
+<h2 id="1-函数的封装"><a href="#1-函数的封装" class="headerlink" title="1.函数的封装"></a>1.函数的封装</h2><p>函数封装是一种函数的功能，它把一个程序员写的一个或者多个功能通过函数、类的方式封装起来，对外只提供一个简单的函数接口。<br>示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> classes = &#123; <span class="string">'a'</span>: <span class="literal">true</span>, <span class="string">'b'</span>: <span class="literal">false</span>, <span class="string">'c'</span>: <span class="literal">true</span> &#125;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> classes) &#123;</span><br><span class="line">       <span class="keyword">let</span> value = classes[key]</span><br><span class="line">            <span class="keyword">if</span> (value) &#123;</span><br><span class="line">               tim4.classList.add(key)</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               tim4.classList.remove(key)</span><br><span class="line">               &#125;</span><br><span class="line">      &#125;</span><br><span class="line"><span class="comment">// 封装后。。。。。。。。。。。。。。。。</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addClass</span>(<span class="params">node,classes</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> classes) &#123;</span><br><span class="line">        <span class="keyword">let</span> value = classes[key]</span><br><span class="line">        <span class="keyword">if</span> (value) &#123;</span><br><span class="line">            node.classList.add(key)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            node.classList.remove(key)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">直接addClass（）就可以了</span><br></pre></td></tr></table></figure></p>
+<p><strong>代码优化守则：凡是看起来相似的代码就存在优化的可能</strong><br>obj.x() ==== obj<a href="">‘x’</a></p>
+<h2 id="2-命名空间"><a href="#2-命名空间" class="headerlink" title="2.命名空间"></a>2.命名空间</h2><p>命名空间是一种设计模式，主要为了解决相同作用域下的命名问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">window.xzxNode = &#123;&#125;   //命名空间</span><br><span class="line">xzxNode.xxx = xxx</span><br><span class="line">xzxNode.addClass = addClass</span><br><span class="line"></span><br><span class="line">xzxNode.xxx(tim1)</span><br></pre></td></tr></table></figure></p>
+<p>jQuery 是一个 JavaScript 库,可以理解为它其实就是一个构造函数，接受一个参数（旧的节点或者字符串），返回一个新的对象，这个对象就是jQuery的对象 window.\$ = jQuery；<br>新的对象里有新的API可以用来操作节点。<br>用全局变量$就相当于在用jQury<br>习俗：如果这个对象是\$（jQuery）的就在对象前面加一个\$，说明这是jQuery构造的，可以用jQuery的API<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSibilings</span>(<span class="params">node</span>) </span>&#123;  <span class="comment">//自己设计的API，getSibilings</span></span><br><span class="line">    <span class="keyword">var</span> allChildren = node.parentNode.children  <span class="comment">//获取这个元素的所有兄弟姐妹</span></span><br><span class="line">    <span class="keyword">var</span> array = &#123; <span class="attr">length</span>: <span class="number">0</span> &#125;                    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; allChildren.length; i++) &#123;      </span><br><span class="line">        <span class="keyword">if</span> (allChildren[i] !== node) &#123;                </span><br><span class="line">            array[array.length] = allChildren[i]</span><br><span class="line">            array.length += <span class="number">1</span>                   </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> array</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//新的接口 BetterNode </span></span><br><span class="line"><span class="built_in">window</span>.jQuery = <span class="function"><span class="keyword">function</span> (<span class="params">node</span>) </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> &#123;</span><br><span class="line">            allSiblings: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">               <span class="keyword">var</span> allChildren = node.parentNode.children  <span class="comment">//获取这个元素的所有兄弟姐妹</span></span><br><span class="line">               <span class="keyword">var</span> array = &#123; <span class="attr">length</span>: <span class="number">0</span> &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; allChildren.length; i++) &#123;</span><br><span class="line">                  <span class="keyword">if</span> (allChildren[i] !== node) &#123;</span><br><span class="line">                        array[array.length] = allChildren[i]</span><br><span class="line">                         array.length += <span class="number">1</span></span><br><span class="line">                  &#125;</span><br><span class="line">             &#125;</span><br><span class="line">         <span class="keyword">return</span> array</span><br><span class="line">         &#125;,</span><br><span class="line">         allClass: <span class="function"><span class="keyword">function</span> (<span class="params">classes</span>) </span>&#123;       </span><br><span class="line">              <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> classes) &#123;                   <span class="comment">//遍历这个classes</span></span><br><span class="line">                    <span class="keyword">let</span> value = classes[key]               <span class="comment">//将classes的【key】给value</span></span><br><span class="line">                    <span class="keyword">let</span> methodClass = value ? <span class="string">'add'</span> : <span class="string">'remove'</span></span><br><span class="line">                     node.classList[methodClass](key)</span><br><span class="line">                    &#125;</span><br><span class="line">               &#125;</span><br><span class="line">          &#125;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">var</span> Node2 = jQuery(tim3)  <span class="comment">//jQuery接受一个旧的节点，返回一个新的对象，新的对象由新的API，这个对象就是jQuery的对象</span></span><br><span class="line">Node2.allsiblings()</span><br><span class="line">Node2.allClass()</span><br><span class="line"></span><br><span class="line"><span class="comment">//确定是节点还是字符串</span></span><br><span class="line"><span class="built_in">window</span>.jQuery = <span class="function"><span class="keyword">function</span> (<span class="params">nodeOrSelector</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> nodes = &#123;&#125;</span><br><span class="line">    <span class="keyword">if</span> (nodeOrSelector === <span class="string">'string'</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> temp = <span class="built_in">document</span>.querySelector(nodeOrSelector)</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">let</span> i=<span class="number">0</span>; i&lt; temp.length;i++ )&#123;</span><br><span class="line">            nodes[i] = temp[i]</span><br><span class="line">            node.length = temp.length</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nodeOrSelector <span class="keyword">instanceof</span> Node)&#123;</span><br><span class="line">            nodes = &#123;</span><br><span class="line">                <span class="number">0</span> : nodeOrSelector,</span><br><span class="line">                length :<span class="number">1</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="自测题实现一个-jQuery-的-API"><a href="#自测题实现一个-jQuery-的-API" class="headerlink" title="自测题实现一个 jQuery 的 API"></a>自测题实现一个 jQuery 的 API</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.jQuery = <span class="function"><span class="keyword">function</span> (<span class="params">nodeOrSelector</span>) </span>&#123;     <span class="comment">//获取节点或字符串</span></span><br><span class="line">    <span class="keyword">let</span> $nodes = &#123;&#125;                             <span class="comment">//初始化一个空对象，将之后字符串或数组放进去</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> nodeOrSelector === <span class="string">'string'</span>) &#123;   <span class="comment">//识别输入的是节点还是字符串</span></span><br><span class="line">        <span class="keyword">let</span> temp = <span class="built_in">document</span>.querySelectorAll(nodeOrSelector)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; temp.length; i++) &#123;</span><br><span class="line">            $nodes[i] = temp[i]</span><br><span class="line">        &#125;</span><br><span class="line">        $nodes.length = temp.length</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nodeOrSelector <span class="keyword">instanceof</span> Node) &#123;     <span class="comment">//如果是节点那么久把它放入伪数组</span></span><br><span class="line">        nodes = &#123;</span><br><span class="line">            <span class="number">0</span>: nodeOrSelector,</span><br><span class="line">            length: <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    $nodes.addClass = <span class="function"><span class="keyword">function</span> (<span class="params">classes</span>) </span>&#123;      <span class="comment">//获取参数，遍历找到相关节点，给相关节点添加value</span></span><br><span class="line">        classes.forEach(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; $nodes.length; i++) &#123;</span><br><span class="line">                $nodes[i].classList.add(value)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    $nodes.setText = <span class="function"><span class="keyword">function</span> (<span class="params">text</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (text === <span class="literal">undefined</span>) &#123;               <span class="comment">//如果文本为空，则添加文本</span></span><br><span class="line">            <span class="keyword">var</span> texts = []</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; $nodes.length; i++) &#123;</span><br><span class="line">                texts.push($nodes[i].textContent)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> texts</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;                      <span class="comment">//否则输出文本内容</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; $nodes.length; i++) &#123;</span><br><span class="line">                $nodes[i].textContent = text</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $nodes</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.$ = jQuery</span><br><span class="line"><span class="keyword">var</span> $div = $(<span class="string">'div'</span>)</span><br><span class="line">$div.addClass([<span class="string">'red'</span>]) <span class="comment">// 可将所有 div 的 class 添加一个 red</span></span><br><span class="line">$div.setText(<span class="string">'hi'</span>) <span class="comment">// 可将所有 div 的 textContent 变为 hi</span></span><br></pre></td></tr></table></figure>
+<h2 id="7-jQuery与DOM转换"><a href="#7-jQuery与DOM转换" class="headerlink" title="7.jQuery与DOM转换"></a>7.jQuery与DOM转换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=x&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>var div = document.getElementById(‘x’)<br>var \$div = $(‘#x’)</p>
+<p>请说出 div 和 $div 的联系和区别。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">jquery转dom</span><br><span class="line">var div = $div[0] //这样jquery就转换成了DOM对象，或div = $div.get(0)</span><br><span class="line"></span><br><span class="line">dom转jquery</span><br><span class="line">var $div = $(div); //这样dom对象div，就转换成了jquery对象</span><br></pre></td></tr></table></figure></p>
+<h2 id="中文版jQuery-API文档"><a href="#中文版jQuery-API文档" class="headerlink" title="中文版jQuery API文档"></a><a href="http://cndevdocs.com/" target="_blank" rel="noopener">中文版jQuery API文档</a></h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/http简介/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -981,7 +1113,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/jQuery初体验/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/hello-world/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coveru">
@@ -1000,7 +1132,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/13/jQuery初体验/" itemprop="url">jQuery初体验</a></h1>
+                <a class="post-title-link" href="/2018/11/13/hello-world/" itemprop="url">Hello World</a></h1>
         
 
         <div class="post-meta">
@@ -1052,16 +1184,16 @@
       
         
           
-            <h1 id="为什么要学习jQuery"><a href="#为什么要学习jQuery" class="headerlink" title="为什么要学习jQuery"></a>为什么要学习jQuery</h1><p>jQuery 都过时了，那我还学它干嘛？<br><a href="https://juejin.im/post/5bc3f53b6fb9a05cdd2d309f" target="_blank" rel="noopener">来自方方老师的高赞回答（&lt;—点击）</a></p>
-<h2 id="1-函数的封装"><a href="#1-函数的封装" class="headerlink" title="1.函数的封装"></a>1.函数的封装</h2><p>函数封装是一种函数的功能，它把一个程序员写的一个或者多个功能通过函数、类的方式封装起来，对外只提供一个简单的函数接口。<br>示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> classes = &#123; <span class="string">'a'</span>: <span class="literal">true</span>, <span class="string">'b'</span>: <span class="literal">false</span>, <span class="string">'c'</span>: <span class="literal">true</span> &#125;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> classes) &#123;</span><br><span class="line">       <span class="keyword">let</span> value = classes[key]</span><br><span class="line">            <span class="keyword">if</span> (value) &#123;</span><br><span class="line">               tim4.classList.add(key)</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               tim4.classList.remove(key)</span><br><span class="line">               &#125;</span><br><span class="line">      &#125;</span><br><span class="line"><span class="comment">// 封装后。。。。。。。。。。。。。。。。</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addClass</span>(<span class="params">node,classes</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> classes) &#123;</span><br><span class="line">        <span class="keyword">let</span> value = classes[key]</span><br><span class="line">        <span class="keyword">if</span> (value) &#123;</span><br><span class="line">            node.classList.add(key)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            node.classList.remove(key)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">直接addClass（）就可以了</span><br></pre></td></tr></table></figure></p>
-<p><strong>代码优化守则：凡是看起来相似的代码就存在优化的可能</strong><br>obj.x() ==== obj<a href="">‘x’</a></p>
-<h2 id="2-命名空间"><a href="#2-命名空间" class="headerlink" title="2.命名空间"></a>2.命名空间</h2><p>命名空间是一种设计模式，主要为了解决相同作用域下的命名问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">window.xzxNode = &#123;&#125;   //命名空间</span><br><span class="line">xzxNode.xxx = xxx</span><br><span class="line">xzxNode.addClass = addClass</span><br><span class="line"></span><br><span class="line">xzxNode.xxx(tim1)</span><br></pre></td></tr></table></figure></p>
-<p>jQuery 是一个 JavaScript 库,可以理解为它其实就是一个构造函数，接受一个参数（旧的节点或者字符串），返回一个新的对象，这个对象就是jQuery的对象 window.\$ = jQuery；<br>新的对象里有新的API可以用来操作节点。<br>用全局变量$就相当于在用jQury<br>习俗：如果这个对象是\$（jQuery）的就在对象前面加一个\$，说明这是jQuery构造的，可以用jQuery的API<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSibilings</span>(<span class="params">node</span>) </span>&#123;  <span class="comment">//自己设计的API，getSibilings</span></span><br><span class="line">    <span class="keyword">var</span> allChildren = node.parentNode.children  <span class="comment">//获取这个元素的所有兄弟姐妹</span></span><br><span class="line">    <span class="keyword">var</span> array = &#123; <span class="attr">length</span>: <span class="number">0</span> &#125;                    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; allChildren.length; i++) &#123;      </span><br><span class="line">        <span class="keyword">if</span> (allChildren[i] !== node) &#123;                </span><br><span class="line">            array[array.length] = allChildren[i]</span><br><span class="line">            array.length += <span class="number">1</span>                   </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> array</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//新的接口 BetterNode </span></span><br><span class="line"><span class="built_in">window</span>.jQuery = <span class="function"><span class="keyword">function</span> (<span class="params">node</span>) </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> &#123;</span><br><span class="line">            allSiblings: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">               <span class="keyword">var</span> allChildren = node.parentNode.children  <span class="comment">//获取这个元素的所有兄弟姐妹</span></span><br><span class="line">               <span class="keyword">var</span> array = &#123; <span class="attr">length</span>: <span class="number">0</span> &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; allChildren.length; i++) &#123;</span><br><span class="line">                  <span class="keyword">if</span> (allChildren[i] !== node) &#123;</span><br><span class="line">                        array[array.length] = allChildren[i]</span><br><span class="line">                         array.length += <span class="number">1</span></span><br><span class="line">                  &#125;</span><br><span class="line">             &#125;</span><br><span class="line">         <span class="keyword">return</span> array</span><br><span class="line">         &#125;,</span><br><span class="line">         allClass: <span class="function"><span class="keyword">function</span> (<span class="params">classes</span>) </span>&#123;       </span><br><span class="line">              <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> classes) &#123;                   <span class="comment">//遍历这个classes</span></span><br><span class="line">                    <span class="keyword">let</span> value = classes[key]               <span class="comment">//将classes的【key】给value</span></span><br><span class="line">                    <span class="keyword">let</span> methodClass = value ? <span class="string">'add'</span> : <span class="string">'remove'</span></span><br><span class="line">                     node.classList[methodClass](key)</span><br><span class="line">                    &#125;</span><br><span class="line">               &#125;</span><br><span class="line">          &#125;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">var</span> Node2 = jQuery(tim3)  <span class="comment">//jQuery接受一个旧的节点，返回一个新的对象，新的对象由新的API，这个对象就是jQuery的对象</span></span><br><span class="line">Node2.allsiblings()</span><br><span class="line">Node2.allClass()</span><br><span class="line"></span><br><span class="line"><span class="comment">//确定是节点还是字符串</span></span><br><span class="line"><span class="built_in">window</span>.jQuery = <span class="function"><span class="keyword">function</span> (<span class="params">nodeOrSelector</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> nodes = &#123;&#125;</span><br><span class="line">    <span class="keyword">if</span> (nodeOrSelector === <span class="string">'string'</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> temp = <span class="built_in">document</span>.querySelector(nodeOrSelector)</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">let</span> i=<span class="number">0</span>; i&lt; temp.length;i++ )&#123;</span><br><span class="line">            nodes[i] = temp[i]</span><br><span class="line">            node.length = temp.length</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nodeOrSelector <span class="keyword">instanceof</span> Node)&#123;</span><br><span class="line">            nodes = &#123;</span><br><span class="line">                <span class="number">0</span> : nodeOrSelector,</span><br><span class="line">                length :<span class="number">1</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="自测题实现一个-jQuery-的-API"><a href="#自测题实现一个-jQuery-的-API" class="headerlink" title="自测题实现一个 jQuery 的 API"></a>自测题实现一个 jQuery 的 API</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.jQuery = <span class="function"><span class="keyword">function</span> (<span class="params">nodeOrSelector</span>) </span>&#123;     <span class="comment">//获取节点或字符串</span></span><br><span class="line">    <span class="keyword">let</span> $nodes = &#123;&#125;                             <span class="comment">//初始化一个空对象，将之后字符串或数组放进去</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> nodeOrSelector === <span class="string">'string'</span>) &#123;   <span class="comment">//识别输入的是节点还是字符串</span></span><br><span class="line">        <span class="keyword">let</span> temp = <span class="built_in">document</span>.querySelectorAll(nodeOrSelector)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; temp.length; i++) &#123;</span><br><span class="line">            $nodes[i] = temp[i]</span><br><span class="line">        &#125;</span><br><span class="line">        $nodes.length = temp.length</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nodeOrSelector <span class="keyword">instanceof</span> Node) &#123;     <span class="comment">//如果是节点那么久把它放入伪数组</span></span><br><span class="line">        nodes = &#123;</span><br><span class="line">            <span class="number">0</span>: nodeOrSelector,</span><br><span class="line">            length: <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    $nodes.addClass = <span class="function"><span class="keyword">function</span> (<span class="params">classes</span>) </span>&#123;      <span class="comment">//获取参数，遍历找到相关节点，给相关节点添加value</span></span><br><span class="line">        classes.forEach(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; $nodes.length; i++) &#123;</span><br><span class="line">                $nodes[i].classList.add(value)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    $nodes.setText = <span class="function"><span class="keyword">function</span> (<span class="params">text</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (text === <span class="literal">undefined</span>) &#123;               <span class="comment">//如果文本为空，则添加文本</span></span><br><span class="line">            <span class="keyword">var</span> texts = []</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; $nodes.length; i++) &#123;</span><br><span class="line">                texts.push($nodes[i].textContent)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> texts</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;                      <span class="comment">//否则输出文本内容</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; $nodes.length; i++) &#123;</span><br><span class="line">                $nodes[i].textContent = text</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $nodes</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.$ = jQuery</span><br><span class="line"><span class="keyword">var</span> $div = $(<span class="string">'div'</span>)</span><br><span class="line">$div.addClass([<span class="string">'red'</span>]) <span class="comment">// 可将所有 div 的 class 添加一个 red</span></span><br><span class="line">$div.setText(<span class="string">'hi'</span>) <span class="comment">// 可将所有 div 的 textContent 变为 hi</span></span><br></pre></td></tr></table></figure>
-<h2 id="7-jQuery与DOM转换"><a href="#7-jQuery与DOM转换" class="headerlink" title="7.jQuery与DOM转换"></a>7.jQuery与DOM转换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=x&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>var div = document.getElementById(‘x’)<br>var \$div = $(‘#x’)</p>
-<p>请说出 div 和 $div 的联系和区别。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">jquery转dom</span><br><span class="line">var div = $div[0] //这样jquery就转换成了DOM对象，或div = $div.get(0)</span><br><span class="line"></span><br><span class="line">dom转jquery</span><br><span class="line">var $div = $(div); //这样dom对象div，就转换成了jquery对象</span><br></pre></td></tr></table></figure></p>
-<h2 id="中文版jQuery-API文档"><a href="#中文版jQuery-API文档" class="headerlink" title="中文版jQuery API文档"></a><a href="http://cndevdocs.com/" target="_blank" rel="noopener">中文版jQuery API文档</a></h2>
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
           
         
       
@@ -1266,7 +1398,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/DOM-API/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coveru">
@@ -1285,7 +1417,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/13/hello-world/" itemprop="url">Hello World</a></h1>
+                <a class="post-title-link" href="/2018/11/13/DOM-API/" itemprop="url">DOM API</a></h1>
         
 
         <div class="post-meta">
@@ -1337,15 +1469,13 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+            <p>#前言<br>前面有对dom的定义和概述以及dom操作进行了描述，本篇说下dom-api的几个重要知识。</p>
+<h2 id="1-nextSIbling和previousSibling"><a href="#1-nextSIbling和previousSibling" class="headerlink" title="1. nextSIbling和previousSibling"></a>1. nextSIbling和previousSibling</h2><p>nextSIbling和previousSibling可能获取到的是文本节点，因为有时候标签之前还有空格，这也属于文本节点</p>
+<h2 id="2-innerText-和-textContent的区别"><a href="#2-innerText-和-textContent的区别" class="headerlink" title="2. innerText 和 textContent的区别"></a>2. innerText 和 textContent的区别</h2><p>innerText 和 textContent是稍微有点区别的，前者是微软发布的，后者是火狐发布，innerText更加智能一点，会选择根据text内容选择获取，但是这样也导致它更费时间。而textContent则不会，只要是文本内容都会获取，包括script/style这种标签里的代码文本内容。</p>
+<h2 id="3-nodeType-主要记两个值"><a href="#3-nodeType-主要记两个值" class="headerlink" title="3. nodeType 主要记两个值"></a>3. nodeType 主要记两个值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1     Node.ELEMENT_NODE              | 一个 元素 节点，例如 &lt;p&gt;和&lt;div&gt;。</span><br><span class="line">3     Node.TEXT_NODE   	             |  Element 或者 Attr 中实际的 文字</span><br></pre></td></tr></table></figure>
+<h2 id="4-cloneNode"><a href="#4-cloneNode" class="headerlink" title="4. cloneNode()"></a>4. cloneNode()</h2><p>参数（true）就是深拷贝，（false）/()就是浅拷贝。<br>浅拷贝只复制一层对象的属性，而深拷贝则递归复制了所有层级.</p>
+<h2 id="5-isSameNode与isEquaNode的区别"><a href="#5-isSameNode与isEquaNode的区别" class="headerlink" title="5. isSameNode与isEquaNode的区别"></a>5. isSameNode与isEquaNode的区别</h2><p>isSameNode是两个真的是一模一样（完全相同，内存地址也一样）<br>isEquaNode是两个看起来一模一样（内存地址不一样）</p>
+<h2 id="6-normalize-的作用"><a href="#6-normalize-的作用" class="headerlink" title="6.normalize()的作用"></a>6.normalize()的作用</h2><p>当前节点和它的后代节点”规范化“（normalized）。在一个”规范化”后的DOM树中，不存在一个空的文本节点，或者两个相邻的文本节点。<br>注1：“空的文本节点”并不包括空白字符(空格，换行等)构成的文本节点。<br>注2：两个以上相邻文本节点的产生原因包括：<br>通过脚本调用有关的DOM接口进行了文本节点的插入和分割等。<br>HTML中超长的文本节点会被浏览器自动分割为多个相邻文本节点。<br>字面翻译就是使动词|使···正常<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var wrapper = document.createElement(&quot;div&quot;);</span><br><span class="line"></span><br><span class="line">wrapper.appendChild(document.createTextNode(&quot;Part 1 &quot;));</span><br><span class="line">wrapper.appendChild(document.createTextNode(&quot;Part 2 &quot;));</span><br><span class="line"></span><br><span class="line">// 这时(规范化之前),wrapper.childNodes.length === 2</span><br><span class="line">// wrapper.childNodes[0].textContent === &quot;Part 1 &quot;</span><br><span class="line">// wrapper.childNodes[1].textContent === &quot;Part 2 &quot;</span><br><span class="line"></span><br><span class="line">wrapper.normalize();</span><br><span class="line">// 现在(规范化之后), wrapper.childNodes.length === 1</span><br><span class="line">// wrapper.childNodes[0].textContent === &quot;Part 1 Part 2&quot;</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -1479,136 +1609,6 @@ b. git add css/style.css
 </code></pre><img src="http://wx3.sinaimg.cn/mw690/006sJW3Ggy1fvhd2gxs1wj30bl07o0tw.jpg" alt="示例">        </li>
 <li>git commit -v<br>找到当前目录有文件改动但是没被追踪的文件<br>改动文件已经追踪但是想要更详细的对修改了哪些内容的提示，可以用 git commit -v 选项，这会将你所做的改变的 diff 输出放到编辑器中从而使你知道本次提交具体做了哪些修改<br><img src="http://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvhcxl235bj30al06u3yq.jpg" alt="示例1"><br><img src="http://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvhcxl2bkcj30fv08nmxs.jpg" alt="示例2">      </li>
 </ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/DOM-API/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coveru">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="coveru's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/DOM-API/" itemprop="url">DOM API</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#前言<br>前面有对dom的定义和概述以及dom操作进行了描述，本篇说下dom-api的几个重要知识。</p>
-<h2 id="1-nextSIbling和previousSibling"><a href="#1-nextSIbling和previousSibling" class="headerlink" title="1. nextSIbling和previousSibling"></a>1. nextSIbling和previousSibling</h2><p>nextSIbling和previousSibling可能获取到的是文本节点，因为有时候标签之前还有空格，这也属于文本节点</p>
-<h2 id="2-innerText-和-textContent的区别"><a href="#2-innerText-和-textContent的区别" class="headerlink" title="2. innerText 和 textContent的区别"></a>2. innerText 和 textContent的区别</h2><p>innerText 和 textContent是稍微有点区别的，前者是微软发布的，后者是火狐发布，innerText更加智能一点，会选择根据text内容选择获取，但是这样也导致它更费时间。而textContent则不会，只要是文本内容都会获取，包括script/style这种标签里的代码文本内容。</p>
-<h2 id="3-nodeType-主要记两个值"><a href="#3-nodeType-主要记两个值" class="headerlink" title="3. nodeType 主要记两个值"></a>3. nodeType 主要记两个值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1     Node.ELEMENT_NODE              | 一个 元素 节点，例如 &lt;p&gt;和&lt;div&gt;。</span><br><span class="line">3     Node.TEXT_NODE   	             |  Element 或者 Attr 中实际的 文字</span><br></pre></td></tr></table></figure>
-<h2 id="4-cloneNode"><a href="#4-cloneNode" class="headerlink" title="4. cloneNode()"></a>4. cloneNode()</h2><p>参数（true）就是深拷贝，（false）/()就是浅拷贝。<br>浅拷贝只复制一层对象的属性，而深拷贝则递归复制了所有层级.</p>
-<h2 id="5-isSameNode与isEquaNode的区别"><a href="#5-isSameNode与isEquaNode的区别" class="headerlink" title="5. isSameNode与isEquaNode的区别"></a>5. isSameNode与isEquaNode的区别</h2><p>isSameNode是两个真的是一模一样（完全相同，内存地址也一样）<br>isEquaNode是两个看起来一模一样（内存地址不一样）</p>
-<h2 id="6-normalize-的作用"><a href="#6-normalize-的作用" class="headerlink" title="6.normalize()的作用"></a>6.normalize()的作用</h2><p>当前节点和它的后代节点”规范化“（normalized）。在一个”规范化”后的DOM树中，不存在一个空的文本节点，或者两个相邻的文本节点。<br>注1：“空的文本节点”并不包括空白字符(空格，换行等)构成的文本节点。<br>注2：两个以上相邻文本节点的产生原因包括：<br>通过脚本调用有关的DOM接口进行了文本节点的插入和分割等。<br>HTML中超长的文本节点会被浏览器自动分割为多个相邻文本节点。<br>字面翻译就是使动词|使···正常<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var wrapper = document.createElement(&quot;div&quot;);</span><br><span class="line"></span><br><span class="line">wrapper.appendChild(document.createTextNode(&quot;Part 1 &quot;));</span><br><span class="line">wrapper.appendChild(document.createTextNode(&quot;Part 2 &quot;));</span><br><span class="line"></span><br><span class="line">// 这时(规范化之前),wrapper.childNodes.length === 2</span><br><span class="line">// wrapper.childNodes[0].textContent === &quot;Part 1 &quot;</span><br><span class="line">// wrapper.childNodes[1].textContent === &quot;Part 2 &quot;</span><br><span class="line"></span><br><span class="line">wrapper.normalize();</span><br><span class="line">// 现在(规范化之后), wrapper.childNodes.length === 1</span><br><span class="line">// wrapper.childNodes[0].textContent === &quot;Part 1 Part 2&quot;</span><br></pre></td></tr></table></figure></p>
 
           
         

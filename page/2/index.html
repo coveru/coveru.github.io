@@ -259,154 +259,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JS里的函数/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coveru">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="coveru's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/JS里的函数/" itemprop="url">JS里的函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-函数的五种声明方式"><a href="#1-函数的五种声明方式" class="headerlink" title="1.函数的五种声明方式"></a>1.函数的五种声明方式</h2><blockquote>
-<ul>
-<li>function name(参数){ return }</li>
-<li>var f = function (参数）{ return } //匿名函数</li>
-<li>var f = function name(参数){ return } // 具名函数</li>
-<li>new Function(‘x’,’y’,’return x+y’) // 全局变量声明</li>
-<li>(x,y) =&gt; { return x+y}    // 箭头函数</li>
-</ul>
-</blockquote>
-<p>箭头函数后面如果只用执行一句话 可以把return和{}一起省略例如：<br>(x,y) =&gt; { return x+y} /  (x,y) =&gt; x+y;<br>如果箭头函数前面的参数只有一个，圆括号也可以省略，例如：<br> (n) =&gt; n<em>n   /   n =&gt; n</em>n ;<br>变量声明可以是Number String Boolean null undefined Symbol Object<br>而函数声明只能是 函数。<br>以下两种声明方式具有不一致性：</p>
-<pre><code>function y(){}
-console.log(y) // 可以直接调用
-////////////////////////////////////
-var x = function y(){}
-console.log (y)     //y不能被调用，调用仅限在{}内部可以调用
-</code></pre><p><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwkl1f6b1nj30ze0lcq46.jpg" alt=""></p>
-<h2 id="2-函数的name属性"><a href="#2-函数的name属性" class="headerlink" title="2.函数的name属性"></a>2.函数的name属性</h2><p>没什么用的属性，而且还是个大坑！<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwkl1f5uxoj30jc0j43z7.jpg" alt=""></p>
-<h2 id="3-函数的本质"><a href="#3-函数的本质" class="headerlink" title="3.函数的本质"></a>3.函数的本质</h2><p>可以执行代码的对象就是函数，函数就是可以反复使用的代码块。函数可以接受输入的参数，不同的参数会返回不同的值。</p>
-<h3 id="f与f-call-的区别"><a href="#f与f-call-的区别" class="headerlink" title="f与f.call()的区别"></a>f与f.call()的区别</h3><p>f知识一个函数对象<br>f.call()是f的方法 表示执行这个函数的函数体<br>f(1,2) ========= f.call(undefined,1,2)<br>【this】，【arguments】<br>f.call(undefined,1,2)其中undefined就是this，1,2就是arguments<br>call的第一个参数可以用this<br>call后面的参数可以用arguments<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="meta">	'use strict'</span>   <span class="comment">//严格模式</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>===<span class="built_in">window</span>) <span class="comment">//严格模式下等于undefined，非严格模式等于window</span></span><br><span class="line">&#125;</span><br><span class="line">返回</span><br><span class="line">f.call(<span class="literal">undefined</span>)</span><br><span class="line"><span class="literal">false</span>    <span class="comment">//严格模式下返回false，非严格模式返回ture</span></span><br><span class="line"><span class="literal">undefined</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="4-作用域"><a href="#4-作用域" class="headerlink" title="4.作用域"></a>4.作用域</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a =<span class="number">1</span>    <span class="comment">//所在区域为全局scope，全局作用域</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;   <span class="comment">//理解为所在区域为二级作用域</span></span><br><span class="line">	<span class="built_in">console</span>.log(a)</span><br><span class="line">	<span class="keyword">var</span> a =<span class="number">2</span></span><br><span class="line">	f2.call()</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;   <span class="comment">//理解为三级作用域</span></span><br><span class="line">		<span class="keyword">var</span> a = <span class="number">3</span></span><br><span class="line">		<span class="built_in">console</span>.log(a) </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">f1call()</span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br></pre></td></tr></table></figure>
-<h2 id="5-闭包"><a href="#5-闭包" class="headerlink" title="5.闭包"></a>5.闭包</h2><p>如果一个函数使用了他范围外的变量，那么（这个函数+这个变量）就是闭包<br>例：</p>
-<pre><code>var a = 1;
-function f(){
-console.log(a)
-}
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JS初体验/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1261,6 +1113,159 @@ console.log(a)
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/HTML常用标签/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/13/HTML常用标签/" itemprop="url">HTML常用标签</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#HTML常用标签<br>date: 2018-09-26 23:39:04<br>tags:知识小结</p>
+<p>##前言<br>HTML是用来描述网页的一种语言，也就是超级文本标记语言，标记语言是一套标记标签，html就是使用标记标签来描述网页，刚刚接触html，总结整理一些常用的html标  签，以供以后记忆和查阅. </p>
+<pre><code>1. &lt;html&gt; 标签 表示一个HTML文档的根（顶级元素），所以它也被称为根元素。所有其他元素必须
+是此元素的后代；&lt;html&gt; 与 &lt;/html&gt; 之间的文本描述网页。
+2.&lt;body&gt;标签表示文档的内容,它必须是&lt;html&gt;元素的直接子元素。
+3.&lt;head&gt;文档相关的配置信息（元数据），包括文档的标题，引用的文档样式和脚本等。
+4.&lt;h1&gt;--&lt;h6&gt;定义标题，其中&lt;h1&gt;定义最大的标题，&lt;h6&gt;定义最小的标题。
+5.&lt;p&gt;标签定义段落。&lt;p&gt;元素（或者说 HTML 段落元素）表示文本的一个段落。该元素通常表
+现为一整块与相邻文本分离的文本，或以垂直的空白隔离或以首行缩进。另外，&lt;p&gt; 是块级元素。
+6.6.&lt;kbd&gt;用于表示用户输入，它将产生一个行内元素，以浏览器的默认monospace字体显示。
+7.&lt;a&gt; 标签  (或锚元素) 可以创建一个到其他网页、文件、同一页面内的位置、电子邮件地址或任何
+其他URL的超链接。
+  示例：&lt;a href=&quot;http://www.baidu.com“&gt;百度&lt;/a&gt;  创建了到百度的超链接。
+8.&lt;hr/&gt; 该标签在页面中创建水平线 用于分隔内容。
+9&lt;br/&gt;  该标签在文本中生成一个换行（回车）符号。此元素在写诗和地址时很有用，这些地方的换行
+都非常重要。
+10.&lt;div&gt;  定义文档中的分区或节，没有特定含义，应用很多。
+11.&lt;span&gt;该标签是短语内容的通用行内容器，并没有任何特殊语义。可以使用它来编组元素以达到某种
+样式意图。
+&lt;span&gt; 与 &lt;div&gt; 元素很相似，但 &lt;div&gt; 是一个 块元素 而 &lt;span&gt; 则是 行内元素。
+12&lt;img&gt;该标签用于定于文档中的图片，是一个空元素，必须有开始标签却不允许有结束标签。
+  示例&lt;img src=&quot;XXX&quot; width=&quot;X&quot;  heigth=&quot;X&quot;/&gt;
+13.&lt;form&gt;表示了文档中的一个区域，这个区域包含有交互控制元件，用来向web服务器提交信息。
+&lt;form&gt;一般用于跳转链接，发起POST请求。
+ 示例：&lt;form action=&quot;&quot; method=”POST“&gt;&lt;input type=”submit“ value=”“&gt;&lt;/form&gt;
+14.&lt;input&gt; 用于为基于Web的表单创建交互式控件，以便接受来自用户的数据,它是一个空标签。
+15.&lt;table&gt;该标签表示表格数据 — 即通过二维数据表表示的信息。
+16.&lt;ol&gt; 表示多个有序的列表项。
+17.&lt;ul&gt; 表示多个无序的列表项。
+</code></pre><p>常用的个人暂时学了这些，希望以后在日常学习和使用中能熟练掌握，加油！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/hello-world/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1393,7 +1398,7 @@ console.log(a)
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/HTML常用标签/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/git入门/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coveru">
@@ -1412,7 +1417,7 @@ console.log(a)
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/13/HTML常用标签/" itemprop="url">HTML常用标签</a></h1>
+                <a class="post-title-link" href="/2018/11/13/git入门/" itemprop="url">git入门</a></h1>
         
 
         <div class="post-meta">
@@ -1464,36 +1469,16 @@ console.log(a)
       
         
           
-            <p>#HTML常用标签<br>date: 2018-09-26 23:39:04<br>tags:知识小结</p>
-<p>##前言<br>HTML是用来描述网页的一种语言，也就是超级文本标记语言，标记语言是一套标记标签，html就是使用标记标签来描述网页，刚刚接触html，总结整理一些常用的html标  签，以供以后记忆和查阅. </p>
-<pre><code>1. &lt;html&gt; 标签 表示一个HTML文档的根（顶级元素），所以它也被称为根元素。所有其他元素必须
-是此元素的后代；&lt;html&gt; 与 &lt;/html&gt; 之间的文本描述网页。
-2.&lt;body&gt;标签表示文档的内容,它必须是&lt;html&gt;元素的直接子元素。
-3.&lt;head&gt;文档相关的配置信息（元数据），包括文档的标题，引用的文档样式和脚本等。
-4.&lt;h1&gt;--&lt;h6&gt;定义标题，其中&lt;h1&gt;定义最大的标题，&lt;h6&gt;定义最小的标题。
-5.&lt;p&gt;标签定义段落。&lt;p&gt;元素（或者说 HTML 段落元素）表示文本的一个段落。该元素通常表
-现为一整块与相邻文本分离的文本，或以垂直的空白隔离或以首行缩进。另外，&lt;p&gt; 是块级元素。
-6.6.&lt;kbd&gt;用于表示用户输入，它将产生一个行内元素，以浏览器的默认monospace字体显示。
-7.&lt;a&gt; 标签  (或锚元素) 可以创建一个到其他网页、文件、同一页面内的位置、电子邮件地址或任何
-其他URL的超链接。
-  示例：&lt;a href=&quot;http://www.baidu.com“&gt;百度&lt;/a&gt;  创建了到百度的超链接。
-8.&lt;hr/&gt; 该标签在页面中创建水平线 用于分隔内容。
-9&lt;br/&gt;  该标签在文本中生成一个换行（回车）符号。此元素在写诗和地址时很有用，这些地方的换行
-都非常重要。
-10.&lt;div&gt;  定义文档中的分区或节，没有特定含义，应用很多。
-11.&lt;span&gt;该标签是短语内容的通用行内容器，并没有任何特殊语义。可以使用它来编组元素以达到某种
-样式意图。
-&lt;span&gt; 与 &lt;div&gt; 元素很相似，但 &lt;div&gt; 是一个 块元素 而 &lt;span&gt; 则是 行内元素。
-12&lt;img&gt;该标签用于定于文档中的图片，是一个空元素，必须有开始标签却不允许有结束标签。
-  示例&lt;img src=&quot;XXX&quot; width=&quot;X&quot;  heigth=&quot;X&quot;/&gt;
-13.&lt;form&gt;表示了文档中的一个区域，这个区域包含有交互控制元件，用来向web服务器提交信息。
-&lt;form&gt;一般用于跳转链接，发起POST请求。
- 示例：&lt;form action=&quot;&quot; method=”POST“&gt;&lt;input type=”submit“ value=”“&gt;&lt;/form&gt;
-14.&lt;input&gt; 用于为基于Web的表单创建交互式控件，以便接受来自用户的数据,它是一个空标签。
-15.&lt;table&gt;该标签表示表格数据 — 即通过二维数据表表示的信息。
-16.&lt;ol&gt; 表示多个有序的列表项。
-17.&lt;ul&gt; 表示多个无序的列表项。
-</code></pre><p>常用的个人暂时学了这些，希望以后在日常学习和使用中能熟练掌握，加油！</p>
+            <p>#Git入门<br>date: 2018-09-21 15:58:21<br>tags:git</p>
+<p>关于 git init, git add以及git commit -v如何使用—</p>
+<ol>
+<li>git init<br>此命令是在项目目录创建一个空的Git存储库或重新初始化现有存储库，也就是.git目录，这个子目录含有你初始化的 Git 仓库中所有的必须文件，这些文件是 Git 仓库的骨干<br><img src="http://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvhcxl1t67j30fe05n3z7.jpg" alt="示例"></li>
+<li>git add<br>此命令是用来将项目目录里的文件添加到「暂存区」,创建文件和修改文件后需要把文件添加到仓库，即对文件进行跟踪<br>i，你可以一个一个地 add<pre><code>a. git add index.html
+b. git add css/style.css
+</code></pre>ii,你也可以一次性 add<pre><code>a. git add . 意思是把当前目录（.表示当前目录）里面的变动都加到「暂存区」
+</code></pre><img src="http://wx3.sinaimg.cn/mw690/006sJW3Ggy1fvhd2gxs1wj30bl07o0tw.jpg" alt="示例">        </li>
+<li>git commit -v<br>找到当前目录有文件改动但是没被追踪的文件<br>改动文件已经追踪但是想要更详细的对修改了哪些内容的提示，可以用 git commit -v 选项，这会将你所做的改变的 diff 输出放到编辑器中从而使你知道本次提交具体做了哪些修改<br><img src="http://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvhcxl235bj30al06u3yq.jpg" alt="示例1"><br><img src="http://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvhcxl2bkcj30fv08nmxs.jpg" alt="示例2">      </li>
+</ol>
 
           
         
@@ -1713,7 +1698,7 @@ console.log(a)
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -259,6 +259,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/16/css学习小结/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/16/css学习小结/" itemprop="url">css学习小结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-16T14:34:04+08:00">
+                2018-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>css作为前端必备技能，是很有必要去好好学习一番的，在学习的这段时间我很快就发现css其实上手并不难，但是想要学好学会真的很难，css的不正交，属性多和性价比低是主要原因。即便如此，前期还是很有必要掌握一些css基本套路的，随着工作中的时间应用css技能也会逐步提升的。</p>
+<h2 id="总结一些css的重要知识点或者说套路。"><a href="#总结一些css的重要知识点或者说套路。" class="headerlink" title="总结一些css的重要知识点或者说套路。"></a>总结一些css的重要知识点或者说套路。</h2><h3 id="1-几个常见的css布局套路：两种水平居中、三种垂直居中、两种左右结构、两种左中右结构"><a href="#1-几个常见的css布局套路：两种水平居中、三种垂直居中、两种左右结构、两种左中右结构" class="headerlink" title="1.几个常见的css布局套路：两种水平居中、三种垂直居中、两种左右结构、两种左中右结构"></a>1.<a href="https://coveru.github.io/2018/11/13/css%E5%B8%83%E5%B1%80/" target="_blank" rel="noopener">几个常见的css布局套路：两种水平居中、三种垂直居中、两种左右结构、两种左中右结构</a></h3><h3 id="2-控制文档流：利用好默认的宽度和高度规则"><a href="#2-控制文档流：利用好默认的宽度和高度规则" class="headerlink" title="2.控制文档流：利用好默认的宽度和高度规则"></a>2.控制文档流：利用好默认的宽度和高度规则</h3><p>了解内联元素和块级元素以及决定他们的高度和宽度的因素</p>
+<h3 id="3-Z-index"><a href="#3-Z-index" class="headerlink" title="3.Z-index"></a>3.Z-index</h3><p>堆叠上下文和堆叠顺序,只能给定位元素加z-index；</p>
+<h3 id="4-移动端页面（响应式）"><a href="#4-移动端页面（响应式）" class="headerlink" title="4.移动端页面（响应式）"></a>4.移动端页面（响应式）</h3><ol>
+<li>学会媒体查询<br>@meida (max-width:800px){<br> body{background:red;}<br>}<br>@media 接受一个查询条件，如果满足条件{}里的css样式就生效；</li>
+<li><p>要在手机端加一个meta标签</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>动态rem（手机专用的自适用方案）<br>用JS把html的font-size设置等于页面宽度</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pagewidth = <span class="built_in">window</span>.innerwidth</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">'&lt;style&gt;html&#123;font-size:'</span>+pagewidth+<span class="string">'px;&#125;&lt;/style&gt;'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>了解手机端的特点例如：手机端没有hover但是有touch，手机端没后resize，没有滚动条；</p>
+<h3 id="5-Flex和float布局"><a href="#5-Flex和float布局" class="headerlink" title="5.Flex和float布局"></a>5.Flex和float布局</h3><p>flex出现之前的布局，normal flow(正常流也叫文档流)：</p>
+</li>
+<li>float+clear:子元素float left  父元素加clearfix类，写好clearfix样式</li>
+<li>position定位</li>
+<li>display： inline-block   横向布局</li>
+<li>负margin<br>flxe布局<br>父元素加display：flex；<br>justify-content 主轴方向对齐<br>align-items  侧轴方向对齐<br>区别特点：</li>
+<li>块级布局侧重垂直方向，行内布局侧重水平方向，flex布局与方向无关</li>
+<li>flex布局可以实现空间自动分配自动对齐</li>
+<li>flex布局适合简单的线性布局，更复杂的布局需要使用grid布局<h3 id="布局套路"><a href="#布局套路" class="headerlink" title="布局套路"></a>布局套路</h3></li>
+</ol>
+<p>是否要支持IE8:  是——&gt; float布局（定宽）\<br>              否——&gt; flex布局（弹性宽度）</p>
+<h3 id="icon的使用"><a href="#icon的使用" class="headerlink" title="icon的使用"></a>icon的使用</h3><p>前期主要使用工具（阿里巴巴矢量图标库）</p>
+<h3 id="Bootstrap的使用"><a href="#Bootstrap的使用" class="headerlink" title="Bootstrap的使用"></a>Bootstrap的使用</h3><p>工具，参照说明直接使用。<br>下载——&gt;安装——&gt;引入——&gt;使用\<br><strong>注意：bootstrap的js文件引入前必须要先确保引入了jQuery</strong></p>
+<p>###了解BFC和IFC<br>block formatting context和inline formatting context</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>css学精难，入门没那么难，日常工作应付使用的话掌握些套路足矣，后期根据需要和兴趣再另行深入学习。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/14/换电脑/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -529,140 +679,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/阶段性学习小结/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coveru">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="coveru's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/阶段性学习小结/" itemprop="url">阶段性学习小结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>寄语：<br>日常学习过程中一定记得要细心，养成好的习惯为自己成为合格的程序员打下好的习惯基础，好记性不如烂笔头，多写博客多记笔记有助于巩固自己所学。</p>
-<h2 id="1-整合工具解决问题"><a href="#1-整合工具解决问题" class="headerlink" title="1.整合工具解决问题"></a>1.整合工具解决问题</h2><pre><code>HTML——MDN（Mozilla Developer Network 译：Mozilla开发者网络）
-CSS——MDN+CSS Tricks 
-张鑫旭的244篇css博客（https://www.zhangxinxu.com/wordpress/category/css/page/25/）
-JavaScript——阮一峰（http://javascript.ruanyifeng.com/） 
-推荐购买 JavaScript高级程序设计
-HTTP——frankfang/node.js test
-其他——（Github） 上搜索 google
-英语—— 默默记单词app 每天记5-10个程序员专用词汇
-</code></pre><h2 id="2-知识学习心得"><a href="#2-知识学习心得" class="headerlink" title="2. 知识学习心得"></a>2. 知识学习心得</h2><p>经过2周左右的学习，从http-html-nodejs-css都有了个初步的印象，总结经验：<br>1）各种工具要多用（git-vscode等）多用多练肯定不会差<br>2）html尽快看完老师课程；css先跟着敲，多敲几遍到自己都能记下来；js先理解后操作；<br>3）不懂的不要钻牛角非要自己去搜，问问群里的同学和老师，学习阶段的问题再丢人好过日后工作中的丢人~<br>4）多踩坑，听说学的更快~</p>
-<h2 id="3-自省"><a href="#3-自省" class="headerlink" title="3.自省"></a>3.自省</h2><p>学习效率有待提高，提高学习中的专注度，不能轻易分神，不要轻易改变自己的学习计划或者降低对自己的要求<br>每周的健身训练计划记得坚持，自律给你自由！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/算法及数据结构/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -827,7 +843,7 @@ HTTP——frankfang/node.js test
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/开博大吉/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/阶段性学习小结/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coveru">
@@ -846,7 +862,7 @@ HTTP——frankfang/node.js test
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/13/开博大吉/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2018/11/13/阶段性学习小结/" itemprop="url">阶段性学习小结</a></h1>
         
 
         <div class="post-meta">
@@ -898,8 +914,157 @@ HTTP——frankfang/node.js test
       
         
           
-            <p>—123456 first blog<br>title: 开博大吉<br>date: 2018-09-19 14:35:22</p>
-<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2>
+            <p>寄语：<br>日常学习过程中一定记得要细心，养成好的习惯为自己成为合格的程序员打下好的习惯基础，好记性不如烂笔头，多写博客多记笔记有助于巩固自己所学。</p>
+<h2 id="1-整合工具解决问题"><a href="#1-整合工具解决问题" class="headerlink" title="1.整合工具解决问题"></a>1.整合工具解决问题</h2><pre><code>HTML——MDN（Mozilla Developer Network 译：Mozilla开发者网络）
+CSS——MDN+CSS Tricks 
+张鑫旭的244篇css博客（https://www.zhangxinxu.com/wordpress/category/css/page/25/）
+JavaScript——阮一峰（http://javascript.ruanyifeng.com/） 
+推荐购买 JavaScript高级程序设计
+HTTP——frankfang/node.js test
+其他——（Github） 上搜索 google
+英语—— 默默记单词app 每天记5-10个程序员专用词汇
+</code></pre><h2 id="2-知识学习心得"><a href="#2-知识学习心得" class="headerlink" title="2. 知识学习心得"></a>2. 知识学习心得</h2><p>经过2周左右的学习，从http-html-nodejs-css都有了个初步的印象，总结经验：<br>1）各种工具要多用（git-vscode等）多用多练肯定不会差<br>2）html尽快看完老师课程；css先跟着敲，多敲几遍到自己都能记下来；js先理解后操作；<br>3）不懂的不要钻牛角非要自己去搜，问问群里的同学和老师，学习阶段的问题再丢人好过日后工作中的丢人~<br>4）多踩坑，听说学的更快~</p>
+<h2 id="3-自省"><a href="#3-自省" class="headerlink" title="3.自省"></a>3.自省</h2><p>学习效率有待提高，提高学习中的专注度，不能轻易分神，不要轻易改变自己的学习计划或者降低对自己的要求<br>每周的健身训练计划记得坚持，自律给你自由！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/原型与原型链知识点梳理/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/13/原型与原型链知识点梳理/" itemprop="url">原型与原型链知识点梳理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>原型和原型链是js学习中的一个难点也是重点，虽然说可能学完后懂了大概，但是却发现自己很难用自己的方式描述自己学到的东西，但这肯定是不行的，所以在网上看了部分关于原型和原型链的博客并进行了引用。以下是简单的知识点梳理。</p>
+<h2 id="使用构造函数创建对象"><a href="#使用构造函数创建对象" class="headerlink" title="使用构造函数创建对象"></a>使用构造函数创建对象</h2><p>首先，我们先用一个构造函数创建一个对象：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> Person();</span><br><span class="line">person.name = <span class="string">'Li'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(person.name);  <span class="comment">//Li</span></span><br></pre></td></tr></table></figure></p>
+<p>在这个炒鸡简单的例子中，Person就是一个构造函数，person是构造函数Person的实例。</p>
+<h3 id="prototype"><a href="#prototype" class="headerlink" title="prototype"></a>prototype</h3><p>每个函数都有一个prototype属性，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">Person.prototype.name = <span class="string">'Li'</span>;</span><br><span class="line"><span class="keyword">let</span> personOne = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">let</span> personTwo = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(personOne.name);  <span class="comment">//Li</span></span><br><span class="line"><span class="built_in">console</span>.log(personTwo.name);  <span class="comment">//Li</span></span><br></pre></td></tr></table></figure></p>
+<p>我们可以看到，personOne和personTwo作为Person的实例，从构造函数中继承了name属性。 那么prototype到底是什么呢？我们执行一下下面的代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">Person.prototype.name = <span class="string">'Li'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(Person.prototype);</span><br></pre></td></tr></table></figure></p>
+<p>我们可以看到，prototype就是构造函数本身，也就是说一个函数的prototype指向了函数自己。</p>
+<h3 id="proto"><a href="#proto" class="headerlink" title="__proto__"></a>__proto__</h3><p>ok，看完了上面，那__proto__又是什么东西？我们试试下面的代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">Person.prototype.name = <span class="string">'Li'</span>;</span><br><span class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(person.__proto__);</span><br></pre></td></tr></table></figure></p>
+<p>我们发现，person.__proto__和Person.prototype看起来似乎一模一样，ok，我们再试试：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">Person.prototype.name = <span class="string">'Li'</span>;</span><br><span class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(person.__proto__ === Person.prototype);  <span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<p>上面的输出结果为true，说明person.__proto__和Person.prototype指向同一个对象.<br><strong>对象.__proto__ === 函数.prototype</strong><br>我们再看一段代码:</p>
+<pre><code>function Person() {};
+Person.prototype.name = &apos;Li&apos;;
+let person = new Person();
+console.log(person.prototype);  //undefined 
+</code></pre><p>我们可以看到，person.prototype为undefined。###只有函数对象才会有prototype属性，但是每个对象都拥有__proto__属性(null除外)。<br>person通过__proto__属性继承了Person.prototype，每当我们调用person上的方法和属性时，js先去自身属性和方法中查找，如果在查找不到，再去__proto__中查找，就这样一级一级向上查找，这就是原型和原型链。</p>
+<p>原型规则：<br>__proto__:隐式原型<br>prototype:显式原型<br>.所有的引用类型都具有对象特性，即可自由扩展属性。<br>.所有的引用类型都有一个隐式原型属性，属性值是一个普通对象。<br>.所有的函数都有一个显式原型属性，属性值也是一个对象。<br>.所有引用类型隐式原型属性值指向它的构造函数的显式原型属性值。<br>.当试图得到一个对象的某个属性时，如果这个对象本身没有这个属性，那么会去他的隐式原型(即它的构造函数的显式原型中寻找)</p>
+<p>参考链接<br>[<a href="https://github.com/niuzhenn/__proto__-and-prototype]" target="_blank" rel="noopener">https://github.com/niuzhenn/__proto__-and-prototype]</a><br>[<a href="http://www.cnblogs.com/wangfupeng1988/p/4001284.html]" target="_blank" rel="noopener">http://www.cnblogs.com/wangfupeng1988/p/4001284.html]</a></p>
+
           
         
       
@@ -1070,145 +1235,6 @@ HTTP——frankfang/node.js test
 <p> -t 　使用指定的日期时间，而非现在的时间。<br>iiii，示例：<br><img src="http://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvh6xx7dbwj30on0ca0vt.jpg" alt="示例"><br>最后说下关于explainshell.com 这个网站如何使用，其实我也是很无奈啊~最近打开这个网址一直出错，好在今天可以了，对，我是谷歌搜的！<br>当我们不知道某个命令是什么意思的时候，又不愿意去查看man手册的时候，就可以使用这个网站了，简洁明了<del>~</del>~（前提要是能FQ）】<br><img src="http://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvh57l0fu3j30o90brgms.jpg" alt="示例">      </p>
 </li>
 </ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/原型与原型链知识点梳理/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coveru">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="coveru's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/原型与原型链知识点梳理/" itemprop="url">原型与原型链知识点梳理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>原型和原型链是js学习中的一个难点也是重点，虽然说可能学完后懂了大概，但是却发现自己很难用自己的方式描述自己学到的东西，但这肯定是不行的，所以在网上看了部分关于原型和原型链的博客并进行了引用。以下是简单的知识点梳理。</p>
-<h2 id="使用构造函数创建对象"><a href="#使用构造函数创建对象" class="headerlink" title="使用构造函数创建对象"></a>使用构造函数创建对象</h2><p>首先，我们先用一个构造函数创建一个对象：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> Person();</span><br><span class="line">person.name = <span class="string">'Li'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(person.name);  <span class="comment">//Li</span></span><br></pre></td></tr></table></figure></p>
-<p>在这个炒鸡简单的例子中，Person就是一个构造函数，person是构造函数Person的实例。</p>
-<h3 id="prototype"><a href="#prototype" class="headerlink" title="prototype"></a>prototype</h3><p>每个函数都有一个prototype属性，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">Person.prototype.name = <span class="string">'Li'</span>;</span><br><span class="line"><span class="keyword">let</span> personOne = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">let</span> personTwo = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(personOne.name);  <span class="comment">//Li</span></span><br><span class="line"><span class="built_in">console</span>.log(personTwo.name);  <span class="comment">//Li</span></span><br></pre></td></tr></table></figure></p>
-<p>我们可以看到，personOne和personTwo作为Person的实例，从构造函数中继承了name属性。 那么prototype到底是什么呢？我们执行一下下面的代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">Person.prototype.name = <span class="string">'Li'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(Person.prototype);</span><br></pre></td></tr></table></figure></p>
-<p>我们可以看到，prototype就是构造函数本身，也就是说一个函数的prototype指向了函数自己。</p>
-<h3 id="proto"><a href="#proto" class="headerlink" title="__proto__"></a>__proto__</h3><p>ok，看完了上面，那__proto__又是什么东西？我们试试下面的代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">Person.prototype.name = <span class="string">'Li'</span>;</span><br><span class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(person.__proto__);</span><br></pre></td></tr></table></figure></p>
-<p>我们发现，person.__proto__和Person.prototype看起来似乎一模一样，ok，我们再试试：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">Person.prototype.name = <span class="string">'Li'</span>;</span><br><span class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(person.__proto__ === Person.prototype);  <span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
-<p>上面的输出结果为true，说明person.__proto__和Person.prototype指向同一个对象.<br><strong>对象.__proto__ === 函数.prototype</strong><br>我们再看一段代码:</p>
-<pre><code>function Person() {};
-Person.prototype.name = &apos;Li&apos;;
-let person = new Person();
-console.log(person.prototype);  //undefined 
-</code></pre><p>我们可以看到，person.prototype为undefined。###只有函数对象才会有prototype属性，但是每个对象都拥有__proto__属性(null除外)。<br>person通过__proto__属性继承了Person.prototype，每当我们调用person上的方法和属性时，js先去自身属性和方法中查找，如果在查找不到，再去__proto__中查找，就这样一级一级向上查找，这就是原型和原型链。</p>
-<p>原型规则：<br>__proto__:隐式原型<br>prototype:显式原型<br>.所有的引用类型都具有对象特性，即可自由扩展属性。<br>.所有的引用类型都有一个隐式原型属性，属性值是一个普通对象。<br>.所有的函数都有一个显式原型属性，属性值也是一个对象。<br>.所有引用类型隐式原型属性值指向它的构造函数的显式原型属性值。<br>.当试图得到一个对象的某个属性时，如果这个对象本身没有这个属性，那么会去他的隐式原型(即它的构造函数的显式原型中寻找)</p>
-<p>参考链接<br>[<a href="https://github.com/niuzhenn/__proto__-and-prototype]" target="_blank" rel="noopener">https://github.com/niuzhenn/__proto__-and-prototype]</a><br>[<a href="http://www.cnblogs.com/wangfupeng1988/p/4001284.html]" target="_blank" rel="noopener">http://www.cnblogs.com/wangfupeng1988/p/4001284.html]</a></p>
 
           
         

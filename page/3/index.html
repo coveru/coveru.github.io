@@ -259,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/git入门/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/DOM-API/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coveru">
@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/13/git入门/" itemprop="url">git入门</a></h1>
+                <a class="post-title-link" href="/2018/11/13/DOM-API/" itemprop="url">DOM API</a></h1>
         
 
         <div class="post-meta">
@@ -330,16 +330,13 @@
       
         
           
-            <h1 id="Git入门"><a href="#Git入门" class="headerlink" title="Git入门"></a>Git入门</h1><p>date: 2018-09-21 15:58:21<br>tags:git</p>
-<p>关于 git init, git add以及git commit -v如何使用—</p>
-<ol>
-<li>git init<br>此命令是在项目目录创建一个空的Git存储库或重新初始化现有存储库，也就是.git目录，这个子目录含有你初始化的 Git 仓库中所有的必须文件，这些文件是 Git 仓库的骨干<br><img src="http://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvhcxl1t67j30fe05n3z7.jpg" alt="示例"></li>
-<li>git add<br>此命令是用来将项目目录里的文件添加到「暂存区」,创建文件和修改文件后需要把文件添加到仓库，即对文件进行跟踪<br>i，你可以一个一个地 add<pre><code>a. git add index.html
-b. git add css/style.css
-</code></pre>ii,你也可以一次性 add<pre><code>a. git add . 意思是把当前目录（.表示当前目录）里面的变动都加到「暂存区」
-</code></pre><img src="http://wx3.sinaimg.cn/mw690/006sJW3Ggy1fvhd2gxs1wj30bl07o0tw.jpg" alt="示例">        </li>
-<li>git commit -v<br>找到当前目录有文件改动但是没被追踪的文件<br>改动文件已经追踪但是想要更详细的对修改了哪些内容的提示，可以用 git commit -v 选项，这会将你所做的改变的 diff 输出放到编辑器中从而使你知道本次提交具体做了哪些修改<br><img src="http://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvhcxl235bj30al06u3yq.jpg" alt="示例1"><br><img src="http://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvhcxl2bkcj30fv08nmxs.jpg" alt="示例2">      </li>
-</ol>
+            <p>#前言<br>前面有对dom的定义和概述以及dom操作进行了描述，本篇说下dom-api的几个重要知识。</p>
+<h2 id="1-nextSIbling和previousSibling"><a href="#1-nextSIbling和previousSibling" class="headerlink" title="1. nextSIbling和previousSibling"></a>1. nextSIbling和previousSibling</h2><p>nextSIbling和previousSibling可能获取到的是文本节点，因为有时候标签之前还有空格，这也属于文本节点</p>
+<h2 id="2-innerText-和-textContent的区别"><a href="#2-innerText-和-textContent的区别" class="headerlink" title="2. innerText 和 textContent的区别"></a>2. innerText 和 textContent的区别</h2><p>innerText 和 textContent是稍微有点区别的，前者是微软发布的，后者是火狐发布，innerText更加智能一点，会选择根据text内容选择获取，但是这样也导致它更费时间。而textContent则不会，只要是文本内容都会获取，包括script/style这种标签里的代码文本内容。</p>
+<h2 id="3-nodeType-主要记两个值"><a href="#3-nodeType-主要记两个值" class="headerlink" title="3. nodeType 主要记两个值"></a>3. nodeType 主要记两个值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1     Node.ELEMENT_NODE              | 一个 元素 节点，例如 &lt;p&gt;和&lt;div&gt;。</span><br><span class="line">3     Node.TEXT_NODE   	             |  Element 或者 Attr 中实际的 文字</span><br></pre></td></tr></table></figure>
+<h2 id="4-cloneNode"><a href="#4-cloneNode" class="headerlink" title="4. cloneNode()"></a>4. cloneNode()</h2><p>参数（true）就是深拷贝，（false）/()就是浅拷贝。<br>浅拷贝只复制一层对象的属性，而深拷贝则递归复制了所有层级.</p>
+<h2 id="5-isSameNode与isEquaNode的区别"><a href="#5-isSameNode与isEquaNode的区别" class="headerlink" title="5. isSameNode与isEquaNode的区别"></a>5. isSameNode与isEquaNode的区别</h2><p>isSameNode是两个真的是一模一样（完全相同，内存地址也一样）<br>isEquaNode是两个看起来一模一样（内存地址不一样）</p>
+<h2 id="6-normalize-的作用"><a href="#6-normalize-的作用" class="headerlink" title="6.normalize()的作用"></a>6.normalize()的作用</h2><p>当前节点和它的后代节点”规范化“（normalized）。在一个”规范化”后的DOM树中，不存在一个空的文本节点，或者两个相邻的文本节点。<br>注1：“空的文本节点”并不包括空白字符(空格，换行等)构成的文本节点。<br>注2：两个以上相邻文本节点的产生原因包括：<br>通过脚本调用有关的DOM接口进行了文本节点的插入和分割等。<br>HTML中超长的文本节点会被浏览器自动分割为多个相邻文本节点。<br>字面翻译就是使动词|使···正常<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var wrapper = document.createElement(&quot;div&quot;);</span><br><span class="line"></span><br><span class="line">wrapper.appendChild(document.createTextNode(&quot;Part 1 &quot;));</span><br><span class="line">wrapper.appendChild(document.createTextNode(&quot;Part 2 &quot;));</span><br><span class="line"></span><br><span class="line">// 这时(规范化之前),wrapper.childNodes.length === 2</span><br><span class="line">// wrapper.childNodes[0].textContent === &quot;Part 1 &quot;</span><br><span class="line">// wrapper.childNodes[1].textContent === &quot;Part 2 &quot;</span><br><span class="line"></span><br><span class="line">wrapper.normalize();</span><br><span class="line">// 现在(规范化之后), wrapper.childNodes.length === 1</span><br><span class="line">// wrapper.childNodes[0].textContent === &quot;Part 1 Part 2&quot;</span><br></pre></td></tr></table></figure></p>
 
           
         

@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="#前言前面有对dom的定义和概述以及dom操作进行了描述，本篇说下dom-api的几个重要知识。 1. nextSIbling和previousSiblingnextSIbling和previousSibling可能获取到的是文本节点，因为有时候标签之前还有空格，这也属于文本节点 2. innerText 和 textContent的区别innerText 和 textContent是稍微有点区别">
+<meta name="description" content="概述css作为前端必备技能，是很有必要去好好学习一番的，在学习的这段时间我很快就发现css其实上手并不难，但是想要学好学会真的很难，css的不正交，属性多和性价比低是主要原因。即便如此，前期还是很有必要掌握一些css基本套路的，随着工作中的时间应用css技能也会逐步提升的。 总结一些css的重要知识点或者说套路。1.几个常见的css布局套路：两种水平居中、三种垂直居中、两种左右结构、两种左中右结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DOM API">
-<meta property="og:url" content="http://yoursite.com/2018/11/13/DOM-API/index.html">
+<meta property="og:title" content="css学习小结">
+<meta property="og:url" content="http://yoursite.com/2018/11/16/css学习小结/index.html">
 <meta property="og:site_name" content="coveru&#39;s blog">
-<meta property="og:description" content="#前言前面有对dom的定义和概述以及dom操作进行了描述，本篇说下dom-api的几个重要知识。 1. nextSIbling和previousSiblingnextSIbling和previousSibling可能获取到的是文本节点，因为有时候标签之前还有空格，这也属于文本节点 2. innerText 和 textContent的区别innerText 和 textContent是稍微有点区别">
+<meta property="og:description" content="概述css作为前端必备技能，是很有必要去好好学习一番的，在学习的这段时间我很快就发现css其实上手并不难，但是想要学好学会真的很难，css的不正交，属性多和性价比低是主要原因。即便如此，前期还是很有必要掌握一些css基本套路的，随着工作中的时间应用css技能也会逐步提升的。 总结一些css的重要知识点或者说套路。1.几个常见的css布局套路：两种水平居中、三种垂直居中、两种左右结构、两种左中右结构">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-13T16:57:34.410Z">
+<meta property="og:updated_time" content="2018-11-19T02:48:45.723Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DOM API">
-<meta name="twitter:description" content="#前言前面有对dom的定义和概述以及dom操作进行了描述，本篇说下dom-api的几个重要知识。 1. nextSIbling和previousSiblingnextSIbling和previousSibling可能获取到的是文本节点，因为有时候标签之前还有空格，这也属于文本节点 2. innerText 和 textContent的区别innerText 和 textContent是稍微有点区别">
+<meta name="twitter:title" content="css学习小结">
+<meta name="twitter:description" content="概述css作为前端必备技能，是很有必要去好好学习一番的，在学习的这段时间我很快就发现css其实上手并不难，但是想要学好学会真的很难，css的不正交，属性多和性价比低是主要原因。即便如此，前期还是很有必要掌握一些css基本套路的，随着工作中的时间应用css技能也会逐步提升的。 总结一些css的重要知识点或者说套路。1.几个常见的css布局套路：两种水平居中、三种垂直居中、两种左右结构、两种左中右结构">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/13/DOM-API/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/16/css学习小结/">
 
 
 
 
 
-  <title>DOM API | coveru's blog</title>
+  <title>css学习小结 | coveru's blog</title>
   
 
 
@@ -262,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/DOM-API/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/16/css学习小结/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coveru">
@@ -279,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">DOM API</h1>
+          <h1 class="post-title" itemprop="name headline">css学习小结</h1>
         
 
         <div class="post-meta">
@@ -291,8 +291,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
-                2018-11-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-16T14:34:04+08:00">
+                2018-11-16
               </time>
             
 
@@ -329,13 +329,33 @@
       
 
       
-        <p>#前言<br>前面有对dom的定义和概述以及dom操作进行了描述，本篇说下dom-api的几个重要知识。</p>
-<h2 id="1-nextSIbling和previousSibling"><a href="#1-nextSIbling和previousSibling" class="headerlink" title="1. nextSIbling和previousSibling"></a>1. nextSIbling和previousSibling</h2><p>nextSIbling和previousSibling可能获取到的是文本节点，因为有时候标签之前还有空格，这也属于文本节点</p>
-<h2 id="2-innerText-和-textContent的区别"><a href="#2-innerText-和-textContent的区别" class="headerlink" title="2. innerText 和 textContent的区别"></a>2. innerText 和 textContent的区别</h2><p>innerText 和 textContent是稍微有点区别的，前者是微软发布的，后者是火狐发布，innerText更加智能一点，会选择根据text内容选择获取，但是这样也导致它更费时间。而textContent则不会，只要是文本内容都会获取，包括script/style这种标签里的代码文本内容。</p>
-<h2 id="3-nodeType-主要记两个值"><a href="#3-nodeType-主要记两个值" class="headerlink" title="3. nodeType 主要记两个值"></a>3. nodeType 主要记两个值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1     Node.ELEMENT_NODE              | 一个 元素 节点，例如 &lt;p&gt;和&lt;div&gt;。</span><br><span class="line">3     Node.TEXT_NODE   	             |  Element 或者 Attr 中实际的 文字</span><br></pre></td></tr></table></figure>
-<h2 id="4-cloneNode"><a href="#4-cloneNode" class="headerlink" title="4. cloneNode()"></a>4. cloneNode()</h2><p>参数（true）就是深拷贝，（false）/()就是浅拷贝。<br>浅拷贝只复制一层对象的属性，而深拷贝则递归复制了所有层级.</p>
-<h2 id="5-isSameNode与isEquaNode的区别"><a href="#5-isSameNode与isEquaNode的区别" class="headerlink" title="5. isSameNode与isEquaNode的区别"></a>5. isSameNode与isEquaNode的区别</h2><p>isSameNode是两个真的是一模一样（完全相同，内存地址也一样）<br>isEquaNode是两个看起来一模一样（内存地址不一样）</p>
-<h2 id="6-normalize-的作用"><a href="#6-normalize-的作用" class="headerlink" title="6.normalize()的作用"></a>6.normalize()的作用</h2><p>当前节点和它的后代节点”规范化“（normalized）。在一个”规范化”后的DOM树中，不存在一个空的文本节点，或者两个相邻的文本节点。<br>注1：“空的文本节点”并不包括空白字符(空格，换行等)构成的文本节点。<br>注2：两个以上相邻文本节点的产生原因包括：<br>通过脚本调用有关的DOM接口进行了文本节点的插入和分割等。<br>HTML中超长的文本节点会被浏览器自动分割为多个相邻文本节点。<br>字面翻译就是使动词|使···正常<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var wrapper = document.createElement(&quot;div&quot;);</span><br><span class="line"></span><br><span class="line">wrapper.appendChild(document.createTextNode(&quot;Part 1 &quot;));</span><br><span class="line">wrapper.appendChild(document.createTextNode(&quot;Part 2 &quot;));</span><br><span class="line"></span><br><span class="line">// 这时(规范化之前),wrapper.childNodes.length === 2</span><br><span class="line">// wrapper.childNodes[0].textContent === &quot;Part 1 &quot;</span><br><span class="line">// wrapper.childNodes[1].textContent === &quot;Part 2 &quot;</span><br><span class="line"></span><br><span class="line">wrapper.normalize();</span><br><span class="line">// 现在(规范化之后), wrapper.childNodes.length === 1</span><br><span class="line">// wrapper.childNodes[0].textContent === &quot;Part 1 Part 2&quot;</span><br></pre></td></tr></table></figure></p>
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>css作为前端必备技能，是很有必要去好好学习一番的，在学习的这段时间我很快就发现css其实上手并不难，但是想要学好学会真的很难，css的不正交，属性多和性价比低是主要原因。即便如此，前期还是很有必要掌握一些css基本套路的，随着工作中的时间应用css技能也会逐步提升的。</p>
+<h2 id="总结一些css的重要知识点或者说套路。"><a href="#总结一些css的重要知识点或者说套路。" class="headerlink" title="总结一些css的重要知识点或者说套路。"></a>总结一些css的重要知识点或者说套路。</h2><h3 id="1-几个常见的css布局套路：两种水平居中、三种垂直居中、两种左右结构、两种左中右结构"><a href="#1-几个常见的css布局套路：两种水平居中、三种垂直居中、两种左右结构、两种左中右结构" class="headerlink" title="1.几个常见的css布局套路：两种水平居中、三种垂直居中、两种左右结构、两种左中右结构"></a>1.<a href="https://coveru.github.io/2018/11/13/css%E5%B8%83%E5%B1%80/" target="_blank" rel="noopener">几个常见的css布局套路：两种水平居中、三种垂直居中、两种左右结构、两种左中右结构</a></h3><h3 id="2-控制文档流：利用好默认的宽度和高度规则"><a href="#2-控制文档流：利用好默认的宽度和高度规则" class="headerlink" title="2.控制文档流：利用好默认的宽度和高度规则"></a>2.控制文档流：利用好默认的宽度和高度规则</h3><p>了解内联元素和块级元素以及决定他们的高度和宽度的因素</p>
+<h3 id="3-Z-index"><a href="#3-Z-index" class="headerlink" title="3.Z-index"></a>3.Z-index</h3><p>堆叠上下文和堆叠顺序,只能给定位元素加z-index；</p>
+<h3 id="4-移动端页面（响应式）"><a href="#4-移动端页面（响应式）" class="headerlink" title="4.移动端页面（响应式）"></a>4.移动端页面（响应式）</h3><ol>
+<li>学会媒体查询<br>@meida (max-width:800px){<br> body{background:red;}<br>}<br>@media 接受一个查询条件，如果满足条件{}里的css样式就生效；</li>
+<li><p>要在手机端加一个meta标签</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>动态rem（手机专用的自适用方案）<br>用JS把html的font-size设置等于页面宽度</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pagewidth = <span class="built_in">window</span>.innerwidth</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">'&lt;style&gt;html&#123;font-size:'</span>+pagewidth+<span class="string">'px;&#125;&lt;/style&gt;'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>了解手机端的特点例如：手机端没有hover但是有touch，手机端没后resize，没有滚动条；</p>
+<h3 id="5-Flex和float布局"><a href="#5-Flex和float布局" class="headerlink" title="5.Flex和float布局"></a>5.Flex和float布局</h3><p>flex出现之前的布局，normal flow(正常流也叫文档流)：</p>
+</li>
+<li>float+clear:子元素float left  父元素加clearfix类，写好clearfix样式</li>
+<li>position定位</li>
+<li>display： inline-block   横向布局</li>
+<li>负margin<br>flxe布局<br>父元素加display：flex；<br>justify-content 主轴方向对齐<br>align-items  侧轴方向对齐<br>区别特点：</li>
+<li>块级布局侧重垂直方向，行内布局侧重水平方向，flex布局与方向无关</li>
+<li>flex布局可以实现空间自动分配自动对齐</li>
+<li>flex布局适合简单的线性布局，更复杂的布局需要使用grid布局<h3 id="布局套路"><a href="#布局套路" class="headerlink" title="布局套路"></a>布局套路</h3></li>
+</ol>
+<p>是否要支持IE8:  是——&gt; float布局（定宽）\<br>              否——&gt; flex布局（弹性宽度）</p>
+<h3 id="icon的使用"><a href="#icon的使用" class="headerlink" title="icon的使用"></a>icon的使用</h3><p>前期主要使用工具（阿里巴巴矢量图标库）</p>
+<h3 id="Bootstrap的使用"><a href="#Bootstrap的使用" class="headerlink" title="Bootstrap的使用"></a>Bootstrap的使用</h3><p>工具，参照说明直接使用。<br>下载——&gt;安装——&gt;引入——&gt;使用\<br><strong>注意：bootstrap的js文件引入前必须要先确保引入了jQuery</strong></p>
+<p>###了解BFC和IFC<br>block formatting context和inline formatting context</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>css学精难，入门没那么难，日常工作应付使用的话掌握些套路足矣，后期根据需要和兴趣再另行深入学习。</p>
 
       
     </div>
@@ -370,8 +390,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/13/css布局/" rel="next" title="css布局">
-                <i class="fa fa-chevron-left"></i> css布局
+              <a href="/2018/11/14/换电脑/" rel="next" title="换新电脑后使用hexo更新博客">
+                <i class="fa fa-chevron-left"></i> 换新电脑后使用hexo更新博客
               </a>
             
           </div>
@@ -379,10 +399,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/13/git入门/" rel="prev" title="git入门">
-                git入门 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -505,7 +521,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-nextSIbling和previousSibling"><span class="nav-number">1.</span> <span class="nav-text">1. nextSIbling和previousSibling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-innerText-和-textContent的区别"><span class="nav-number">2.</span> <span class="nav-text">2. innerText 和 textContent的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-nodeType-主要记两个值"><span class="nav-number">3.</span> <span class="nav-text">3. nodeType 主要记两个值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-cloneNode"><span class="nav-number">4.</span> <span class="nav-text">4. cloneNode()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-isSameNode与isEquaNode的区别"><span class="nav-number">5.</span> <span class="nav-text">5. isSameNode与isEquaNode的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-normalize-的作用"><span class="nav-number">6.</span> <span class="nav-text">6.normalize()的作用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#总结一些css的重要知识点或者说套路。"><span class="nav-number">1.1.</span> <span class="nav-text">总结一些css的重要知识点或者说套路。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-几个常见的css布局套路：两种水平居中、三种垂直居中、两种左右结构、两种左中右结构"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.几个常见的css布局套路：两种水平居中、三种垂直居中、两种左右结构、两种左中右结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-控制文档流：利用好默认的宽度和高度规则"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.控制文档流：利用好默认的宽度和高度规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Z-index"><span class="nav-number">1.1.3.</span> <span class="nav-text">3.Z-index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-移动端页面（响应式）"><span class="nav-number">1.1.4.</span> <span class="nav-text">4.移动端页面（响应式）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Flex和float布局"><span class="nav-number">1.1.5.</span> <span class="nav-text">5.Flex和float布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#布局套路"><span class="nav-number">1.1.6.</span> <span class="nav-text">布局套路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#icon的使用"><span class="nav-number">1.1.7.</span> <span class="nav-text">icon的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bootstrap的使用"><span class="nav-number">1.1.8.</span> <span class="nav-text">Bootstrap的使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>

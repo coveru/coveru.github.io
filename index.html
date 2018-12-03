@@ -259,6 +259,135 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/03/JS高级-异步-回调以及MVC总结/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/03/JS高级-异步-回调以及MVC总结/" itemprop="url">JS高级-异步@回调</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-03T17:32:31+08:00">
+                2018-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="什么是异步？"><a href="#什么是异步？" class="headerlink" title="什么是异步？"></a>什么是异步？</h2><p>不等任务执行完，不等结果，直接执行下一个任务就是异步。如果几个任务互相独立，其中一个执行时间较长，那么一般就用异步地方式做这件事。<br>同步则是前者执行完拿到结果（返回值）了之后，再执行下一句代码。</p>
+<h2 id="什么是回调？"><a href="#什么是回调？" class="headerlink" title="什么是回调？"></a>什么是回调？</h2><p>callback 是一种特殊的函数，这个函数被作为参数传给另一个函数去调用。这样的函数就是回调函数。<br>例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">functon fn(fn2)&#123;</span><br><span class="line">    fn2.call()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>fn 将别人传给它的 fn2 调用了，这种调用就是回调。</p>
+<h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><p>OO编程就是面向对象编程\<br>面向对象是什么没人说的清楚\<br>可以理解为就像是邻居家的小孩，你不会的他都会\<br>JavaScript 语言使用构造函数（constructor）作为对象的模板。所谓”构造函数”，就是专门用来生成实例对象的函数。它就是对象的模板，描述实例对象的基本结构。一个构造函数，可以生成多个实例对象，这些实例对象都有相同的结构。</p>
+<h3 id="new-当var-object-new-object-时new都做了什么"><a href="#new-当var-object-new-object-时new都做了什么" class="headerlink" title="new 当var object = new object　时new都做了什么"></a>new 当var object = new object　时new都做了什么</h3><p>1.生成一个对象\<br>object是空对象\<br>2.object.proto ===object.prototype\<br>3.绑定this到对象\<br>4.返回对象\<br><img src="https://upload-images.jianshu.io/upload_images/11007474-9e9cbb912daf2eaf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="什么是MVC"><a href="#什么是MVC" class="headerlink" title="什么是MVC"></a>什么是MVC</h3><p>MVC实际上是一种代码组织形式，和代码组织思想，它把代码按功能划分。MVC把代码分成三块，第一块View，View 表示视图，就是来告诉程序你的代码长什么样子或者你的代码在什么位置；第二块Model 操作数据，Model来告诉你数据有哪些操作（包括初始化，获取和保存等）；第三块Controller 是控制器负责其他所有的事情（包括逻辑等方面）。当用户在页面操作view，controller通过监听view的事件拿到view的触发通知，然后controller调用model的数据处理功能，model向服务器发起请求后服务器响应model，model返回数据给controller，然后controller更新页面view。<br>代码示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> model = &#123;</span><br><span class="line">    data: <span class="literal">null</span>,</span><br><span class="line">    init()&#123;&#125;</span><br><span class="line">    fetch()&#123;&#125;</span><br><span class="line">    save()&#123;&#125;</span><br><span class="line">    update()&#123;&#125;</span><br><span class="line">    <span class="keyword">delete</span>()&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">view = &#123;</span><br><span class="line">    init() &#123;&#125;</span><br><span class="line">    template: <span class="string">'&lt;h1&gt;hi&lt;/h1'</span>&gt;</span><br><span class="line">&#125;</span><br><span class="line">controller = &#123;</span><br><span class="line">    view: <span class="literal">null</span>,</span><br><span class="line">    model: <span class="literal">null</span>,</span><br><span class="line">    init(view, model)&#123;</span><br><span class="line">        <span class="keyword">this</span>.view = view</span><br><span class="line">        <span class="keyword">this</span>.model = model</span><br><span class="line">        <span class="keyword">this</span>.bindEvents()</span><br><span class="line">    &#125;</span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="keyword">this</span>.view.querySelector(<span class="string">'name'</span>).innerText = <span class="keyword">this</span>.model.data.name</span><br><span class="line">    &#125;,</span><br><span class="line">    bindEvents()&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/16/css学习小结/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -977,6 +1106,177 @@ HTTP——frankfang/node.js test
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/新手关于几个简单命令以及explainshell-com的粗略见解/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/13/新手关于几个简单命令以及explainshell-com的粗略见解/" itemprop="url">新手关于几个简单命令以及explainshell-com的粗略见解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#几个简单命令以及explainshell<br>date: 2018-09-21 10:08:24</p>
+<ol>
+<li>ls的用法：ls的全称是list，中文释义罗列<br> i, 命令格式: ls [选项] [目录名]<br> ii, 命令功能： 列出目标目录中所有的子目录和文件。<br> iii，常用参数： -a, –all 列出目录下的所有文件，包括以 . 开头的隐含文件<br> -A 同-a，但不列出“.”(表示当前目录)和“..”(表示当前目录的父目录)。<br>  。。。（太多不一一列举，详情请自行google）<pre><code>iiii，示例：
+</code></pre><img src="http://wx2.sinaimg.cn/mw690/006sJW3Ggy1fvh6xx3rkyj30gq022dfr.jpg" alt="示例">             </li>
+<li><p>cat的用法：cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。<br> i，命令格式：cat [选项] [文件]…                ii,命令功能：主要三大功能 i’.一次显示整个文件:cat filename；  ii’.从键盘创建一个文件:cat &gt; filename 只能创建新文件,不能编辑已有文件；iii’.将几个文件合并为一个文件:cat file1 file2 &gt; file<br> iii，命令参数：-A, –show-all           等价于 -vET</p>
+<pre><code>-b, --number-nonblank    对非空输出行编号
+
+-e                       等价于 -vE
+
+-E, --show-ends          在每行结束处显示 $
+
+-n, --number     对输出的所有行编号,由1开始对所有输出的行数编号
+
+-s, --squeeze-blank  有连续两行以上的空白行，就代换为一行的空白行 
+
+-t                       与 -vT 等价
+
+-T, --show-tabs          将跳格字符显示为 ^I
+
+-u                       (被忽略)
+
+                    -v, --show-nonprinting   使用 ^ 和 M- 引用，除了 LFD 和 TAB 之外
+</code></pre><p> iiii，示例:photos:<br><img src="http://wx2.sinaimg.cn/mw690/006sJW3Ggy1fvh6xx6fctj30kq03cmzt.jpg" alt="示例">             </p>
+<pre><code>3. mv的用法：mv命令是move的缩写，可以用来移动文件或者将文件改名（move (rename) files），是Linux系统下常用的命令，经常用来备份文件或者目录。
+    i，命令格式：mv [选项] 源文件或目录 目标文件或目录
+    ii，命令功能：视mv命令中第二个参数类型的不同（是目标文件还是目标目录），mv命令将文件重命名或将其移至一个新的目录中。当第二个参数类型是文件时，mv命令完成文件重命名，此时，源文件只能有一个（也可以是源目录名），它将所给的源文件或目录重命名为给定的目标文件名。当第二个参数是已存在的目录名称时，源文件或目录参数可以有多个，mv命令将各参数指定的源文件均移至目标目录中。在跨文件系统移动文件时，mv先拷贝，再将原有文件删除，而链至该文件的链接也将丢失。
+    iii，命令参数：-b ：若需覆盖文件，则覆盖前先行备份。 
+
+                  -f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；
+
+                  -i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！
+
+                  -u ：若目标文件已经存在，且 source 比较新，才会更新(update)
+
+                  -t ： --target-directory=DIRECTORY move all SOURCE arguments into DIRECTORY，即指定mv的目标目录，该选项适用于移动多个源文件到一个目录的情况，此时目标目录在前，源文件在后。   
+   III，示例：
+</code></pre><p><img src="http://wx1.sinaimg.cn/mw690/006sJW3Ggy1fvh6xx7lo8j30c907kdka.jpg" alt="示例">                </p>
+</li>
+<li><p>touch的用法： linux的touch命令不常用，一般在使用make的时候可能会用到，用来修改文件时间戳，或者新建一个不存在的文件。<br>i， 命令格式： touch [选项]… 文件…<br>ii，命令功能： touch命令参数可更改文档或目录的日期时间，包括存取时间和更改时间。<br>iii，命令参数：</p>
+<p> -a   或–time=atime或–time=access或–time=use 　只更改存取时间。</p>
+<p> -c   或–no-create 　不建立任何文档。</p>
+<p> -d 　使用指定的日期时间，而非现在的时间。</p>
+<p> -f 　此参数将忽略不予处理，仅负责解决BSD版本touch指令的兼容性问题。</p>
+<p> -m   或–time=mtime或–time=modify 　只更改变动时间。</p>
+<p> -r 　把指定文档或目录的日期时间，统统设成和参考文档或目录的日期时间相同。</p>
+<p> -t 　使用指定的日期时间，而非现在的时间。<br>iiii，示例：<br><img src="http://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvh6xx7dbwj30on0ca0vt.jpg" alt="示例"><br>最后说下关于explainshell.com 这个网站如何使用，其实我也是很无奈啊~最近打开这个网址一直出错，好在今天可以了，对，我是谷歌搜的！<br>当我们不知道某个命令是什么意思的时候，又不愿意去查看man手册的时候，就可以使用这个网站了，简洁明了<del>~</del>~（前提要是能FQ）】<br><img src="http://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvh57l0fu3j30o90brgms.jpg" alt="示例">      </p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/原型与原型链知识点梳理/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1116,7 +1416,7 @@ console.log(person.prototype);  //undefined
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/新手关于几个简单命令以及explainshell-com的粗略见解/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JS里的数组/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coveru">
@@ -1135,7 +1435,7 @@ console.log(person.prototype);  //undefined
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/13/新手关于几个简单命令以及explainshell-com的粗略见解/" itemprop="url">新手关于几个简单命令以及explainshell-com的粗略见解</a></h1>
+                <a class="post-title-link" href="/2018/11/13/JS里的数组/" itemprop="url">JS里的数组</a></h1>
         
 
         <div class="post-meta">
@@ -1187,54 +1487,17 @@ console.log(person.prototype);  //undefined
       
         
           
-            <p>#几个简单命令以及explainshell<br>date: 2018-09-21 10:08:24</p>
-<ol>
-<li>ls的用法：ls的全称是list，中文释义罗列<br> i, 命令格式: ls [选项] [目录名]<br> ii, 命令功能： 列出目标目录中所有的子目录和文件。<br> iii，常用参数： -a, –all 列出目录下的所有文件，包括以 . 开头的隐含文件<br> -A 同-a，但不列出“.”(表示当前目录)和“..”(表示当前目录的父目录)。<br>  。。。（太多不一一列举，详情请自行google）<pre><code>iiii，示例：
-</code></pre><img src="http://wx2.sinaimg.cn/mw690/006sJW3Ggy1fvh6xx3rkyj30gq022dfr.jpg" alt="示例">             </li>
-<li><p>cat的用法：cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。<br> i，命令格式：cat [选项] [文件]…                ii,命令功能：主要三大功能 i’.一次显示整个文件:cat filename；  ii’.从键盘创建一个文件:cat &gt; filename 只能创建新文件,不能编辑已有文件；iii’.将几个文件合并为一个文件:cat file1 file2 &gt; file<br> iii，命令参数：-A, –show-all           等价于 -vET</p>
-<pre><code>-b, --number-nonblank    对非空输出行编号
-
--e                       等价于 -vE
-
--E, --show-ends          在每行结束处显示 $
-
--n, --number     对输出的所有行编号,由1开始对所有输出的行数编号
-
--s, --squeeze-blank  有连续两行以上的空白行，就代换为一行的空白行 
-
--t                       与 -vT 等价
-
--T, --show-tabs          将跳格字符显示为 ^I
-
--u                       (被忽略)
-
-                    -v, --show-nonprinting   使用 ^ 和 M- 引用，除了 LFD 和 TAB 之外
-</code></pre><p> iiii，示例:photos:<br><img src="http://wx2.sinaimg.cn/mw690/006sJW3Ggy1fvh6xx6fctj30kq03cmzt.jpg" alt="示例">             </p>
-<pre><code>3. mv的用法：mv命令是move的缩写，可以用来移动文件或者将文件改名（move (rename) files），是Linux系统下常用的命令，经常用来备份文件或者目录。
-    i，命令格式：mv [选项] 源文件或目录 目标文件或目录
-    ii，命令功能：视mv命令中第二个参数类型的不同（是目标文件还是目标目录），mv命令将文件重命名或将其移至一个新的目录中。当第二个参数类型是文件时，mv命令完成文件重命名，此时，源文件只能有一个（也可以是源目录名），它将所给的源文件或目录重命名为给定的目标文件名。当第二个参数是已存在的目录名称时，源文件或目录参数可以有多个，mv命令将各参数指定的源文件均移至目标目录中。在跨文件系统移动文件时，mv先拷贝，再将原有文件删除，而链至该文件的链接也将丢失。
-    iii，命令参数：-b ：若需覆盖文件，则覆盖前先行备份。 
-
-                  -f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；
-
-                  -i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！
-
-                  -u ：若目标文件已经存在，且 source 比较新，才会更新(update)
-
-                  -t ： --target-directory=DIRECTORY move all SOURCE arguments into DIRECTORY，即指定mv的目标目录，该选项适用于移动多个源文件到一个目录的情况，此时目标目录在前，源文件在后。   
-   III，示例：
-</code></pre><p><img src="http://wx1.sinaimg.cn/mw690/006sJW3Ggy1fvh6xx7lo8j30c907kdka.jpg" alt="示例">                </p>
-</li>
-<li><p>touch的用法： linux的touch命令不常用，一般在使用make的时候可能会用到，用来修改文件时间戳，或者新建一个不存在的文件。<br>i， 命令格式： touch [选项]… 文件…<br>ii，命令功能： touch命令参数可更改文档或目录的日期时间，包括存取时间和更改时间。<br>iii，命令参数：</p>
-<p> -a   或–time=atime或–time=access或–time=use 　只更改存取时间。</p>
-<p> -c   或–no-create 　不建立任何文档。</p>
-<p> -d 　使用指定的日期时间，而非现在的时间。</p>
-<p> -f 　此参数将忽略不予处理，仅负责解决BSD版本touch指令的兼容性问题。</p>
-<p> -m   或–time=mtime或–time=modify 　只更改变动时间。</p>
-<p> -r 　把指定文档或目录的日期时间，统统设成和参考文档或目录的日期时间相同。</p>
-<p> -t 　使用指定的日期时间，而非现在的时间。<br>iiii，示例：<br><img src="http://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvh6xx7dbwj30on0ca0vt.jpg" alt="示例"><br>最后说下关于explainshell.com 这个网站如何使用，其实我也是很无奈啊~最近打开这个网址一直出错，好在今天可以了，对，我是谷歌搜的！<br>当我们不知道某个命令是什么意思的时候，又不愿意去查看man手册的时候，就可以使用这个网站了，简洁明了<del>~</del>~（前提要是能FQ）】<br><img src="http://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvh57l0fu3j30o90brgms.jpg" alt="示例">      </p>
-</li>
-</ol>
+            <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>js里的数据类型有基本类型和引用类型（复杂类型），其中引用类型就是对象，数组和函数也是引用了类型，只不过数组和函数是特殊的对象，今天主要总结下数组，直观来说数组就是一组数据的集合，其表现形式就是内存中的一段连续的内存地址，数组名称其实就是连续内存地址的首地址。Array对象是用来构造数组的全局对象，如果一个对象的原型链中有Array.prototype，那它就是一个数组。</p>
+<h2 id="Array的不一致性"><a href="#Array的不一致性" class="headerlink" title="Array的不一致性"></a>Array的不一致性</h2><p>当参数是一个时这个参数表示数组的length；<br>当参数是一个以上的时这第一个参数又变成了第一项的vaule；<br>所以说array的不一致性。。。垃圾~<br><img src="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fwjah8x9ysj30yr0mrgmr.jpg" alt=""></p>
+<h2 id="基本类型和复杂类型在申明时加new的区别"><a href="#基本类型和复杂类型在申明时加new的区别" class="headerlink" title="基本类型和复杂类型在申明时加new的区别"></a>基本类型和复杂类型在申明时加new的区别</h2><p>基本数据类型不加new返回的是基本类型，加new返回的是对象；<br>复杂类型加不加new都一样；<br><img src="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fwjah8x5y0j30z50lz759.jpg" alt=""></p>
+<h2 id="数组和对象"><a href="#数组和对象" class="headerlink" title="数组和对象"></a>数组和对象</h2><p>数组和对象都是对象，只不过是原型链不同<br><img src="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fwjah8x3pij310j0mttad.jpg" alt=""></p>
+<h3 id="伪数组"><a href="#伪数组" class="headerlink" title="伪数组"></a>伪数组</h3><p>伪数组和数组的区别主要是原型链中没有Array.prototype；目前接触到的唯一的伪数组：Argument；</p>
+<h2 id="数组相关API"><a href="#数组相关API" class="headerlink" title="数组相关API"></a>数组相关API</h2><h3 id="1-forEach"><a href="#1-forEach" class="headerlink" title="1.forEach"></a>1.forEach</h3><p>forEach() 方法用于调用数组的每个元素，并将元素传递给回调函数。<br><img src="https://wx3.sinaimg.cn/mw690/006sJW3Ggy1fwjah8x3d2j30mm0lft9z.jpg" alt=""><br><strong>注意: forEach() 对于空数组是不会执行回调函数的</strong><br>forEach会遍历[‘a’,’b’,’c’]这个数组，对每一项都调用function（value，key）这个函数，调用这个函数会传两个参数<br><img src="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fwjd75oroij30ic09p40a.jpg" alt=""></p>
+<h3 id="2-sort"><a href="#2-sort" class="headerlink" title="2.sort"></a>2.sort</h3><p>对数组的元素进行排序，并返回数组。 sort 排序不一定是稳定的默认排序顺序是根据字符串Unicode码点<br>排序的依据<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwjd75oeehj30i709u0vu.jpg" alt=""></p>
+<h3 id="3-map"><a href="#3-map" class="headerlink" title="3.map"></a>3.map</h3><p>该方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。<br><img src="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fwjd75g5cfj309y0ba40j.jpg" alt=""></p>
+<h3 id="4-filter"><a href="#4-filter" class="headerlink" title="4.filter"></a>4.filter</h3><p>该方法创建一个新数组, 其包含通过所提供函数实现的测试的所有元素<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwjd75dhddj30as03ft97.jpg" alt=""><br>.filter.map示例：<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwjd75egldj30af05k75f.jpg" alt=""></p>
+<h3 id="5-reduce"><a href="#5-reduce" class="headerlink" title="5.reduce"></a>5.reduce</h3><p>Reduce是一个很有用的函数，前面提到的map和filter都可以用reduce来实现，reduce 方法接收一个函数作为累加器（accumulator），数组中的每个值（从左到右）开始缩减，最终为一个值。<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwjd75fb9wj30ax0foq5c.jpg" alt=""></p>
+<h2 id="箭头函数表达式"><a href="#箭头函数表达式" class="headerlink" title="箭头函数表达式"></a>箭头函数表达式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(参数1, 参数2, …, 参数N) =&gt; &#123; 函数声明 &#125;</span><br><span class="line">(参数1, 参数2, …, 参数N) =&gt; 表达式（单一）</span><br><span class="line">//相当于：(参数1, 参数2, …, 参数N) =&gt;&#123; return 表达式; &#125;</span><br><span class="line">// 当只有一个参数时，圆括号是可选的：</span><br><span class="line">(单一参数) =&gt; &#123;函数声明&#125;</span><br><span class="line"> 单一参数 =&gt; &#123;函数声明&#125;</span><br><span class="line"> // 有参数的函数应该写成一对圆括号。</span><br><span class="line">() =&gt; &#123;函数声明&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1429,313 +1692,6 @@ CSS在某些情况下会对可替换元素做特殊处理，比如计算外边�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JS里的数组/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coveru">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="coveru's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/JS里的数组/" itemprop="url">JS里的数组</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>js里的数据类型有基本类型和引用类型（复杂类型），其中引用类型就是对象，数组和函数也是引用了类型，只不过数组和函数是特殊的对象，今天主要总结下数组，直观来说数组就是一组数据的集合，其表现形式就是内存中的一段连续的内存地址，数组名称其实就是连续内存地址的首地址。Array对象是用来构造数组的全局对象，如果一个对象的原型链中有Array.prototype，那它就是一个数组。</p>
-<h2 id="Array的不一致性"><a href="#Array的不一致性" class="headerlink" title="Array的不一致性"></a>Array的不一致性</h2><p>当参数是一个时这个参数表示数组的length；<br>当参数是一个以上的时这第一个参数又变成了第一项的vaule；<br>所以说array的不一致性。。。垃圾~<br><img src="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fwjah8x9ysj30yr0mrgmr.jpg" alt=""></p>
-<h2 id="基本类型和复杂类型在申明时加new的区别"><a href="#基本类型和复杂类型在申明时加new的区别" class="headerlink" title="基本类型和复杂类型在申明时加new的区别"></a>基本类型和复杂类型在申明时加new的区别</h2><p>基本数据类型不加new返回的是基本类型，加new返回的是对象；<br>复杂类型加不加new都一样；<br><img src="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fwjah8x5y0j30z50lz759.jpg" alt=""></p>
-<h2 id="数组和对象"><a href="#数组和对象" class="headerlink" title="数组和对象"></a>数组和对象</h2><p>数组和对象都是对象，只不过是原型链不同<br><img src="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fwjah8x3pij310j0mttad.jpg" alt=""></p>
-<h3 id="伪数组"><a href="#伪数组" class="headerlink" title="伪数组"></a>伪数组</h3><p>伪数组和数组的区别主要是原型链中没有Array.prototype；目前接触到的唯一的伪数组：Argument；</p>
-<h2 id="数组相关API"><a href="#数组相关API" class="headerlink" title="数组相关API"></a>数组相关API</h2><h3 id="1-forEach"><a href="#1-forEach" class="headerlink" title="1.forEach"></a>1.forEach</h3><p>forEach() 方法用于调用数组的每个元素，并将元素传递给回调函数。<br><img src="https://wx3.sinaimg.cn/mw690/006sJW3Ggy1fwjah8x3d2j30mm0lft9z.jpg" alt=""><br><strong>注意: forEach() 对于空数组是不会执行回调函数的</strong><br>forEach会遍历[‘a’,’b’,’c’]这个数组，对每一项都调用function（value，key）这个函数，调用这个函数会传两个参数<br><img src="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fwjd75oroij30ic09p40a.jpg" alt=""></p>
-<h3 id="2-sort"><a href="#2-sort" class="headerlink" title="2.sort"></a>2.sort</h3><p>对数组的元素进行排序，并返回数组。 sort 排序不一定是稳定的默认排序顺序是根据字符串Unicode码点<br>排序的依据<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwjd75oeehj30i709u0vu.jpg" alt=""></p>
-<h3 id="3-map"><a href="#3-map" class="headerlink" title="3.map"></a>3.map</h3><p>该方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。<br><img src="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fwjd75g5cfj309y0ba40j.jpg" alt=""></p>
-<h3 id="4-filter"><a href="#4-filter" class="headerlink" title="4.filter"></a>4.filter</h3><p>该方法创建一个新数组, 其包含通过所提供函数实现的测试的所有元素<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwjd75dhddj30as03ft97.jpg" alt=""><br>.filter.map示例：<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwjd75egldj30af05k75f.jpg" alt=""></p>
-<h3 id="5-reduce"><a href="#5-reduce" class="headerlink" title="5.reduce"></a>5.reduce</h3><p>Reduce是一个很有用的函数，前面提到的map和filter都可以用reduce来实现，reduce 方法接收一个函数作为累加器（accumulator），数组中的每个值（从左到右）开始缩减，最终为一个值。<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwjd75fb9wj30ax0foq5c.jpg" alt=""></p>
-<h2 id="箭头函数表达式"><a href="#箭头函数表达式" class="headerlink" title="箭头函数表达式"></a>箭头函数表达式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(参数1, 参数2, …, 参数N) =&gt; &#123; 函数声明 &#125;</span><br><span class="line">(参数1, 参数2, …, 参数N) =&gt; 表达式（单一）</span><br><span class="line">//相当于：(参数1, 参数2, …, 参数N) =&gt;&#123; return 表达式; &#125;</span><br><span class="line">// 当只有一个参数时，圆括号是可选的：</span><br><span class="line">(单一参数) =&gt; &#123;函数声明&#125;</span><br><span class="line"> 单一参数 =&gt; &#123;函数声明&#125;</span><br><span class="line"> // 有参数的函数应该写成一对圆括号。</span><br><span class="line">() =&gt; &#123;函数声明&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JS里的数据类型/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coveru">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="coveru's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/JS里的数据类型/" itemprop="url">JS里的数据类型</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>JavaScript 语言的每一个值，都属于某一种数据类型。JavaScript 的数据类型，共有七种。number、string、boolean、symbol、undefined、null、object。其中symbol是es6新引入的，这里不做介绍，其他六种类型里五种基本数据类型是：Number,String,Boolean,Undefined,Null；object则是复杂类型。</p>
-<h2 id="Typeof操作符"><a href="#Typeof操作符" class="headerlink" title="Typeof操作符"></a>Typeof操作符</h2><p>由于js中的变量是松散类型的，所以它提供了一种检测当前变量的数据类型的方法，也就是typeof关键字.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">typeof 123　　 //Number</span><br><span class="line">typeof &apos;abc&apos;　　//String</span><br><span class="line">typeof true       //Boolean</span><br><span class="line">typeof undefined   //Undefined</span><br><span class="line">typeof null        //Object</span><br><span class="line">typeof &#123; &#125;           //Object</span><br><span class="line">typeof [ ]           //Object</span><br><span class="line">typeof console.log()       //Function</span><br></pre></td></tr></table></figure></p>
-<p>null类型进行typeof操作符后，结果是object，原因在于，null类型被当做一个空对象引用。</p>
-<h2 id="数值（number）"><a href="#数值（number）" class="headerlink" title="数值（number）"></a>数值（number）</h2><p>JavaScript 内部，所有数字都是以64位浮点数形式储存，即使整数也是如此。所以，1与1.0是相同的，是同一个数。Number类型包含整数和浮点数（浮点数数值必须包含一个小数点，且小数点后面至少有一位数字）两种值。</p>
-<pre><code>var a = 1 ，b = .1   //  b=0.1
-</code></pre><h2 id="字符串（string）"><a href="#字符串（string）" class="headerlink" title="字符串（string）"></a>字符串（string）</h2><p>字符串就是零个或多个排在一起的字符，放在单引号或双引号之中。</p>
-<h3 id="字符串知识点："><a href="#字符串知识点：" class="headerlink" title="字符串知识点："></a>字符串知识点：</h3><p>1.反斜杠（\）在字符串内有特殊含义，用来表示一些特殊字符，所以又称为转义符。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">\0 ：null（\u0000）</span><br><span class="line">\b ：后退键（\u0008）</span><br><span class="line">\f ：换页符（\u000C）</span><br><span class="line">\n ：换行符（\u000A）</span><br><span class="line">\r ：回车键（\u000D）</span><br><span class="line">\t ：制表符（\u0009）</span><br><span class="line">\v ：垂直制表符（\u000B）</span><br><span class="line">\&apos; ：单引号（\u0027）</span><br><span class="line">\&quot; ：双引号（\u0022）</span><br><span class="line">\\ ：反斜杠（\u005C）</span><br></pre></td></tr></table></figure></p>
-<p>2.分行作用，如果长字符串必须分成多行，可以在每一行的尾部使用反斜杠。但是同样的效果用链接运算符’+’也可以达到并且不容易出bug，示例：<br><img src="https://wx3.sinaimg.cn/mw690/006sJW3Ggy1fw7ruc5ww0j312h0l50u2.jpg" alt=""><br>所以说反斜杠的后面必须是换行符，而不能有其他字符（比如空格），否则会报错。<br>3.字符串可以被视为字符数组，因此可以使用数组的方括号运算符，用来返回某个位置的字符（位置编号从0开始）。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'hello'</span>;</span><br><span class="line">s[<span class="number">0</span>] <span class="comment">// "h"</span></span><br><span class="line">s[<span class="number">1</span>] <span class="comment">// "e"</span></span><br><span class="line">s[<span class="number">4</span>] <span class="comment">// "o"</span></span><br><span class="line">s[<span class="number">5</span>]<span class="comment">// undefined</span></span><br><span class="line"><span class="comment">// 直接对字符串使用方括号运算符</span></span><br><span class="line"><span class="string">'hello'</span>[<span class="number">1</span>] <span class="comment">// "e"</span></span><br></pre></td></tr></table></figure></p>
-<p>如果方括号中的数字超过字符串的长度，或者方括号中根本不是数字，则返回undefined。但是字符串内部的单个字符无法改变和增删，所以和数组也有区别。<br>4.length 属性<br>length属性返回字符串的长度，该属性也是无法改变的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'hello'</span>;</span><br><span class="line">s.length <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line">s.length = <span class="number">3</span>;</span><br><span class="line">s.length <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line">s.length = <span class="number">7</span>;</span><br><span class="line">s.length <span class="comment">// 5</span></span><br></pre></td></tr></table></figure></p>
-<p>上面代码表示字符串的length属性无法改变，但是不会报错。<br>5.Base64 转码<br>所谓 Base64 就是一种编码方法，可以将任意值转成 0～9、A～Z、a-z、+和/这64个字符组成的可打印字符。使用它的主要目的，不是为了加密，而是为了不出现特殊字符，简化程序的处理。JavaScript 原生提供两个 Base64 相关的方法。</p>
-<blockquote>
-<ul>
-<li>btoa()：任意值转为 Base64 编码</li>
-<li>atob()：Base64 编码转为原来的值</li>
-</ul>
-</blockquote>
-<p>要将非 ASCII 码字符转为 Base64 编码，必须中间插入一个转码环节，再使用这两个方法。    </p>
-<h2 id="布尔值（boolean）"><a href="#布尔值（boolean）" class="headerlink" title="布尔值（boolean）"></a>布尔值（boolean）</h2><p>布尔值代表“真”和“假”两个状态。“真”用关键字true表示，“假”用关键字false表示，只有两个值</p>
-<h2 id="null和undefined"><a href="#null和undefined" class="headerlink" title="null和undefined"></a>null和undefined</h2><p>null与undefined都可以表示“没有”，含义非常相似。将一个变量赋值为undefined或null，老实说，语法效果几乎没区别。<br>var a = undefined;var a = null;量a分别被赋值为undefined和null，这两种写法的效果几乎等价。</p>
-<p>在if语句中，它们都会被自动转为false，相等运算符（==）甚至直接报告两者相等。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="literal">undefined</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'undefined is false'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// undefined is false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!<span class="literal">null</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'null is false'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// null is false</span></span><br><span class="line"></span><br><span class="line"><span class="literal">undefined</span> == <span class="literal">null</span></span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
-<p>从上面代码可见，两者的行为是何等相似！<br>按惯例（并非明文规定），如果有一个变量是对象object我现在不想赋值，它的值就是null；有一个变量是非对象，我现在不想赋值的话它的值就是undefined。</p>
-<h2 id="对象object"><a href="#对象object" class="headerlink" title="对象object"></a>对象object</h2><p>对象就是由一些彼此相关的属性和方法集合在一起而构成的一个数据实体，简单说，对象就是一组“键值对”（key-value）的集合，是一种无序的复合数据集合。一般一个对象往往是一个或多个原始类型的值的合成。所以说对象是最复杂的数据类型。</p>
-<h3 id="1，键名key"><a href="#1，键名key" class="headerlink" title="1，键名key"></a>1，键名key</h3><p>对象的所有键名都是字符串（ES6 又引入了 Symbol 值也可以作为键名），所以加不加引号都可以。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="string">'foo'</span>: <span class="string">'Hello'</span>,</span><br><span class="line">  <span class="string">'bar'</span>: <span class="string">'World'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//也可以以下面的方法写</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  foo: <span class="string">'Hello'</span>,</span><br><span class="line">  bar: <span class="string">'World'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>如果键名是数值，会被自动转为字符串。<br>注意：如果键名不符合标识名的条件（比如第一个字符为数字，或者含有空格或运算符），且也不是数字，则必须加上引号，否则会报错。</p>
-<pre><code>var obj = {
-  1p: &apos;Hello World&apos;
-};
-// 报错
-
-var obj = {
-  &apos;1p&apos;: &apos;Hello World&apos;,
-  &apos;h w&apos;: &apos;Hello World&apos;,
-  &apos;p+q&apos;: &apos;Hello World&apos;
-};// 不报错
-</code></pre><h3 id="2-对象的引用"><a href="#2-对象的引用" class="headerlink" title="2.对象的引用"></a>2.对象的引用</h3><p>如果不同的变量名指向同一个对象，那么它们都是这个对象的引用，也就是说指向同一个内存地址。<br>修改其中一个变量，会影响到其他所有变量。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o1 = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> o2 = o1;</span><br><span class="line">o1.a = <span class="number">1</span>;</span><br><span class="line">o2.a <span class="comment">// 1</span></span><br><span class="line">o2.b = <span class="number">2</span>;</span><br><span class="line">o1.b <span class="comment">// 2</span></span><br></pre></td></tr></table></figure></p>
-<p>上面代码中，o1和o2指向同一个对象，因此为其中任何一个变量添加属性，另一个变量都可以读写该属性。<br>此时，如果取消某一个变量对于原对象的引用，不会影响到另一个变量。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o1 = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> o2 = o1;</span><br><span class="line">o1 = <span class="number">1</span>;</span><br><span class="line">o2 <span class="comment">// &#123;&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>上面代码中，o1和o2指向同一个对象，然后o1的值变为1，这时不会对o2产生影响，o2还是指向原来的那个对象。<br>但是，这种引用只局限于对象，如果两个变量指向同一个原始类型的值。那么，变量这时都是值的拷贝。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> y = x;</span><br><span class="line">x = <span class="number">2</span>;</span><br><span class="line">y <span class="comment">// 1</span></span><br></pre></td></tr></table></figure></p>
-<p>面的代码中，当x的值发生变化后，y的值并不变，这就表示y和x并不是指向同一个内存地址。</p>
-<h3 id="3-读取对象的属性"><a href="#3-读取对象的属性" class="headerlink" title="3.读取对象的属性"></a>3.读取对象的属性</h3><p>读取对象的属性，有两种方法，一种是使用点运算符，还有一种是使用方括号运算符。<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fw7u2mbvtvj31hc1400zp.jpg" alt=""><br>图示分别用了点运算和方括号运算读取属性name，如果使用方括号运算符，键名必须放在引号里面，否则会被当作变量处理。<br>方括号运算符内部还可以使用表达式。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj[<span class="string">'hello'</span> + <span class="string">' world'</span>]</span><br><span class="line">obj[<span class="number">3</span> + <span class="number">3</span>]</span><br></pre></td></tr></table></figure></p>
-<p>数字键可以不加引号，因为会自动转成字符串。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ar obj = &#123;</span><br><span class="line">  <span class="number">0.7</span>: <span class="string">'Hello World'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj[<span class="string">'0.7'</span>] <span class="comment">// "Hello World"</span></span><br><span class="line">obj[<span class="number">0.7</span>] <span class="comment">// "Hello World"</span></span><br></pre></td></tr></table></figure></p>
-<p>上面代码中，对象obj的数字键0.7，加不加引号都可以，因为会被自动转为字符串。<br><strong>注意，数值键名不能使用点运算符（因为会被当成小数点），只能使用方括号运算符。</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="number">123</span>: <span class="string">'hello world'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj<span class="number">.123</span> <span class="comment">// 报错</span></span><br><span class="line">obj[<span class="number">123</span>] <span class="comment">// "hello world"</span></span><br></pre></td></tr></table></figure></p>
-<p>上面代码的第一个表达式，对数值键名123使用点运算符，结果报错。第二个表达式使用方括号运算符，结果就是正确的。</p>
-<h3 id="4-属性的赋值"><a href="#4-属性的赋值" class="headerlink" title="4.属性的赋值"></a>4.属性的赋值</h3><p>点运算符和方括号运算符，不仅可以用来读取值，还可以用来赋值。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">obj.foo = <span class="string">'Hello'</span>;</span><br><span class="line">obj[<span class="string">'bar'</span>] = <span class="string">'World'</span>;</span><br></pre></td></tr></table></figure></p>
-<p>上面代码中，分别使用点运算符和方括号运算符，对属性赋值。</p>
-<p>JavaScript 允许属性的“后绑定”，也就是说，你可以在任意时刻新增属性，没必要在定义对象的时候，就定义好属性。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">p</span>: <span class="number">1</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等价于</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">obj.p = <span class="number">1</span>;</span><br></pre></td></tr></table></figure></p>
-<h3 id="5-查看所有属性"><a href="#5-查看所有属性" class="headerlink" title="5.查看所有属性"></a>5.查看所有属性</h3><p>查看一个对象本身的所有属性，可以使用Object.keys方法。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  key1: <span class="number">1</span>,</span><br><span class="line">  key2: <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.keys(obj);</span><br><span class="line"><span class="comment">// ['key1', 'key2']</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="6-循环for…-in-循环"><a href="#6-循环for…-in-循环" class="headerlink" title="6. 循环for… in 循环"></a>6. 循环for… in 循环</h3><p>for…in循环用来遍历一个对象的全部属性。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> obj) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(obj[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 3</span></span><br></pre></td></tr></table></figure></p>
-<p>下面是一个使用for…in循环，提取对象属性名的例子。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  x: <span class="number">1</span>,</span><br><span class="line">  y: <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> props = [];</span><br><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> p <span class="keyword">in</span> obj) &#123;</span><br><span class="line">  props[i++] = p</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">props <span class="comment">// ['x', 'y']</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>注意：for…in循环遍历的是对象所有可遍历（enumerable）的属性，会跳过不可遍历的属性；它不仅遍历对象自身的属性，还遍历继承的属性。</strong><br>示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"><span class="comment">// toString 属性是存在的</span></span><br><span class="line">obj.toString <span class="comment">// toString() &#123; [native code] &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> p <span class="keyword">in</span> obj) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(p);</span><br><span class="line">&#125; <span class="comment">// 没有任何输出</span></span><br></pre></td></tr></table></figure></p>
-<p>上面代码中，对象obj继承了toString属性，该属性不会被for…in循环遍历到，因为它默认是“不可遍历”的.<br>如果继承的属性是可遍历的，那么就会被for…in循环遍历到。但是，一般情况下，都是只想遍历对象自身的属性，所以使用for…in的时候，应该结合使用hasOwnProperty方法，在循环内部判断一下，某个属性是否为对象自身的属性。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123; <span class="attr">name</span>: <span class="string">'老张'</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> person) &#123;</span><br><span class="line">  <span class="keyword">if</span> (person.hasOwnProperty(key)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// name</span></span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1786,7 +1742,7 @@ var obj = {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

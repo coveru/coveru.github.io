@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="xzx,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,18 +79,19 @@
 
 
 
-<meta name="description" content="xiaoran Xu">
-<meta name="keywords" content="xzx">
+<meta name="description" content="什么是异步？不等任务执行完，不等结果，直接执行下一个任务就是异步。如果几个任务互相独立，其中一个执行时间较长，那么一般就用异步地方式做这件事。同步则是前者执行完拿到结果（返回值）了之后，再执行下一句代码。 什么是回调？callback 是一种特殊的函数，这个函数被作为参数传给另一个函数去调用。这样的函数就是回调函数。例如123functon fn(fn2)&amp;#123;    fn2.call()&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第二篇博客">
-<meta property="og:url" content="http://yoursite.com/2018/09/19/第二篇博客/index.html">
+<meta property="og:title" content="JS高级-异步@回调">
+<meta property="og:url" content="http://yoursite.com/2018/12/03/JS高级-异步-回调以及MVC总结/index.html">
 <meta property="og:site_name" content="coveru&#39;s blog">
-<meta property="og:description" content="xiaoran Xu">
+<meta property="og:description" content="什么是异步？不等任务执行完，不等结果，直接执行下一个任务就是异步。如果几个任务互相独立，其中一个执行时间较长，那么一般就用异步地方式做这件事。同步则是前者执行完拿到结果（返回值）了之后，再执行下一句代码。 什么是回调？callback 是一种特殊的函数，这个函数被作为参数传给另一个函数去调用。这样的函数就是回调函数。例如123functon fn(fn2)&amp;#123;    fn2.call()&amp;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-13T16:44:38.260Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11007474-9e9cbb912daf2eaf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-12-03T09:47:29.070Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第二篇博客">
-<meta name="twitter:description" content="xiaoran Xu">
+<meta name="twitter:title" content="JS高级-异步@回调">
+<meta name="twitter:description" content="什么是异步？不等任务执行完，不等结果，直接执行下一个任务就是异步。如果几个任务互相独立，其中一个执行时间较长，那么一般就用异步地方式做这件事。同步则是前者执行完拿到结果（返回值）了之后，再执行下一句代码。 什么是回调？callback 是一种特殊的函数，这个函数被作为参数传给另一个函数去调用。这样的函数就是回调函数。例如123functon fn(fn2)&amp;#123;    fn2.call()&amp;">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/11007474-9e9cbb912daf2eaf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -120,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/19/第二篇博客/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/03/JS高级-异步-回调以及MVC总结/">
 
 
 
 
 
-  <title>第二篇博客 | coveru's blog</title>
+  <title>JS高级-异步@回调 | coveru's blog</title>
   
 
 
@@ -263,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/19/第二篇博客/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/03/JS高级-异步-回调以及MVC总结/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coveru">
@@ -280,7 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">第二篇博客</h1>
+          <h1 class="post-title" itemprop="name headline">JS高级-异步@回调</h1>
         
 
         <div class="post-meta">
@@ -292,8 +293,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-19T14:57:27+08:00">
-                2018-09-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-03T17:32:31+08:00">
+                2018-12-03
               </time>
             
 
@@ -330,7 +331,12 @@
       
 
       
-        <p>xiaoran Xu</p>
+        <h2 id="什么是异步？"><a href="#什么是异步？" class="headerlink" title="什么是异步？"></a>什么是异步？</h2><p>不等任务执行完，不等结果，直接执行下一个任务就是异步。如果几个任务互相独立，其中一个执行时间较长，那么一般就用异步地方式做这件事。<br>同步则是前者执行完拿到结果（返回值）了之后，再执行下一句代码。</p>
+<h2 id="什么是回调？"><a href="#什么是回调？" class="headerlink" title="什么是回调？"></a>什么是回调？</h2><p>callback 是一种特殊的函数，这个函数被作为参数传给另一个函数去调用。这样的函数就是回调函数。<br>例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">functon fn(fn2)&#123;</span><br><span class="line">    fn2.call()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>fn 将别人传给它的 fn2 调用了，这种调用就是回调。</p>
+<h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><p>OO编程就是面向对象编程\<br>面向对象是什么没人说的清楚\<br>可以理解为就像是邻居家的小孩，你不会的他都会\<br>JavaScript 语言使用构造函数（constructor）作为对象的模板。所谓”构造函数”，就是专门用来生成实例对象的函数。它就是对象的模板，描述实例对象的基本结构。一个构造函数，可以生成多个实例对象，这些实例对象都有相同的结构。</p>
+<h3 id="new-当var-object-new-object-时new都做了什么"><a href="#new-当var-object-new-object-时new都做了什么" class="headerlink" title="new 当var object = new object　时new都做了什么"></a>new 当var object = new object　时new都做了什么</h3><p>1.生成一个对象\<br>object是空对象\<br>2.object.proto ===object.prototype\<br>3.绑定this到对象\<br>4.返回对象\<br><img src="https://upload-images.jianshu.io/upload_images/11007474-9e9cbb912daf2eaf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="什么是MVC"><a href="#什么是MVC" class="headerlink" title="什么是MVC"></a>什么是MVC</h3><p>MVC实际上是一种代码组织形式，和代码组织思想，它把代码按功能划分。MVC把代码分成三块，第一块View，View 表示视图，就是来告诉程序你的代码长什么样子或者你的代码在什么位置；第二块Model 操作数据，Model来告诉你数据有哪些操作（包括初始化，获取和保存等）；第三块Controller 是控制器负责其他所有的事情（包括逻辑等方面）。当用户在页面操作view，controller通过监听view的事件拿到view的触发通知，然后controller调用model的数据处理功能，model向服务器发起请求后服务器响应model，model返回数据给controller，然后controller更新页面view。<br>代码示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> model = &#123;</span><br><span class="line">    data: <span class="literal">null</span>,</span><br><span class="line">    init()&#123;&#125;</span><br><span class="line">    fetch()&#123;&#125;</span><br><span class="line">    save()&#123;&#125;</span><br><span class="line">    update()&#123;&#125;</span><br><span class="line">    <span class="keyword">delete</span>()&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">view = &#123;</span><br><span class="line">    init() &#123;&#125;</span><br><span class="line">    template: <span class="string">'&lt;h1&gt;hi&lt;/h1'</span>&gt;</span><br><span class="line">&#125;</span><br><span class="line">controller = &#123;</span><br><span class="line">    view: <span class="literal">null</span>,</span><br><span class="line">    model: <span class="literal">null</span>,</span><br><span class="line">    init(view, model)&#123;</span><br><span class="line">        <span class="keyword">this</span>.view = view</span><br><span class="line">        <span class="keyword">this</span>.model = model</span><br><span class="line">        <span class="keyword">this</span>.bindEvents()</span><br><span class="line">    &#125;</span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="keyword">this</span>.view.querySelector(<span class="string">'name'</span>).innerText = <span class="keyword">this</span>.model.data.name</span><br><span class="line">    &#125;,</span><br><span class="line">    bindEvents()&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -356,12 +362,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/xzx/" rel="tag"># xzx</a>
-          
-        </div>
-      
 
       
       
@@ -371,15 +371,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/11/16/css学习小结/" rel="next" title="css学习小结">
+                <i class="fa fa-chevron-left"></i> css学习小结
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/13/AJAX初探/" rel="prev" title="AJAX初探">
-                AJAX初探 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -431,8 +431,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -483,6 +492,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是异步？"><span class="nav-number">1.</span> <span class="nav-text">什么是异步？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是回调？"><span class="nav-number">2.</span> <span class="nav-text">什么是回调？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象编程"><span class="nav-number">3.</span> <span class="nav-text">面向对象编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#new-当var-object-new-object-时new都做了什么"><span class="nav-number">3.1.</span> <span class="nav-text">new 当var object = new object　时new都做了什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是MVC"><span class="nav-number">3.2.</span> <span class="nav-text">什么是MVC</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -259,6 +259,140 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JS里的数组/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/13/JS里的数组/" itemprop="url">JS里的数组</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>js里的数据类型有基本类型和引用类型（复杂类型），其中引用类型就是对象，数组和函数也是引用了类型，只不过数组和函数是特殊的对象，今天主要总结下数组，直观来说数组就是一组数据的集合，其表现形式就是内存中的一段连续的内存地址，数组名称其实就是连续内存地址的首地址。Array对象是用来构造数组的全局对象，如果一个对象的原型链中有Array.prototype，那它就是一个数组。</p>
+<h2 id="Array的不一致性"><a href="#Array的不一致性" class="headerlink" title="Array的不一致性"></a>Array的不一致性</h2><p>当参数是一个时这个参数表示数组的length；<br>当参数是一个以上的时这第一个参数又变成了第一项的vaule；<br>所以说array的不一致性。。。垃圾~<br><img src="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fwjah8x9ysj30yr0mrgmr.jpg" alt=""></p>
+<h2 id="基本类型和复杂类型在申明时加new的区别"><a href="#基本类型和复杂类型在申明时加new的区别" class="headerlink" title="基本类型和复杂类型在申明时加new的区别"></a>基本类型和复杂类型在申明时加new的区别</h2><p>基本数据类型不加new返回的是基本类型，加new返回的是对象；<br>复杂类型加不加new都一样；<br><img src="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fwjah8x5y0j30z50lz759.jpg" alt=""></p>
+<h2 id="数组和对象"><a href="#数组和对象" class="headerlink" title="数组和对象"></a>数组和对象</h2><p>数组和对象都是对象，只不过是原型链不同<br><img src="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fwjah8x3pij310j0mttad.jpg" alt=""></p>
+<h3 id="伪数组"><a href="#伪数组" class="headerlink" title="伪数组"></a>伪数组</h3><p>伪数组和数组的区别主要是原型链中没有Array.prototype；目前接触到的唯一的伪数组：Argument；</p>
+<h2 id="数组相关API"><a href="#数组相关API" class="headerlink" title="数组相关API"></a>数组相关API</h2><h3 id="1-forEach"><a href="#1-forEach" class="headerlink" title="1.forEach"></a>1.forEach</h3><p>forEach() 方法用于调用数组的每个元素，并将元素传递给回调函数。<br><img src="https://wx3.sinaimg.cn/mw690/006sJW3Ggy1fwjah8x3d2j30mm0lft9z.jpg" alt=""><br><strong>注意: forEach() 对于空数组是不会执行回调函数的</strong><br>forEach会遍历[‘a’,’b’,’c’]这个数组，对每一项都调用function（value，key）这个函数，调用这个函数会传两个参数<br><img src="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fwjd75oroij30ic09p40a.jpg" alt=""></p>
+<h3 id="2-sort"><a href="#2-sort" class="headerlink" title="2.sort"></a>2.sort</h3><p>对数组的元素进行排序，并返回数组。 sort 排序不一定是稳定的默认排序顺序是根据字符串Unicode码点<br>排序的依据<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwjd75oeehj30i709u0vu.jpg" alt=""></p>
+<h3 id="3-map"><a href="#3-map" class="headerlink" title="3.map"></a>3.map</h3><p>该方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。<br><img src="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fwjd75g5cfj309y0ba40j.jpg" alt=""></p>
+<h3 id="4-filter"><a href="#4-filter" class="headerlink" title="4.filter"></a>4.filter</h3><p>该方法创建一个新数组, 其包含通过所提供函数实现的测试的所有元素<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwjd75dhddj30as03ft97.jpg" alt=""><br>.filter.map示例：<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwjd75egldj30af05k75f.jpg" alt=""></p>
+<h3 id="5-reduce"><a href="#5-reduce" class="headerlink" title="5.reduce"></a>5.reduce</h3><p>Reduce是一个很有用的函数，前面提到的map和filter都可以用reduce来实现，reduce 方法接收一个函数作为累加器（accumulator），数组中的每个值（从左到右）开始缩减，最终为一个值。<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwjd75fb9wj30ax0foq5c.jpg" alt=""></p>
+<h2 id="箭头函数表达式"><a href="#箭头函数表达式" class="headerlink" title="箭头函数表达式"></a>箭头函数表达式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(参数1, 参数2, …, 参数N) =&gt; &#123; 函数声明 &#125;</span><br><span class="line">(参数1, 参数2, …, 参数N) =&gt; 表达式（单一）</span><br><span class="line">//相当于：(参数1, 参数2, …, 参数N) =&gt;&#123; return 表达式; &#125;</span><br><span class="line">// 当只有一个参数时，圆括号是可选的：</span><br><span class="line">(单一参数) =&gt; &#123;函数声明&#125;</span><br><span class="line"> 单一参数 =&gt; &#123;函数声明&#125;</span><br><span class="line"> // 有参数的函数应该写成一对圆括号。</span><br><span class="line">() =&gt; &#123;函数声明&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/关于HTML/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -362,154 +496,6 @@
 表现为可替换元素，例如&quot;&lt;audio&gt;和&lt;canvas&gt;&quot;。通过CSS的content属性来插入的对象被称为匿名可替换对象(annoymous replaced elements)。
 CSS在某些情况下会对可替换元素做特殊处理，比如计算外边距和一些auto值。
 需要注意的是，一部分（并非全部）可替换元素，本身具有尺寸和基线(baseline)，会被想vertical-align之类的一些CSS属性用到。
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JS里的函数/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coveru">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="coveru's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/JS里的函数/" itemprop="url">JS里的函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-函数的五种声明方式"><a href="#1-函数的五种声明方式" class="headerlink" title="1.函数的五种声明方式:"></a>1.函数的五种声明方式:</h2><blockquote>
-<ul>
-<li>function name(参数){ return }</li>
-<li>var f = function (参数）{ return } //匿名函数</li>
-<li>var f = function name(参数){ return } // 具名函数</li>
-<li>new Function(‘x’,’y’,’return x+y’) // 全局变量声明</li>
-<li>(x,y) =&gt; { return x+y}    // 箭头函数</li>
-</ul>
-</blockquote>
-<p>箭头函数后面如果只用执行一句话 可以把return和{}一起省略例如：<br>(x,y) =&gt; { return x+y} /  (x,y) =&gt; x+y;<br>如果箭头函数前面的参数只有一个，圆括号也可以省略，例如：<br> (n) =&gt; n<em>n   /   n =&gt; n</em>n ;<br>变量声明可以是Number String Boolean null undefined Symbol Object<br>而函数声明只能是 函数。<br>以下两种声明方式具有不一致性：</p>
-<pre><code>function y(){}
-console.log(y) // 可以直接调用
-////////////////////////////////////
-var x = function y(){}
-console.log (y)     //y不能被调用，调用仅限在{}内部可以调用
-</code></pre><p><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwkl1f6b1nj30ze0lcq46.jpg" alt=""></p>
-<h2 id="2-函数的name属性"><a href="#2-函数的name属性" class="headerlink" title="2.函数的name属性"></a>2.函数的name属性</h2><p>没什么用的属性，而且还是个大坑！<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwkl1f5uxoj30jc0j43z7.jpg" alt=""></p>
-<h2 id="3-函数的本质"><a href="#3-函数的本质" class="headerlink" title="3.函数的本质"></a>3.函数的本质</h2><p>可以执行代码的对象就是函数，函数就是可以反复使用的代码块。函数可以接受输入的参数，不同的参数会返回不同的值。</p>
-<h3 id="f与f-call-的区别"><a href="#f与f-call-的区别" class="headerlink" title="f与f.call()的区别"></a>f与f.call()的区别</h3><p>f知识一个函数对象<br>f.call()是f的方法 表示执行这个函数的函数体<br>f(1,2) ========= f.call(undefined,1,2)<br>【this】，【arguments】<br>f.call(undefined,1,2)其中undefined就是this，1,2就是arguments<br>call的第一个参数可以用this<br>call后面的参数可以用arguments<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="meta">	'use strict'</span>   <span class="comment">//严格模式</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>===<span class="built_in">window</span>) <span class="comment">//严格模式下等于undefined，非严格模式等于window</span></span><br><span class="line">&#125;</span><br><span class="line">返回</span><br><span class="line">f.call(<span class="literal">undefined</span>)</span><br><span class="line"><span class="literal">false</span>    <span class="comment">//严格模式下返回false，非严格模式返回ture</span></span><br><span class="line"><span class="literal">undefined</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="4-作用域"><a href="#4-作用域" class="headerlink" title="4.作用域"></a>4.作用域</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a =<span class="number">1</span>    <span class="comment">//所在区域为全局scope，全局作用域</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;   <span class="comment">//理解为所在区域为二级作用域</span></span><br><span class="line">	<span class="built_in">console</span>.log(a)</span><br><span class="line">	<span class="keyword">var</span> a =<span class="number">2</span></span><br><span class="line">	f2.call()</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;   <span class="comment">//理解为三级作用域</span></span><br><span class="line">		<span class="keyword">var</span> a = <span class="number">3</span></span><br><span class="line">		<span class="built_in">console</span>.log(a) </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">f1call()</span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br></pre></td></tr></table></figure>
-<h2 id="5-闭包"><a href="#5-闭包" class="headerlink" title="5.闭包"></a>5.闭包</h2><p>如果一个函数使用了他范围外的变量，那么（这个函数+这个变量）就是闭包<br>例：</p>
-<pre><code>var a = 1;
-function f(){
-console.log(a)
-}
 </code></pre>
           
         
@@ -684,6 +670,154 @@ var obj = {
 <p><strong>注意：for…in循环遍历的是对象所有可遍历（enumerable）的属性，会跳过不可遍历的属性；它不仅遍历对象自身的属性，还遍历继承的属性。</strong><br>示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"><span class="comment">// toString 属性是存在的</span></span><br><span class="line">obj.toString <span class="comment">// toString() &#123; [native code] &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> p <span class="keyword">in</span> obj) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(p);</span><br><span class="line">&#125; <span class="comment">// 没有任何输出</span></span><br></pre></td></tr></table></figure></p>
 <p>上面代码中，对象obj继承了toString属性，该属性不会被for…in循环遍历到，因为它默认是“不可遍历”的.<br>如果继承的属性是可遍历的，那么就会被for…in循环遍历到。但是，一般情况下，都是只想遍历对象自身的属性，所以使用for…in的时候，应该结合使用hasOwnProperty方法，在循环内部判断一下，某个属性是否为对象自身的属性。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123; <span class="attr">name</span>: <span class="string">'老张'</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> person) &#123;</span><br><span class="line">  <span class="keyword">if</span> (person.hasOwnProperty(key)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// name</span></span><br></pre></td></tr></table></figure></p>
 
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JS里的函数/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/13/JS里的函数/" itemprop="url">JS里的函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-函数的五种声明方式"><a href="#1-函数的五种声明方式" class="headerlink" title="1.函数的五种声明方式:"></a>1.函数的五种声明方式:</h2><blockquote>
+<ul>
+<li>function name(参数){ return }</li>
+<li>var f = function (参数）{ return } //匿名函数</li>
+<li>var f = function name(参数){ return } // 具名函数</li>
+<li>new Function(‘x’,’y’,’return x+y’) // 全局变量声明</li>
+<li>(x,y) =&gt; { return x+y}    // 箭头函数</li>
+</ul>
+</blockquote>
+<p>箭头函数后面如果只用执行一句话 可以把return和{}一起省略例如：<br>(x,y) =&gt; { return x+y} /  (x,y) =&gt; x+y;<br>如果箭头函数前面的参数只有一个，圆括号也可以省略，例如：<br> (n) =&gt; n<em>n   /   n =&gt; n</em>n ;<br>变量声明可以是Number String Boolean null undefined Symbol Object<br>而函数声明只能是 函数。<br>以下两种声明方式具有不一致性：</p>
+<pre><code>function y(){}
+console.log(y) // 可以直接调用
+////////////////////////////////////
+var x = function y(){}
+console.log (y)     //y不能被调用，调用仅限在{}内部可以调用
+</code></pre><p><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwkl1f6b1nj30ze0lcq46.jpg" alt=""></p>
+<h2 id="2-函数的name属性"><a href="#2-函数的name属性" class="headerlink" title="2.函数的name属性"></a>2.函数的name属性</h2><p>没什么用的属性，而且还是个大坑！<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fwkl1f5uxoj30jc0j43z7.jpg" alt=""></p>
+<h2 id="3-函数的本质"><a href="#3-函数的本质" class="headerlink" title="3.函数的本质"></a>3.函数的本质</h2><p>可以执行代码的对象就是函数，函数就是可以反复使用的代码块。函数可以接受输入的参数，不同的参数会返回不同的值。</p>
+<h3 id="f与f-call-的区别"><a href="#f与f-call-的区别" class="headerlink" title="f与f.call()的区别"></a>f与f.call()的区别</h3><p>f知识一个函数对象<br>f.call()是f的方法 表示执行这个函数的函数体<br>f(1,2) ========= f.call(undefined,1,2)<br>【this】，【arguments】<br>f.call(undefined,1,2)其中undefined就是this，1,2就是arguments<br>call的第一个参数可以用this<br>call后面的参数可以用arguments<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="meta">	'use strict'</span>   <span class="comment">//严格模式</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>===<span class="built_in">window</span>) <span class="comment">//严格模式下等于undefined，非严格模式等于window</span></span><br><span class="line">&#125;</span><br><span class="line">返回</span><br><span class="line">f.call(<span class="literal">undefined</span>)</span><br><span class="line"><span class="literal">false</span>    <span class="comment">//严格模式下返回false，非严格模式返回ture</span></span><br><span class="line"><span class="literal">undefined</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="4-作用域"><a href="#4-作用域" class="headerlink" title="4.作用域"></a>4.作用域</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a =<span class="number">1</span>    <span class="comment">//所在区域为全局scope，全局作用域</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;   <span class="comment">//理解为所在区域为二级作用域</span></span><br><span class="line">	<span class="built_in">console</span>.log(a)</span><br><span class="line">	<span class="keyword">var</span> a =<span class="number">2</span></span><br><span class="line">	f2.call()</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;   <span class="comment">//理解为三级作用域</span></span><br><span class="line">		<span class="keyword">var</span> a = <span class="number">3</span></span><br><span class="line">		<span class="built_in">console</span>.log(a) </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">f1call()</span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br></pre></td></tr></table></figure>
+<h2 id="5-闭包"><a href="#5-闭包" class="headerlink" title="5.闭包"></a>5.闭包</h2><p>如果一个函数使用了他范围外的变量，那么（这个函数+这个变量）就是闭包<br>例：</p>
+<pre><code>var a = 1;
+function f(){
+console.log(a)
+}
+</code></pre>
           
         
       
@@ -1016,6 +1150,133 @@ var obj = {
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JSONP知识小结/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/13/JSONP知识小结/" itemprop="url">JSONP知识小结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="什么是JSONP"><a href="#什么是JSONP" class="headerlink" title="什么是JSONP"></a>什么是JSONP</h2><p>请求方：一个域名的前端程序员（浏览器）<br>响应方：另一个域名的后端程序员（服务器）<br>1.请求方创建一个script，其src指向响应方，同时传一个查询参数？callbackName=xzx<br>2.响应方根据查询参数callbackName构造形如xzx.call(undefined,’你要的数据‘)/xzx(‘你要的数据’）这样的响应<br>3.浏览器接收到响应就会执行xzx.call(undefined,’你要的数据’)<br>4.至此请求方就知道了他要的数据<br>这就是JSONP<br>约定：<br>1.callbackName—&gt; callback<br>2.xzx—&gt; 随机数</p>
+<h2 id="为什么JSONP不支持POST请求"><a href="#为什么JSONP不支持POST请求" class="headerlink" title="为什么JSONP不支持POST请求"></a>为什么JSONP不支持POST请求</h2><p>1.JSONP是通过动态创建script标签来实现的。<br>2，动态创建script时只能用GET请求不能用POST请求<br>所以JSONP不支持POST</p>
+<h2 id="用代码实现-frank-com-8001-和-jack-com-8002-之间的-JSONP-请求"><a href="#用代码实现-frank-com-8001-和-jack-com-8002-之间的-JSONP-请求" class="headerlink" title="用代码实现 frank.com:8001 和 jack.com:8002 之间的 JSONP 请求"></a>用代码实现 frank.com:8001 和 jack.com:8002 之间的 JSONP 请求</h2><p>前端页面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">  &lt;title&gt;frank.com:8001&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;button id=&quot;button&quot;&gt;点我获取信息&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    button.addEventListener(&apos;click&apos;, function(e)&#123;</span><br><span class="line">      //原生JS</span><br><span class="line">      // let script = document.createElement(&apos;script&apos;)</span><br><span class="line">      // script.src = &apos;http://jack.com:8002?callback=&apos; + functionName</span><br><span class="line">      // document.body.appendChild(script)</span><br><span class="line">      // let functionName = &apos;wky&apos; + parseInt(Math.random()*1000000, 10)</span><br><span class="line">      // window[functionName] = function(result)&#123;</span><br><span class="line">      //   alert(result)</span><br><span class="line">      // &#125;</span><br><span class="line">      // script.onload = function(e)&#123;</span><br><span class="line">      //   e.currentTarget.remove()</span><br><span class="line">      // &#125;</span><br><span class="line">      // script.onerror = function(e)&#123;</span><br><span class="line">      //   e.currentTarget.remove()</span><br><span class="line">      // &#125;</span><br><span class="line">      //jQuery方法</span><br><span class="line">      $.ajax(&#123;</span><br><span class="line">        url: &quot;http://jack.com:8002&quot;,</span><br><span class="line">        jsonp: &quot;callback&quot;,</span><br><span class="line">        dataType: &quot;jsonp&quot;,</span><br><span class="line">        success: function( response ) &#123;</span><br><span class="line">            alert( response )</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>后端代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>)</span><br><span class="line"><span class="keyword">var</span> port = process.argv[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!port)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'请指定端口号好不啦？\nnode server.js 8888 这样不会吗？'</span>)</span><br><span class="line">  process.exit(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> parsedUrl = url.parse(request.url, <span class="literal">true</span>)</span><br><span class="line">  <span class="keyword">var</span> pathWithQuery = request.url </span><br><span class="line">  <span class="keyword">var</span> queryString = <span class="string">''</span></span><br><span class="line">  <span class="keyword">if</span>(pathWithQuery.indexOf(<span class="string">'?'</span>) &gt;= <span class="number">0</span>)&#123; queryString = pathWithQuery.substring(pathWithQuery.indexOf(<span class="string">'?'</span>)) &#125;</span><br><span class="line">  <span class="keyword">var</span> path = parsedUrl.pathname</span><br><span class="line">  <span class="keyword">var</span> query = parsedUrl.query</span><br><span class="line">  <span class="keyword">var</span> method = request.method</span><br><span class="line"></span><br><span class="line">  <span class="comment">/******** 从这里开始看，上面不要看 ************/</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'方方说：含查询字符串的路径\n'</span> + pathWithQuery)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(path === <span class="string">'/'</span>)&#123;</span><br><span class="line">    response.statusCode = <span class="number">200</span></span><br><span class="line">    response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/html;charset=utf-8'</span>)</span><br><span class="line">    response.write(<span class="string">'哈哈哈'</span>)</span><br><span class="line">    response.end()</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(path === <span class="string">'/getmsg'</span>)&#123;</span><br><span class="line">    response.statusCode = <span class="number">200</span></span><br><span class="line">    response.setHeader(<span class="string">'Content-type'</span>, <span class="string">'application/javascript'</span>)</span><br><span class="line">    response.write(<span class="string">`<span class="subst">$&#123;query.callback&#125;</span>.call(undefined, '得到jack.com:8002的信息')`</span>)</span><br><span class="line">    response.end()</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    response.statusCode = <span class="number">404</span></span><br><span class="line">    response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/html;charset=utf-8'</span>)</span><br><span class="line">    response.write(<span class="string">'呜呜呜'</span>)</span><br><span class="line">    response.end()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/******** 代码结束，下面不要看 ************/</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(port)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'监听 '</span> + port + <span class="string">' 成功\n请用在空中转体720度然后用电饭煲打开 http://localhost:'</span> + port)</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JS中的dom操作/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1106,133 +1367,6 @@ var obj = {
 <p>② 添加节点：两个重要的方法：appendChild()和insertBefore()，具体见Node接口中的方法。<br>扩展：上面的两个方法都是在已知父节点时用到的，也可以直接在兄弟节点后添加新节点：x.insertBefore(newNode)和x.appendChild(newNode)都可以向x后追加一个新的子节点。</p>
 <h3 id="5-替换节点"><a href="#5-替换节点" class="headerlink" title="5.替换节点"></a>5.替换节点</h3><p>主要掌握replaceChild(newNode , oldNode) 替换元素节点。（属性节点和文本节点有更简单的方法）</p>
 </body></html></p>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JSONP知识小结/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coveru">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="coveru's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/JSONP知识小结/" itemprop="url">JSONP知识小结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="什么是JSONP"><a href="#什么是JSONP" class="headerlink" title="什么是JSONP"></a>什么是JSONP</h2><p>请求方：一个域名的前端程序员（浏览器）<br>响应方：另一个域名的后端程序员（服务器）<br>1.请求方创建一个script，其src指向响应方，同时传一个查询参数？callbackName=xzx<br>2.响应方根据查询参数callbackName构造形如xzx.call(undefined,’你要的数据‘)/xzx(‘你要的数据’）这样的响应<br>3.浏览器接收到响应就会执行xzx.call(undefined,’你要的数据’)<br>4.至此请求方就知道了他要的数据<br>这就是JSONP<br>约定：<br>1.callbackName—&gt; callback<br>2.xzx—&gt; 随机数</p>
-<h2 id="为什么JSONP不支持POST请求"><a href="#为什么JSONP不支持POST请求" class="headerlink" title="为什么JSONP不支持POST请求"></a>为什么JSONP不支持POST请求</h2><p>1.JSONP是通过动态创建script标签来实现的。<br>2，动态创建script时只能用GET请求不能用POST请求<br>所以JSONP不支持POST</p>
-<h2 id="用代码实现-frank-com-8001-和-jack-com-8002-之间的-JSONP-请求"><a href="#用代码实现-frank-com-8001-和-jack-com-8002-之间的-JSONP-请求" class="headerlink" title="用代码实现 frank.com:8001 和 jack.com:8002 之间的 JSONP 请求"></a>用代码实现 frank.com:8001 和 jack.com:8002 之间的 JSONP 请求</h2><p>前端页面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">  &lt;title&gt;frank.com:8001&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;button id=&quot;button&quot;&gt;点我获取信息&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    button.addEventListener(&apos;click&apos;, function(e)&#123;</span><br><span class="line">      //原生JS</span><br><span class="line">      // let script = document.createElement(&apos;script&apos;)</span><br><span class="line">      // script.src = &apos;http://jack.com:8002?callback=&apos; + functionName</span><br><span class="line">      // document.body.appendChild(script)</span><br><span class="line">      // let functionName = &apos;wky&apos; + parseInt(Math.random()*1000000, 10)</span><br><span class="line">      // window[functionName] = function(result)&#123;</span><br><span class="line">      //   alert(result)</span><br><span class="line">      // &#125;</span><br><span class="line">      // script.onload = function(e)&#123;</span><br><span class="line">      //   e.currentTarget.remove()</span><br><span class="line">      // &#125;</span><br><span class="line">      // script.onerror = function(e)&#123;</span><br><span class="line">      //   e.currentTarget.remove()</span><br><span class="line">      // &#125;</span><br><span class="line">      //jQuery方法</span><br><span class="line">      $.ajax(&#123;</span><br><span class="line">        url: &quot;http://jack.com:8002&quot;,</span><br><span class="line">        jsonp: &quot;callback&quot;,</span><br><span class="line">        dataType: &quot;jsonp&quot;,</span><br><span class="line">        success: function( response ) &#123;</span><br><span class="line">            alert( response )</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-<p>后端代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>)</span><br><span class="line"><span class="keyword">var</span> port = process.argv[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!port)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'请指定端口号好不啦？\nnode server.js 8888 这样不会吗？'</span>)</span><br><span class="line">  process.exit(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> parsedUrl = url.parse(request.url, <span class="literal">true</span>)</span><br><span class="line">  <span class="keyword">var</span> pathWithQuery = request.url </span><br><span class="line">  <span class="keyword">var</span> queryString = <span class="string">''</span></span><br><span class="line">  <span class="keyword">if</span>(pathWithQuery.indexOf(<span class="string">'?'</span>) &gt;= <span class="number">0</span>)&#123; queryString = pathWithQuery.substring(pathWithQuery.indexOf(<span class="string">'?'</span>)) &#125;</span><br><span class="line">  <span class="keyword">var</span> path = parsedUrl.pathname</span><br><span class="line">  <span class="keyword">var</span> query = parsedUrl.query</span><br><span class="line">  <span class="keyword">var</span> method = request.method</span><br><span class="line"></span><br><span class="line">  <span class="comment">/******** 从这里开始看，上面不要看 ************/</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'方方说：含查询字符串的路径\n'</span> + pathWithQuery)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(path === <span class="string">'/'</span>)&#123;</span><br><span class="line">    response.statusCode = <span class="number">200</span></span><br><span class="line">    response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/html;charset=utf-8'</span>)</span><br><span class="line">    response.write(<span class="string">'哈哈哈'</span>)</span><br><span class="line">    response.end()</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(path === <span class="string">'/getmsg'</span>)&#123;</span><br><span class="line">    response.statusCode = <span class="number">200</span></span><br><span class="line">    response.setHeader(<span class="string">'Content-type'</span>, <span class="string">'application/javascript'</span>)</span><br><span class="line">    response.write(<span class="string">`<span class="subst">$&#123;query.callback&#125;</span>.call(undefined, '得到jack.com:8002的信息')`</span>)</span><br><span class="line">    response.end()</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    response.statusCode = <span class="number">404</span></span><br><span class="line">    response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/html;charset=utf-8'</span>)</span><br><span class="line">    response.write(<span class="string">'呜呜呜'</span>)</span><br><span class="line">    response.end()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/******** 代码结束，下面不要看 ************/</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(port)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'监听 '</span> + port + <span class="string">' 成功\n请用在空中转体720度然后用电饭煲打开 http://localhost:'</span> + port)</span><br></pre></td></tr></table></figure></p>
-
           
         
       
@@ -1575,159 +1709,6 @@ var obj = {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/HTML常用标签/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coveru">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="coveru's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/HTML常用标签/" itemprop="url">HTML常用标签</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#HTML常用标签<br>date: 2018-09-26 23:39:04<br>tags:知识小结</p>
-<p>##前言<br>HTML是用来描述网页的一种语言，也就是超级文本标记语言，标记语言是一套标记标签，html就是使用标记标签来描述网页，刚刚接触html，总结整理一些常用的html标  签，以供以后记忆和查阅. </p>
-<pre><code>1. &lt;html&gt; 标签 表示一个HTML文档的根（顶级元素），所以它也被称为根元素。所有其他元素必须
-是此元素的后代；&lt;html&gt; 与 &lt;/html&gt; 之间的文本描述网页。
-2.&lt;body&gt;标签表示文档的内容,它必须是&lt;html&gt;元素的直接子元素。
-3.&lt;head&gt;文档相关的配置信息（元数据），包括文档的标题，引用的文档样式和脚本等。
-4.&lt;h1&gt;--&lt;h6&gt;定义标题，其中&lt;h1&gt;定义最大的标题，&lt;h6&gt;定义最小的标题。
-5.&lt;p&gt;标签定义段落。&lt;p&gt;元素（或者说 HTML 段落元素）表示文本的一个段落。该元素通常表
-现为一整块与相邻文本分离的文本，或以垂直的空白隔离或以首行缩进。另外，&lt;p&gt; 是块级元素。
-6.6.&lt;kbd&gt;用于表示用户输入，它将产生一个行内元素，以浏览器的默认monospace字体显示。
-7.&lt;a&gt; 标签  (或锚元素) 可以创建一个到其他网页、文件、同一页面内的位置、电子邮件地址或任何
-其他URL的超链接。
-  示例：&lt;a href=&quot;http://www.baidu.com“&gt;百度&lt;/a&gt;  创建了到百度的超链接。
-8.&lt;hr/&gt; 该标签在页面中创建水平线 用于分隔内容。
-9&lt;br/&gt;  该标签在文本中生成一个换行（回车）符号。此元素在写诗和地址时很有用，这些地方的换行
-都非常重要。
-10.&lt;div&gt;  定义文档中的分区或节，没有特定含义，应用很多。
-11.&lt;span&gt;该标签是短语内容的通用行内容器，并没有任何特殊语义。可以使用它来编组元素以达到某种
-样式意图。
-&lt;span&gt; 与 &lt;div&gt; 元素很相似，但 &lt;div&gt; 是一个 块元素 而 &lt;span&gt; 则是 行内元素。
-12&lt;img&gt;该标签用于定于文档中的图片，是一个空元素，必须有开始标签却不允许有结束标签。
-  示例&lt;img src=&quot;XXX&quot; width=&quot;X&quot;  heigth=&quot;X&quot;/&gt;
-13.&lt;form&gt;表示了文档中的一个区域，这个区域包含有交互控制元件，用来向web服务器提交信息。
-&lt;form&gt;一般用于跳转链接，发起POST请求。
- 示例：&lt;form action=&quot;&quot; method=”POST“&gt;&lt;input type=”submit“ value=”“&gt;&lt;/form&gt;
-14.&lt;input&gt; 用于为基于Web的表单创建交互式控件，以便接受来自用户的数据,它是一个空标签。
-15.&lt;table&gt;该标签表示表格数据 — 即通过二维数据表表示的信息。
-16.&lt;ol&gt; 表示多个有序的列表项。
-17.&lt;ul&gt; 表示多个无序的列表项。
-</code></pre><p>常用的个人暂时学了这些，希望以后在日常学习和使用中能熟练掌握，加油！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1778,7 +1759,7 @@ var obj = {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

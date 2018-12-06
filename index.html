@@ -259,6 +259,145 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/06/从MVC到MVVM/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/06/从MVC到MVVM/" itemprop="url">从MVC到MVVM</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-06T22:21:48+08:00">
+                2018-12-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="MVC是什么"><a href="#MVC是什么" class="headerlink" title="MVC是什么"></a>MVC是什么</h1><p>MVC实际上是一种代码组织形式，和代码组织思想，它把代码按功能划分。MVC把代码分成三块，第一块View就是来告诉程序你的代码长什么样子或者你的代码在什么位置；第二块Model来告诉你数据由哪些操作（包括初始化，获取和保存等）；第三块Controller负责其他所有的事情（包括逻辑等方面）。<br>Model 操作数据，View 表示视图，Controller 是控制器。当用户在页面操作view，controller通过监听view的事件拿到view的触发通知，然后controller调用model的数据处理功能，model向服务器发起请求后服务器响应model，model返回数据给controller，然后controller更新页面view。</p>
+<p><img src="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fxxev47kgzj30zq0k2jrj.jpg" alt=""></p>
+<h1 id="为什么会出现MVVM"><a href="#为什么会出现MVVM" class="headerlink" title="为什么会出现MVVM"></a>为什么会出现MVVM</h1><p>MVC 架构模式对于简单的应用来看起是OK 的，也符合软件架构的分层思想。 但实际上，随着H5 的不断发展，人们更希望使用H5开发的应用能和Native媲美，或者接近于原生App的体验效果，于是前端应用的复杂程度已不同往日，今非昔比。这时前端开发就暴露出了三个痛点问题：</p>
+<p>1、开发者在代码中大量调用相同的 DOM API, 处理繁琐 ，操作冗余，使得代码难以维护。</p>
+<p>2、大量的DOM 操作使页面渲染性能降低，加载速度变慢，影响用户体验。</p>
+<p>3、当 Model 频繁发生变化，开发者需要主动更新到View ；当用户的操作导致 View 发生变化，开发者同样需要将变化的数据同步到Model 中，这样的工作不仅繁琐，而且很难维护复杂多变的数据状态。</p>
+<p>其实，早期jquery 的出现就是为了前端能更简洁的操作DOM 而设计的，但它只解决了第一个问题，另外两个问题始终伴随着前端一直存在。<br><strong>MVVM 的出现，完美解决了以上三个问题</strong></p>
+<h1 id="什么是MVVM"><a href="#什么是MVVM" class="headerlink" title="什么是MVVM"></a>什么是MVVM</h1><p>MVVM是Model-View-ViewModel的缩写。MVVM是一种设计思想。Model 层代表数据模型，也可以在Model中定义数据修改和操作的业务逻辑；View 代表UI 组件，它负责将数据模型转化成UI 展现出来，ViewModel 是一个同步View 和 Model的对象。</p>
+<p>在MVVM架构下，View 和 Model 之间并没有直接的联系，而是通过ViewModel进行交互，Model 和 ViewModel 之间的交互是双向的， 因此View 数据的变化会同步到Model中，而Model 数据的变化也会立即反应到View 上。</p>
+<p>ViewModel 通过双向数据绑定把 View 层和 Model 层连接了起来，而View 和 Model 之间的同步工作完全是自动的，无需人为干涉，因此开发者只需关注业务逻辑，不需要手动操作DOM, 不需要关注数据状态的同步问题，复杂的数据状态维护完全由 MVVM 来统一管理。<br><img src="http://ww1.sinaimg.cn/large/8afe7f49gy1ftdtv8kbh5j20fg0brwei.jpg" alt=""></p>
+<h1 id="Vue-js与MVVM模型的联系"><a href="#Vue-js与MVVM模型的联系" class="headerlink" title="Vue.js与MVVM模型的联系"></a>Vue.js与MVVM模型的联系</h1><p>Vue.js 可以说是MVVM 架构的最佳实践，专注于 MVVM 中的 ViewModel，不仅做到了数据双向绑定，而且也是一款相对比较轻量级的JS 库，API 简洁，很容易上手。Vue的基础知识网上有现成的教程，此处不再赘述， 下面简单了解一下 Vue.js 关于双向绑定的一些实现细节：</p>
+<p>Vue.js 是采用 Object.defineProperty 的 getter 和 setter，并结合观察者模式来实现数据绑定的。当把一个普通 Javascript 对象传给 Vue 实例来作为它的 data 选项时，Vue 将遍历它的属性，用 Object.defineProperty 将它们转为 getter/setter。用户看不到 getter/setter，但是在内部它们让 Vue 追踪依赖，在属性被访问和修改时通知变化。<br><img src="https://segmentfault.com/img/bVNALb?w=649&amp;h=347" alt="">\<br>Observer<br>数据监听器，能够对数据对象的所有属性进行监听，如有变动可拿到最新值并通知订阅者，内部采用Object.defineProperty的getter和setter来实现。</p>
+<p>Compile 指令解析器，它的作用对每个元素节点的指令进行扫描和解析，根据指令模板替换数据，以及绑定相应的更新函数。</p>
+<p>Watcher 订阅者， 作为连接 Observer 和 Compile<br>的桥梁，能够订阅并收到每个属性变动的通知，执行指令绑定的相应回调函数。</p>
+<p>Dep 消息订阅器，内部维护了一个数组，用来收集订阅者（Watcher），数据变动触发notify 函数，再调用订阅者的 update<br>方法。</p>
+<p>参考资料:\<br>1.<a href="http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html\" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html\</a><br>2.<a href="http://www.cnblogs.com/onepixel/p/6034307.html\" target="_blank" rel="noopener">http://www.cnblogs.com/onepixel/p/6034307.html\</a><br>3.<a href="https://segmentfault.com/a/1190000009397476" target="_blank" rel="noopener">https://segmentfault.com/a/1190000009397476</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/05/webpack4初体验/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1376,177 +1515,6 @@ HTTP——frankfang/node.js test
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/新手关于几个简单命令以及explainshell-com的粗略见解/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coveru">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="coveru's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/新手关于几个简单命令以及explainshell-com的粗略见解/" itemprop="url">新手关于几个简单命令以及explainshell-com的粗略见解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#几个简单命令以及explainshell<br>date: 2018-09-21 10:08:24</p>
-<ol>
-<li>ls的用法：ls的全称是list，中文释义罗列<br> i, 命令格式: ls [选项] [目录名]<br> ii, 命令功能： 列出目标目录中所有的子目录和文件。<br> iii，常用参数： -a, –all 列出目录下的所有文件，包括以 . 开头的隐含文件<br> -A 同-a，但不列出“.”(表示当前目录)和“..”(表示当前目录的父目录)。<br>  。。。（太多不一一列举，详情请自行google）<pre><code>iiii，示例：
-</code></pre><img src="http://wx2.sinaimg.cn/mw690/006sJW3Ggy1fvh6xx3rkyj30gq022dfr.jpg" alt="示例">             </li>
-<li><p>cat的用法：cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。<br> i，命令格式：cat [选项] [文件]…                ii,命令功能：主要三大功能 i’.一次显示整个文件:cat filename；  ii’.从键盘创建一个文件:cat &gt; filename 只能创建新文件,不能编辑已有文件；iii’.将几个文件合并为一个文件:cat file1 file2 &gt; file<br> iii，命令参数：-A, –show-all           等价于 -vET</p>
-<pre><code>-b, --number-nonblank    对非空输出行编号
-
--e                       等价于 -vE
-
--E, --show-ends          在每行结束处显示 $
-
--n, --number     对输出的所有行编号,由1开始对所有输出的行数编号
-
--s, --squeeze-blank  有连续两行以上的空白行，就代换为一行的空白行 
-
--t                       与 -vT 等价
-
--T, --show-tabs          将跳格字符显示为 ^I
-
--u                       (被忽略)
-
-                    -v, --show-nonprinting   使用 ^ 和 M- 引用，除了 LFD 和 TAB 之外
-</code></pre><p> iiii，示例:photos:<br><img src="http://wx2.sinaimg.cn/mw690/006sJW3Ggy1fvh6xx6fctj30kq03cmzt.jpg" alt="示例">             </p>
-<pre><code>3. mv的用法：mv命令是move的缩写，可以用来移动文件或者将文件改名（move (rename) files），是Linux系统下常用的命令，经常用来备份文件或者目录。
-    i，命令格式：mv [选项] 源文件或目录 目标文件或目录
-    ii，命令功能：视mv命令中第二个参数类型的不同（是目标文件还是目标目录），mv命令将文件重命名或将其移至一个新的目录中。当第二个参数类型是文件时，mv命令完成文件重命名，此时，源文件只能有一个（也可以是源目录名），它将所给的源文件或目录重命名为给定的目标文件名。当第二个参数是已存在的目录名称时，源文件或目录参数可以有多个，mv命令将各参数指定的源文件均移至目标目录中。在跨文件系统移动文件时，mv先拷贝，再将原有文件删除，而链至该文件的链接也将丢失。
-    iii，命令参数：-b ：若需覆盖文件，则覆盖前先行备份。 
-
-                  -f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；
-
-                  -i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！
-
-                  -u ：若目标文件已经存在，且 source 比较新，才会更新(update)
-
-                  -t ： --target-directory=DIRECTORY move all SOURCE arguments into DIRECTORY，即指定mv的目标目录，该选项适用于移动多个源文件到一个目录的情况，此时目标目录在前，源文件在后。   
-   III，示例：
-</code></pre><p><img src="http://wx1.sinaimg.cn/mw690/006sJW3Ggy1fvh6xx7lo8j30c907kdka.jpg" alt="示例">                </p>
-</li>
-<li><p>touch的用法： linux的touch命令不常用，一般在使用make的时候可能会用到，用来修改文件时间戳，或者新建一个不存在的文件。<br>i， 命令格式： touch [选项]… 文件…<br>ii，命令功能： touch命令参数可更改文档或目录的日期时间，包括存取时间和更改时间。<br>iii，命令参数：</p>
-<p> -a   或–time=atime或–time=access或–time=use 　只更改存取时间。</p>
-<p> -c   或–no-create 　不建立任何文档。</p>
-<p> -d 　使用指定的日期时间，而非现在的时间。</p>
-<p> -f 　此参数将忽略不予处理，仅负责解决BSD版本touch指令的兼容性问题。</p>
-<p> -m   或–time=mtime或–time=modify 　只更改变动时间。</p>
-<p> -r 　把指定文档或目录的日期时间，统统设成和参考文档或目录的日期时间相同。</p>
-<p> -t 　使用指定的日期时间，而非现在的时间。<br>iiii，示例：<br><img src="http://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvh6xx7dbwj30on0ca0vt.jpg" alt="示例"><br>最后说下关于explainshell.com 这个网站如何使用，其实我也是很无奈啊~最近打开这个网址一直出错，好在今天可以了，对，我是谷歌搜的！<br>当我们不知道某个命令是什么意思的时候，又不愿意去查看man手册的时候，就可以使用这个网站了，简洁明了<del>~</del>~（前提要是能FQ）】<br><img src="http://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvh57l0fu3j30o90brgms.jpg" alt="示例">      </p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/原型与原型链知识点梳理/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1723,7 +1691,7 @@ console.log(person.prototype);  //undefined
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

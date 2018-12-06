@@ -259,6 +259,177 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/新手关于几个简单命令以及explainshell-com的粗略见解/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/13/新手关于几个简单命令以及explainshell-com的粗略见解/" itemprop="url">新手关于几个简单命令以及explainshell-com的粗略见解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#几个简单命令以及explainshell<br>date: 2018-09-21 10:08:24</p>
+<ol>
+<li>ls的用法：ls的全称是list，中文释义罗列<br> i, 命令格式: ls [选项] [目录名]<br> ii, 命令功能： 列出目标目录中所有的子目录和文件。<br> iii，常用参数： -a, –all 列出目录下的所有文件，包括以 . 开头的隐含文件<br> -A 同-a，但不列出“.”(表示当前目录)和“..”(表示当前目录的父目录)。<br>  。。。（太多不一一列举，详情请自行google）<pre><code>iiii，示例：
+</code></pre><img src="http://wx2.sinaimg.cn/mw690/006sJW3Ggy1fvh6xx3rkyj30gq022dfr.jpg" alt="示例">             </li>
+<li><p>cat的用法：cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。<br> i，命令格式：cat [选项] [文件]…                ii,命令功能：主要三大功能 i’.一次显示整个文件:cat filename；  ii’.从键盘创建一个文件:cat &gt; filename 只能创建新文件,不能编辑已有文件；iii’.将几个文件合并为一个文件:cat file1 file2 &gt; file<br> iii，命令参数：-A, –show-all           等价于 -vET</p>
+<pre><code>-b, --number-nonblank    对非空输出行编号
+
+-e                       等价于 -vE
+
+-E, --show-ends          在每行结束处显示 $
+
+-n, --number     对输出的所有行编号,由1开始对所有输出的行数编号
+
+-s, --squeeze-blank  有连续两行以上的空白行，就代换为一行的空白行 
+
+-t                       与 -vT 等价
+
+-T, --show-tabs          将跳格字符显示为 ^I
+
+-u                       (被忽略)
+
+                    -v, --show-nonprinting   使用 ^ 和 M- 引用，除了 LFD 和 TAB 之外
+</code></pre><p> iiii，示例:photos:<br><img src="http://wx2.sinaimg.cn/mw690/006sJW3Ggy1fvh6xx6fctj30kq03cmzt.jpg" alt="示例">             </p>
+<pre><code>3. mv的用法：mv命令是move的缩写，可以用来移动文件或者将文件改名（move (rename) files），是Linux系统下常用的命令，经常用来备份文件或者目录。
+    i，命令格式：mv [选项] 源文件或目录 目标文件或目录
+    ii，命令功能：视mv命令中第二个参数类型的不同（是目标文件还是目标目录），mv命令将文件重命名或将其移至一个新的目录中。当第二个参数类型是文件时，mv命令完成文件重命名，此时，源文件只能有一个（也可以是源目录名），它将所给的源文件或目录重命名为给定的目标文件名。当第二个参数是已存在的目录名称时，源文件或目录参数可以有多个，mv命令将各参数指定的源文件均移至目标目录中。在跨文件系统移动文件时，mv先拷贝，再将原有文件删除，而链至该文件的链接也将丢失。
+    iii，命令参数：-b ：若需覆盖文件，则覆盖前先行备份。 
+
+                  -f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；
+
+                  -i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！
+
+                  -u ：若目标文件已经存在，且 source 比较新，才会更新(update)
+
+                  -t ： --target-directory=DIRECTORY move all SOURCE arguments into DIRECTORY，即指定mv的目标目录，该选项适用于移动多个源文件到一个目录的情况，此时目标目录在前，源文件在后。   
+   III，示例：
+</code></pre><p><img src="http://wx1.sinaimg.cn/mw690/006sJW3Ggy1fvh6xx7lo8j30c907kdka.jpg" alt="示例">                </p>
+</li>
+<li><p>touch的用法： linux的touch命令不常用，一般在使用make的时候可能会用到，用来修改文件时间戳，或者新建一个不存在的文件。<br>i， 命令格式： touch [选项]… 文件…<br>ii，命令功能： touch命令参数可更改文档或目录的日期时间，包括存取时间和更改时间。<br>iii，命令参数：</p>
+<p> -a   或–time=atime或–time=access或–time=use 　只更改存取时间。</p>
+<p> -c   或–no-create 　不建立任何文档。</p>
+<p> -d 　使用指定的日期时间，而非现在的时间。</p>
+<p> -f 　此参数将忽略不予处理，仅负责解决BSD版本touch指令的兼容性问题。</p>
+<p> -m   或–time=mtime或–time=modify 　只更改变动时间。</p>
+<p> -r 　把指定文档或目录的日期时间，统统设成和参考文档或目录的日期时间相同。</p>
+<p> -t 　使用指定的日期时间，而非现在的时间。<br>iiii，示例：<br><img src="http://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvh6xx7dbwj30on0ca0vt.jpg" alt="示例"><br>最后说下关于explainshell.com 这个网站如何使用，其实我也是很无奈啊~最近打开这个网址一直出错，好在今天可以了，对，我是谷歌搜的！<br>当我们不知道某个命令是什么意思的时候，又不愿意去查看man手册的时候，就可以使用这个网站了，简洁明了<del>~</del>~（前提要是能FQ）】<br><img src="http://wx4.sinaimg.cn/mw690/006sJW3Ggy1fvh57l0fu3j30o90brgms.jpg" alt="示例">      </p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JS里的数组/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -869,140 +1040,6 @@ console.log(a)
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/js普通类型和对象的区别/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coveru">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="coveru's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/js普通类型和对象的区别/" itemprop="url">js普通类型和对象的区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前一篇我们分别介绍了js里每一种数据类型，但是数据类型也有划分不同的大类型，比如基本类型和复杂类型，原始类型和引用类型等等，总的来说就是普通类型和对象的区别。</p>
-<h2 id="1、基本数据类型和引用数据类型"><a href="#1、基本数据类型和引用数据类型" class="headerlink" title="1、基本数据类型和引用数据类型"></a>1、基本数据类型和引用数据类型</h2><p>ECMAScript包括两个不同类型的值：基本数据类型和引用数据类型。<br>基本数据类型指的是简单的数据段，引用数据类型指的是有多个值构成的对象。<br>当我们把变量赋值给一个变量时，解析器首先要确认的就是这个值是基本类型值还是引用类型值。</p>
-<h2 id="2、常见的基本数据类型："><a href="#2、常见的基本数据类型：" class="headerlink" title="2、常见的基本数据类型："></a>2、常见的基本数据类型：</h2><p>Number、String 、Boolean、Null和Undefined。基本数据类型是按值访问的，因为可以直接操作保存在变量中的实际值。示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line"></span><br><span class="line">b = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 10值</span></span><br></pre></td></tr></table></figure></p>
-<p>上面，b获取的是a值得一份拷贝，虽然，两个变量的值相等，但是两个变量保存了两个不同的基本数据类型值。<br>b只是保存了a复制的一个副本。所以，b的改变，对a没有影响。这种拷贝也就是深拷贝。<br>下图演示了这种基本数据类型赋值的过程：<br><img src="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fw8ofoyto7j30f6065mx8.jpg" alt=""></p>
-<h2 id="3、引用类型数据："><a href="#3、引用类型数据：" class="headerlink" title="3、引用类型数据："></a>3、引用类型数据：</h2><p>引用类型数据也就是对象类型Object type，比如：Object 、Array 、Function 、Data等。<br>javascript的引用数据类型是保存在堆内存(heap)中的对象。与其他语言的不同是，你不可以直接访问堆内存空间中的位置和操作堆内存空间。只能操作对象在栈内(stack)存中的引用地址。<br>所以，引用类型数据在栈内存中保存的实际上是对象在堆内存中的<strong>引用地址</strong>。通过这个引用地址可以快速查找到保存中堆内存中的对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj2 = obj1;</span><br><span class="line"></span><br><span class="line">obj2.name = <span class="string">"我有名字了"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj1.name); <span class="comment">// 我有名字了</span></span><br></pre></td></tr></table></figure></p>
-<p>说明这两个引用数据类型指向了同一个堆内存对象。obj1赋值给onj2，实际上这个堆内存对象在栈内存的引用地址复制了一份给了obj2，但是实际上他们共同指向了同一个堆内存对象。<strong>实际上改变的是堆内存对象。</strong><br>下面我们来演示这个引用数据类型赋值过程：<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fw8ofoz82uj30g20e8q3m.jpg" alt=""><br>顺便贴上一张面试题内存图解析<br><img src="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fw8ofpm1tpj31hd1hcwv9.jpg" alt=""><br>红色部分表示变量b发生的变动</p>
-<h2 id="4、总结区别"><a href="#4、总结区别" class="headerlink" title="4、总结区别"></a>4、总结区别</h2><h3 id="a-声明变量时不同的内存分配："><a href="#a-声明变量时不同的内存分配：" class="headerlink" title="a.声明变量时不同的内存分配：　"></a>a.声明变量时不同的内存分配：　</h3><p>1）原始值：存储在栈（stack）中的简单数据段，也就是说，它们的值直接存储在变量访问的位置。<br>这是因为这些原始类型占据的空间是固定的，所以可将他们存储在较小的内存区域–栈中。这样存储便于迅速查寻变量的值。<br>2）引用值：存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存地址。<br>这是因为：引用值的大小会改变，所以不能把它放在栈中，否则会降低变量查寻的速度。相反，放在变量的栈空间中的值是该对象存储在堆中的地址。<br>地址的大小是固定的，所以把它存储在栈中对变量性能无任何负面影响。</p>
-<h3 id="b-不同的内存分配机制也带来了不同的访问机制"><a href="#b-不同的内存分配机制也带来了不同的访问机制" class="headerlink" title="b.不同的内存分配机制也带来了不同的访问机制"></a>b.不同的内存分配机制也带来了不同的访问机制</h3><p>1）在javascript中是不允许直接访问保存在堆内存中的对象的，所以在访问一个对象时，首先得到的是这个对象在堆内存中的地址，然后再按照这个地址去获得这个对象中的值，这就是传说中的按引用访问。<br>2）而原始类型的值则是可以直接访问到的。
-　　</p>
-<h3 id="c-复制变量时的不同"><a href="#c-复制变量时的不同" class="headerlink" title="c 复制变量时的不同"></a>c 复制变量时的不同</h3><p>1）原始值：在将一个保存着原始值的变量复制给另一个变量时，会将原始值的副本赋值给新变量，此后这两个变量是完全独立的，他们只是拥有相同的value而已。<br>2）引用值：在将一个保存着对象内存地址的变量复制给另一个变量时，会把这个内存地址赋值给新变量，也就是说这两个变量都指向了堆内存中的同一个对象，他们中任何一个作出的改变都会反映在另一个身上。（这里要理解的一点就是，复制对象时并不会在堆内存中新生成一个一模一样的对象，只是多了一个保存指向这个对象指针的变量罢了）。多了一个指针</p>
-<h3 id="d-参数传递的不同（把实参复制给形参的过程）"><a href="#d-参数传递的不同（把实参复制给形参的过程）" class="headerlink" title="d 参数传递的不同（把实参复制给形参的过程）"></a>d 参数传递的不同（把实参复制给形参的过程）</h3><p>首先我们应该明确一点：ECMAScript中所有函数的参数都是按值来传递的。<br>但是为什么涉及到原始类型与引用类型的值时仍然有区别呢？还不就是因为内存分配时的差别。 　<br>1）原始值：只是把变量里的值传递给参数，之后参数和这个变量互不影响。<br>2）引用值：对象变量它里面的值是这个对象在堆内存中的内存地址，这一点要时刻铭记在心！<br>因此它传递的值也就是这个内存地址，这也就是为什么函数内部对这个参数的修改会体现在外部的原因了，因为它们都指向同一个对象。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/JS初体验/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1098,6 +1135,140 @@ console.log(a)
 <p>5.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">website=hash[k]   //网址</span><br><span class="line">location.href = &apos;http://&apos; + website   //在地址栏打开网址website</span><br><span class="line">window.open(&apos;http://&apos;+website,&quot;_blank&quot;)    //在新窗口中打开网址website</span><br></pre></td></tr></table></figure></p>
 <h2 id="处理bug"><a href="#处理bug" class="headerlink" title="处理bug"></a>处理bug</h2><p><strong>Uncaught SyntanError：Unexpected token           ——-index 50</strong><br>没有被处理的语法错误，实际操作出现这个情况是因为第50行代码中有一个’}’错打成了’]’</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>JS难不难？难，但是多看几遍也多敲几遍也就那样，但是做出来的效果对新手来说还是成就感十足的，告诉自己继续保持~</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/js普通类型和对象的区别/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coveru">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coveru's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/13/js普通类型和对象的区别/" itemprop="url">js普通类型和对象的区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前一篇我们分别介绍了js里每一种数据类型，但是数据类型也有划分不同的大类型，比如基本类型和复杂类型，原始类型和引用类型等等，总的来说就是普通类型和对象的区别。</p>
+<h2 id="1、基本数据类型和引用数据类型"><a href="#1、基本数据类型和引用数据类型" class="headerlink" title="1、基本数据类型和引用数据类型"></a>1、基本数据类型和引用数据类型</h2><p>ECMAScript包括两个不同类型的值：基本数据类型和引用数据类型。<br>基本数据类型指的是简单的数据段，引用数据类型指的是有多个值构成的对象。<br>当我们把变量赋值给一个变量时，解析器首先要确认的就是这个值是基本类型值还是引用类型值。</p>
+<h2 id="2、常见的基本数据类型："><a href="#2、常见的基本数据类型：" class="headerlink" title="2、常见的基本数据类型："></a>2、常见的基本数据类型：</h2><p>Number、String 、Boolean、Null和Undefined。基本数据类型是按值访问的，因为可以直接操作保存在变量中的实际值。示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line"></span><br><span class="line">b = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 10值</span></span><br></pre></td></tr></table></figure></p>
+<p>上面，b获取的是a值得一份拷贝，虽然，两个变量的值相等，但是两个变量保存了两个不同的基本数据类型值。<br>b只是保存了a复制的一个副本。所以，b的改变，对a没有影响。这种拷贝也就是深拷贝。<br>下图演示了这种基本数据类型赋值的过程：<br><img src="https://wx4.sinaimg.cn/mw690/006sJW3Ggy1fw8ofoyto7j30f6065mx8.jpg" alt=""></p>
+<h2 id="3、引用类型数据："><a href="#3、引用类型数据：" class="headerlink" title="3、引用类型数据："></a>3、引用类型数据：</h2><p>引用类型数据也就是对象类型Object type，比如：Object 、Array 、Function 、Data等。<br>javascript的引用数据类型是保存在堆内存(heap)中的对象。与其他语言的不同是，你不可以直接访问堆内存空间中的位置和操作堆内存空间。只能操作对象在栈内(stack)存中的引用地址。<br>所以，引用类型数据在栈内存中保存的实际上是对象在堆内存中的<strong>引用地址</strong>。通过这个引用地址可以快速查找到保存中堆内存中的对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj2 = obj1;</span><br><span class="line"></span><br><span class="line">obj2.name = <span class="string">"我有名字了"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj1.name); <span class="comment">// 我有名字了</span></span><br></pre></td></tr></table></figure></p>
+<p>说明这两个引用数据类型指向了同一个堆内存对象。obj1赋值给onj2，实际上这个堆内存对象在栈内存的引用地址复制了一份给了obj2，但是实际上他们共同指向了同一个堆内存对象。<strong>实际上改变的是堆内存对象。</strong><br>下面我们来演示这个引用数据类型赋值过程：<br><img src="https://wx1.sinaimg.cn/mw690/006sJW3Ggy1fw8ofoz82uj30g20e8q3m.jpg" alt=""><br>顺便贴上一张面试题内存图解析<br><img src="https://wx2.sinaimg.cn/mw690/006sJW3Ggy1fw8ofpm1tpj31hd1hcwv9.jpg" alt=""><br>红色部分表示变量b发生的变动</p>
+<h2 id="4、总结区别"><a href="#4、总结区别" class="headerlink" title="4、总结区别"></a>4、总结区别</h2><h3 id="a-声明变量时不同的内存分配："><a href="#a-声明变量时不同的内存分配：" class="headerlink" title="a.声明变量时不同的内存分配：　"></a>a.声明变量时不同的内存分配：　</h3><p>1）原始值：存储在栈（stack）中的简单数据段，也就是说，它们的值直接存储在变量访问的位置。<br>这是因为这些原始类型占据的空间是固定的，所以可将他们存储在较小的内存区域–栈中。这样存储便于迅速查寻变量的值。<br>2）引用值：存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存地址。<br>这是因为：引用值的大小会改变，所以不能把它放在栈中，否则会降低变量查寻的速度。相反，放在变量的栈空间中的值是该对象存储在堆中的地址。<br>地址的大小是固定的，所以把它存储在栈中对变量性能无任何负面影响。</p>
+<h3 id="b-不同的内存分配机制也带来了不同的访问机制"><a href="#b-不同的内存分配机制也带来了不同的访问机制" class="headerlink" title="b.不同的内存分配机制也带来了不同的访问机制"></a>b.不同的内存分配机制也带来了不同的访问机制</h3><p>1）在javascript中是不允许直接访问保存在堆内存中的对象的，所以在访问一个对象时，首先得到的是这个对象在堆内存中的地址，然后再按照这个地址去获得这个对象中的值，这就是传说中的按引用访问。<br>2）而原始类型的值则是可以直接访问到的。
+　　</p>
+<h3 id="c-复制变量时的不同"><a href="#c-复制变量时的不同" class="headerlink" title="c 复制变量时的不同"></a>c 复制变量时的不同</h3><p>1）原始值：在将一个保存着原始值的变量复制给另一个变量时，会将原始值的副本赋值给新变量，此后这两个变量是完全独立的，他们只是拥有相同的value而已。<br>2）引用值：在将一个保存着对象内存地址的变量复制给另一个变量时，会把这个内存地址赋值给新变量，也就是说这两个变量都指向了堆内存中的同一个对象，他们中任何一个作出的改变都会反映在另一个身上。（这里要理解的一点就是，复制对象时并不会在堆内存中新生成一个一模一样的对象，只是多了一个保存指向这个对象指针的变量罢了）。多了一个指针</p>
+<h3 id="d-参数传递的不同（把实参复制给形参的过程）"><a href="#d-参数传递的不同（把实参复制给形参的过程）" class="headerlink" title="d 参数传递的不同（把实参复制给形参的过程）"></a>d 参数传递的不同（把实参复制给形参的过程）</h3><p>首先我们应该明确一点：ECMAScript中所有函数的参数都是按值来传递的。<br>但是为什么涉及到原始类型与引用类型的值时仍然有区别呢？还不就是因为内存分配时的差别。 　<br>1）原始值：只是把变量里的值传递给参数，之后参数和这个变量互不影响。<br>2）引用值：对象变量它里面的值是这个对象在堆内存中的内存地址，这一点要时刻铭记在心！<br>因此它传递的值也就是这个内存地址，这也就是为什么函数内部对这个参数的修改会体现在外部的原因了，因为它们都指向同一个对象。</p>
 
           
         
@@ -1537,178 +1708,6 @@ console.log(a)
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/http简介/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coveru">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="coveru's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/http简介/" itemprop="url">http简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T21:18:26+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="http简介"><a href="#http简介" class="headerlink" title="http简介"></a>http简介</h1><p>date: 2018-09-24 10:36:21<br>tags:http<br>HTTP:超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础<br>HTTP 的作用就是指导浏览器和服务器如何进行沟通<br>HTTP请求的格式：<br>  1 动词 路径 协议/版本<br>  2 Key1: value1<br>  2 Key2: value2<br>  2 Key3: value3<br>  2 Content-Type:<br>  3<br>  4 要上传的数据</p>
-<p>注意：<br>a.请求最多包含四部分，最少包含三部分。（也就是说第四部分可以为空）<br>b.其中第三部分永远都是一个回车(\n)。<br>c.动词有 GET POST PUT PATCH DELETE HEAD OPTIONS 等…<br>d.这里的路径包括「查询参数」，但不包括「锚点」<br>e.如果你没有写路径，那么路径默认为 /<br>f.第 2 部分中的 Content-Type 标注了第 4 部分的格式</p>
-<p>接下来说下怎么用Chrome开发者工具查看HTTP请求内容：首先，打开Chrome里的Network(右键-检查-Network)，输入网址，然后在 Network 点击查看 request，点击「view source」这样就可以看到请求的前三部分了，如果有请求的第四部分，那么在 FormData 或 Payload 里面可以看到。</p>
-<p>HTTP 响应的格式：<br>1 协议/版本号 状态码 状态解释<br>2 Key1: value1<br>2 Key2: value2<br>2 Content-Length: 。。。<br>2 Content-Type: 。。。<br>3<br>4 要下载的内容</p>
-<p>注意：响应的格式也是最多四部分最少三部分，第三部分同样是固定不变的回车(\n)；第二部分中的 Content-Type 标注了第四部分的格式（ Content-Type 遵循 MIME 规范）；状态码是服务器对浏览器说的话，不同的状态码表示的含义不同。</p>
-<p>用Chrome 查看响应：首先，打开Chrome里的Network(右键-检查-Network)，输入网址，选中第一个响应，然后在 Network 点击查看Response Headers，点击「view source」，你会看到响应的前两部分。查看 Response 或者 Preview，你会看到响应的第 4 部分。</p>
-<p>关于如何使用curl命令<br>cURL是一个利用URL语法在命令行下工作的文件传输工具，1997年首次发行。它支持文件上传和下载，所以是综合传输工具，但按传统，习惯称cURL为下载工具</p>
-<p>1.1 URL访问<br>访问一个网页时，可以使用curl命令后加上要访问的网址：</p>
-<pre><code>$ curl itbilu.com 
-&lt;html&gt;
-&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
-&lt;body bgcolor=&quot;white&quot;&gt;
-&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
-&lt;hr&gt;&lt;center&gt;nginx/1.6.2&lt;/center&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>如上所示，我们就看到所访问网址的页面源码。<br>重定向跟踪</p>
-<p>在上面示例中，页面使用了301重定向，这时我们可以添加-L参数来跟踪URL重定向：</p>
-<p>$ curl -L itbilu.com<br>页面保存</p>
-<p>如果需要将页面源码保存到本地，可以使用-o参数：</p>
-<p>$ curl -o [文件名] itbilu.com<br>查看头信息</p>
-<p>如果需要查看访问页面的可以添加-i或–include参数：</p>
-<p>$ curl -i itbilu.com<br>添加-i参数后，页面响应头会和页面源码（响应体）一块返回。如果只想查看响应头，可以使用-I或–head参数：</p>
-<p>$ curl -I itbilu.com<br>HTTP/1.1 301 Moved Permanently<br>Server: nginx/1.6.2<br>Date: Sun, 25 Jun 2017 02:03:45 GMT<br>Content-Type: text/html<br>Content-Length: 184<br>Connection: keep-alive<br>Location: <a href="https://itbilu.com/" target="_blank" rel="noopener">https://itbilu.com/</a></p>
-<p>1.2 表单提交<br>通过Form表单，可以将Web页面的表单数据提交到服务端。提交表单时，可以使用GET或POST提交方法。</p>
-<p>curl同样支持表单数据提交，也可以使用GET或POST提交方法。</p>
-<p>GET数据提交</p>
-<p>当全用GET表单数据提交时，提交数据会被附加到请求URL的后面。类型如下：</p>
-<p>$ curl ‘//itbilu.com/?keyword=linux&amp;page=3’<br>使用curl进行GET数据提交时，也可以直接把提交数据添加到URL后面：</p>
-<p>curl <a href="https://itbilu.com/?keyword=linux&amp;page=3" target="_blank" rel="noopener">https://itbilu.com/?keyword=linux&amp;page=3</a><br>POST数据提交</p>
-<p>curl使用POST提交表单数据时，除了-X参数指定请求方法外，还要使用–data参数添加提交数据：</p>
-<p>$ curl -X POST –data ‘keyword=linux’ itbilu.com</p>
-<p>1.3 其它HTTP请求方法<br>目前为止，我们使用GET和POST两种HTTP请求。curl支持所有HTTP请求方法，只要通过-X参数指定即可。</p>
-<p>如，使用DELETE请求：</p>
-<p>$ curl -X DELETE itbilu.com/examlple.html<br>使用PUT请求，并指定请求数据：</p>
-<p>$ curl -X PUT –data ‘keyword=linux’ itbilu.com</p>
-<p>1.4 文件上传<br>curl支持文件上传，上传文件时使用-T或–upload-file参数：</p>
-<p>$ curl -T ./index.html <a href="http://www.uploadhttp.com/receive.cgi" target="_blank" rel="noopener">www.uploadhttp.com/receive.cgi</a></p>
-<p>1.5 HTTPS支持<br>对于使用了SSL/TLS加密的HTTPS协议，可以使用curl直接访问：</p>
-<p>$ curl <a href="https://itbilu.com" target="_blank" rel="noopener">https://itbilu.com</a><br>如果使用的本地ssl证书认证的HTTPS，可以通过-E或–cert参数指定本地证书：</p>
-<p>$ curl -E mycert.pem https:/itbilu.com</p>
-<p>1.6 添加请求头<br>有时在进行HTTP请求时，需要自定义请求头。在curl中，可以通过-H或–header参数来指定请求头。多次使用-H或–header参数可指定多个请求头。</p>
-<p>如，指定Content-Type及Authorization请求头：</p>
-<p>$ curl -H ‘Content-Type:application/json’ -H ‘Authorization: bearer eyJhbGciOiJIUzI1NiJ9’ itbilu.com</p>
-<p>1.7 Cookie支持<br>Cookie是一种常用的保持服务端会话信息的方法，crul也支持使用Cookie。</p>
-<p>可以通过–cookie参数指定发送请求时的Cookie值，也可以通过-b [文件名]来指定一个存储了Cookie值的本地文件：</p>
-<p>$ curl -b stored_cookies_in_file itbilu.com<br>Cookie值可能会被服务器所返回的值所修改，并应用于下次HTTP请求。这时，可以能过-c参数指定存储服务器返回Cookie值的存储文件：</p>
-<p>$ curl -b cookies.txt -c newcookies.txt itbilu.com</p>
-<p>除以上用法外，curl还可以设置用户代理（客户端）信息、使用代理服务器、指定认证用户名／密码等。详见：curl语法及选项</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1759,7 +1758,7 @@ console.log(a)
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
